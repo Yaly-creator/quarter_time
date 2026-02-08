@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>Mon Panier - Quarter Time</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+      .cart-page {
+        background-color: #f8f9fa;
+        padding: 60px 0;
+        min-height: 500px;
+      }
+
+      .cart-item {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+      }
+
+      .cart-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      }
+
+      .cart-item-img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .cart-item-details {
+        flex: 1;
+        padding: 0 20px;
+      }
+
+      .cart-item-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .cart-item-description {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      .cart-item-price {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #F96D00;
+      }
+
+      .quantity-controls {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .quantity-btn {
+        background: #f8f9fa;
+        border: none;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background 0.2s;
+      }
+
+      .quantity-btn:hover {
+        background: #e9ecef;
+      }
+
+      .quantity-display {
+        padding: 0 15px;
+        font-weight: 600;
+        min-width: 40px;
+        text-align: center;
+      }
+
+      .remove-btn {
+        background: none;
+        border: none;
+        color: #dc3545;
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 5px 10px;
+        transition: color 0.2s;
+      }
+
+      .remove-btn:hover {
+        color: #c82333;
+      }
+
+      .cart-summary {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 100px;
+      }
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        font-size: 1rem;
+      }
+
+      .summary-row.total {
+        border-top: 2px solid #ddd;
+        padding-top: 15px;
+        margin-top: 15px;
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+
+      .total-price {
+        color: #F96D00;
+        font-size: 1.5rem;
+      }
+
+      .empty-cart {
+        text-align: center;
+        padding: 80px 20px;
+      }
+
+      .empty-cart-icon {
+        font-size: 80px;
+        color: #ddd;
+        margin-bottom: 20px;
+      }
+
+      .empty-cart h3 {
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      .delivery-options {
+        margin-bottom: 20px;
+      }
+
+      .delivery-option {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .delivery-option:hover {
+        border-color: #F96D00;
+      }
+
+      .delivery-option.selected {
+        border-color: #F96D00;
+        background-color: #fff5f0;
+      }
+
+      .delivery-option input[type="radio"] {
+        margin-right: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .cart-item {
+          flex-direction: column !important;
+        }
+
+        .cart-item-img {
+          width: 100%;
+          height: 200px;
+          margin-bottom: 15px;
+        }
+
+        .cart-item-details {
+          padding: 0;
+        }
+
+        .cart-summary {
+          position: relative;
+          top: 0;
+          margin-top: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="py-1 bg-black top">
+    	<div class="container">
+    		<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+	    		<div class="col-lg-12 d-block">
+		    		<div class="row d-flex">
+		    			<div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+						    <span class="text">03 44 05 74 74</span>
+					    </div>
+					    <div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"></div>
+						    <p class="mb-0 register-link"><span>Horaire:</span> <span>Samedi</span> <span>11h30 - 23h30</span></p>
+					    </div>
+					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
+						    <p class="mb-0 register-link"><span>Horaire:</span> <span>Lundi - Vendredi</span> <span>11h30 - 15h00 et 18h30-23h00</span></p>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+		  </div>
+    </div>
+
+	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Quarter Time"></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link">Accueil</a></li>
+          <li class="nav-item"><a href="notre_resto.html" class="nav-link">Notre restaurant</a></li>
+          <li class="nav-item"><a href="reservation.html" class="nav-link">Réserver une table</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item"><a href="connexion.html" class="nav-link">Connexion</a></li>
+          <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
+          
+          <!-- 🛒 Panier -->
+          <li class="nav-item active">
+            <a href="panier.html" class="nav-link">
+              <i class="fas fa-shopping-cart"></i> Panier
+              <span class="badge badge-warning" id="cart-count">0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <!-- END nav -->
+    
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center mb-4">
+            <h1 class="mb-2 bread">Mon Panier</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Accueil <i class="ion-ios-arrow-forward"></i></a></span> <span>Panier <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cart-page">
+      <div class="container">
+        <!-- Panier vide -->
+        <div id="empty-cart" class="empty-cart" style="display: none;">
+          <div class="empty-cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <h3>Votre panier est vide</h3>
+          <p>Découvrez nos délicieuses spécialités et commencez votre commande !</p>
+          <a href="menu.html" class="btn btn-primary btn-lg mt-3">
+            <i class="fas fa-utensils mr-2"></i>Découvrir notre menu
+          </a>
+        </div>
+
+        <!-- Panier avec articles -->
+        <div id="cart-with-items" class="row">
+          <div class="col-lg-8">
+            <h3 class="mb-4">Articles dans votre panier</h3>
+            <div id="cart-items-container">
+              <!-- Les articles seront ajoutés ici dynamiquement -->
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="cart-summary">
+              <h4 class="mb-4">Récapitulatif</h4>
+
+              <!-- Options de livraison -->
+              <div class="delivery-options">
+                <h6>Mode de récupération</h6>
+                <label class="delivery-option selected">
+                  <input type="radio" name="delivery" value="pickup" checked>
+                  <div>
+                    <strong>À emporter</strong><br>
+                    <small>Gratuit - Retrait au restaurant</small>
+                  </div>
+                  <span class="ml-auto font-weight-bold">Gratuit</span>
+                </label>
+                <label class="delivery-option">
+                  <input type="radio" name="delivery" value="delivery">
+                  <div>
+                    <strong>Livraison</strong><br>
+                    <small>Livraison à domicile</small>
+                  </div>
+                  <span class="ml-auto font-weight-bold">3,00 €</span>
+                </label>
+              </div>
+
+              <!-- Totaux -->
+              <div class="summary-row">
+                <span>Sous-total:</span>
+                <span id="subtotal">0,00 €</span>
+              </div>
+              <div class="summary-row">
+                <span>Frais de livraison:</span>
+                <span id="delivery-fee">0,00 €</span>
+              </div>
+              <div class="summary-row total">
+                <span>Total TTC:</span>
+                <span class="total-price" id="total">0,00 €</span>
+              </div>
+
+              <button class="btn btn-primary btn-block btn-lg mt-4" id="checkout-btn">
+                <i class="fas fa-check mr-2"></i>Valider la commande
+              </button>
+              <a href="menu.html" class="btn btn-outline-primary btn-block mt-2">
+                <i class="fas fa-arrow-left mr-2"></i>Continuer mes achats
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Quarter Time</h2>
+              <p>Une cuisine généreuse, savoureuse et halal, préparée avec passion, pour régaler toute la famille sans se ruiner.
+
+📍 Rendez-vous à Quarter Time Beauvais – l'adresse incontournable pour bien manger au meilleur prix !</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                <li class="ftco-animate"><a href="https://www.tiktok.com/@quartertime.beauvais?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i></a></li>
+                <li class="ftco-animate"><a href="https://www.facebook.com/quartertime.restaurant.beauvais/"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Open Hours</h2>
+              <ul class="list-unstyled open-hours">
+                <li class="d-flex justify-content-center"><span style="text-align: center; width: 100%;">Ouvert du lundi au samedi – 11h30 à 23h<br>(fermé le dimanche)</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Instagram</h2>
+              <div class="thumb d-sm-flex">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post1.png);"></a>
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post2.png);"></a>
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post3.png);"></a>
+	            </div>
+	            <div class="thumb d-flex">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post4.png);"></a>
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post5.png);"></a>
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post6.png);"></a>
+	            </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Newsletter</h2>
+            	<p>Recevez nos offres spéciales directement dans votre boîte mail.</p>
+              <form action="#" class="subscribe-form">
+                <div class="form-group">
+                  <input type="text" class="form-control mb-2 text-center" placeholder="Entrer votre adresse email">
+                  <input type="submit" value="S'abonner" class="form-control submit px-3">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+    
+  </body>
+</html>

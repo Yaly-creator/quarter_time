@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Panier - Quarter Time</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .test-card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .test-pizza {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .menu-img {
+      width: 150px;
+      height: 150px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+    }
+    .btn-primary {
+      background-color: #F96D00;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn-primary:hover {
+      background-color: #d85f00;
+    }
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #F96D00;
+    }
+    h3 {
+      margin: 0 0 10px 0;
+    }
+    .log {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      font-family: monospace;
+      font-size: 12px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .log-entry {
+      margin-bottom: 5px;
+      padding: 3px;
+    }
+    .log-entry.error {
+      color: red;
+    }
+    .log-entry.success {
+      color: green;
+    }
+    .cart-info {
+      background: #e8f5e9;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 Test du Système de Panier</h1>
+  
+  <div class="test-card">
+    <h2>Status</h2>
+    <div id="status">Chargement...</div>
+  </div>
+
+  <div class="test-card">
+    <h2>Pizza de Test</h2>
+    
+    <!-- Structure identique à menu.html -->
+    <div class="test-pizza">
+      <div class="menus d-sm-flex">
+        <div class="menu-img" style="background-image: url('images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_margharita.jpeg');"></div>
+        <div class="text">
+          <div>
+            <h3>Pizza Margharita Test</h3>
+            <div class="price">€7,50</div>
+            <p><span>Base Tomate</span></p>
+            <p><span>Sauce tomate, origan, mozzarella</span></p>
+            <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-card">
+    <h2>Console de Débogage</h2>
+    <div class="log" id="log"></div>
+  </div>
+
+  <div class="test-card">
+    <h2>Info Panier</h2>
+    <div class="cart-info" id="cart-info">Aucun article</div>
+    <button onclick="showCart()" class="btn-primary" style="margin-top: 10px;">
+      Afficher le Panier
+    </button>
+    <button onclick="clearCart()" class="btn-primary" style="margin-top: 10px; background-color: #dc3545;">
+      Vider le Panier
+    </button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/cart.js"></script>
+  
+  <script>
+    // Override console.log pour afficher dans la page
+    const originalLog = console.log;
+    const originalError = console.error;
+    const logDiv = document.getElementById('log');
+    
+    function addLogEntry(message, type = 'info') {
+      const entry = document.createElement('div');
+      entry.className = `log-entry ${type}`;
+      entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+      logDiv.appendChild(entry);
+      logDiv.scrollTop = logDiv.scrollHeight;
+    }
+    
+    console.log = function(...args) {
+      originalLog.apply(console, args);
+      addLogEntry(args.join(' '), 'info');
+    };
+    
+    console.error = function(...args) {
+      originalError.apply(console, args);
+      addLogEntry(args.join(' '), 'error');
+    };
+    
+    // Fonction pour afficher le panier
+    function showCart() {
+      const cartData = localStorage.getItem('quarterTimeCart');
+      if (cartData) {
+        const items = JSON.parse(cartData);
+        document.getElementById('cart-info').innerHTML = `
+          <strong>Articles dans le panier: ${items.length}</strong><br>
+          <pre>${JSON.stringify(items, null, 2)}</pre>
+        `;
+        addLogEntry(`Panier affiché: ${items.length} article(s)`, 'success');
+      } else {
+        document.getElementById('cart-info').textContent = 'Aucun article dans le panier';
+        addLogEntry('Panier vide', 'info');
+      }
+    }
+    
+    // Fonction pour vider le panier
+    function clearCart() {
+      localStorage.removeItem('quarterTimeCart');
+      document.getElementById('cart-info').textContent = 'Panier vidé!';
+      addLogEntry('Panier vidé', 'success');
+      setTimeout(showCart, 1000);
+    }
+    
+    // Vérifier le status
+    function checkStatus() {
+      const statusDiv = document.getElementById('status');
+      let status = '';
+      
+      if (typeof window.ShoppingCart === 'function') {
+        status += '✅ ShoppingCart disponible<br>';
+      } else {
+        status += '❌ ShoppingCart NON disponible<br>';
+      }
+      
+      if (typeof window.addToCart === 'function') {
+        status += '✅ addToCart disponible<br>';
+      } else {
+        status += '❌ addToCart NON disponible<br>';
+      }
+      
+      if (typeof cart !== 'undefined' && cart) {
+        status += '✅ Instance cart créée<br>';
+      } else {
+        status += '⚠️ Instance cart pas encore créée<br>';
+      }
+      
+      statusDiv.innerHTML = status;
+    }
+    
+    // Initialisation
+    function initializeTest() {
+      console.log('=== DÉBUT DU TEST ===');
+      console.log('Page de test chargée');
+      
+      checkStatus();
+      
+      // Vérifier que addToCart est disponible
+      if (typeof addToCart !== 'function') {
+        console.error('addToCart n\'est pas disponible!');
+        setTimeout(initializeTest, 100);
+        return;
+      }
+      
+      console.log('addToCart est disponible!');
+      
+      // Attacher l'événement au bouton
+      const button = document.querySelector('.btn-primary');
+      if (button) {
+        console.log('Bouton trouvé, ajout de l\'événement click');
+        
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('=== CLIC SUR AJOUTER ===');
+          
+          const menusContainer = this.closest('.menus');
+          console.log('Container .menus:', menusContainer);
+          
+          if (!menusContainer) {
+            console.error('Container .menus non trouvé!');
+            return;
+          }
+          
+          const nameElement = menusContainer.querySelector('h3');
+          const priceElement = menusContainer.querySelector('.price');
+          
+          console.log('Nom element:', nameElement);
+          console.log('Prix element:', priceElement);
+          
+          if (!nameElement || !priceElement) {
+            console.error('Éléments manquants');
+            return;
+          }
+          
+          const name = nameElement.textContent.trim();
+          const priceText = priceElement.textContent.trim();
+          const price = parseFloat(priceText.replace('€', '').replace(',', '.'));
+          
+          console.log('Nom:', name);
+          console.log('Prix text:', priceText);
+          console.log('Prix number:', price);
+          
+          const item = {
+            id: 'pizza-margharita-test',
+            name: name,
+            price: price,
+            description: 'Pizza de test',
+            image: 'images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_margharita.jpeg'
+          };
+          
+          console.log('Item à ajouter:', item);
+          
+          try {
+            addToCart(item);
+            console.log('✅ Article ajouté avec succès!');
+            addLogEntry('Article ajouté avec succès!', 'success');
+            setTimeout(showCart, 500);
+          } catch (error) {
+            console.error('❌ Erreur:', error);
+          }
+        });
+        
+        console.log('Événement click attaché au bouton');
+      } else {
+        console.error('Bouton non trouvé!');
+      }
+      
+      // Afficher le panier actuel
+      showCart();
+    }
+    
+    // Attendre le chargement complet
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeTest);
+    } else {
+      initializeTest();
+    }
+  </script>
+</body>
+</html>

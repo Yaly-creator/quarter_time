@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Feliciano - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Quarter Time - Restaurant de type buffet</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -26,6 +26,10 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
   </head>
   <body>
     <div class="py-1 bg-black top">
@@ -35,78 +39,102 @@
 		    		<div class="row d-flex">
 		    			<div class="col-md pr-4 d-flex topper align-items-center">
 					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-						    <span class="text">+ 1235 2355 98</span>
+						    <span class="text">03 44 05 74 74</span>
 					    </div>
 					    <div class="col-md pr-4 d-flex topper align-items-center">
-					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-						    <span class="text">youremail@email.com</span>
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"></div>
+						    <p class="mb-0 register-link"><span>Horaire:</span> <span>Samedi</span> <span>11h30 - 23h30</span></p>
 					    </div>
 					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
-						    <p class="mb-0 register-link"><span>Open hours:</span> <span>Monday - Sunday</span> <span>8:00AM - 9:00PM</span></p>
+						    <p class="mb-0 register-link"><span>Horaire:</span> <span>Lundi - Vendredi</span> <span>11h30 - 15h00 et 18h30-23h00</span></p>
 					    </div>
 				    </div>
 			    </div>
 		    </div>
 		  </div>
     </div>
-	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Feliciano</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
+	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="ftco-navbar">
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	        	<li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-	        	<li class="nav-item"><a href="blog.html" class="nav-link">Stories</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta"><a href="reservation.html" class="nav-link">Book a table</a></li>
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Quarter Time"></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+
+	      
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a href="index.html" class="nav-link">Accueil</a></li>
+        <li class="nav-item active"><a href="notre_resto.html" class="nav-link">Notre restaurant</a></li>
+        <li class="nav-item"><a href="reservation.html" class="nav-link">Réserver une table</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="connexion.html" class="nav-link">Connexion</a></li>
+        <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
+        
+        <!-- 🛒 Panier -->
+        <li class="nav-item">
+          <a href="panier.html" class="nav-link">
+            <i class="fas fa-shopping-cart"></i> Panier
+            <span class="badge badge-warning" id="cart-count">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 	        </ul>
+	      </div>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
     
+    <!-- Bouton Menu Sticky Global -->
+    <a href="menu.html" id="global-menu-btn" class="btn btn-primary" style="position: fixed; top: 100px; right: 30px; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+      <i class="fas fa-utensils mr-2"></i> Menu
+    </a>
+    
     <section class="home-slider owl-carousel js-fullheight">
-      <div class="slider-item js-fullheight" style="background-image: url(images/bg_1.jpg);">
+      <div class="slider-item js-fullheight" style="background-image: url(images/grill.jpg);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text js-fullheight justify-content-center align-items-center" data-scrollax-parent="true">
 
             <div class="col-md-12 col-sm-12 text-center ftco-animate">
-            	<span class="subheading">Feliciano</span>
-              <h1 class="mb-4">Best Restaurant</h1>
+            	<span class="subheading">Quarter Time</span>
+              <h1 class="mb-4">Buffet illimité, vibes illimitées.</h1>
             </div>
 
           </div>
         </div>
       </div>
 
-      <div class="slider-item js-fullheight" style="background-image: url(images/bg_2.jpg);">
+      <div class="slider-item js-fullheight" style="background-image: url(images/poulet.jpg);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text js-fullheight justify-content-center align-items-center" data-scrollax-parent="true">
 
             <div class="col-md-12 col-sm-12 text-center ftco-animate">
-            	<span class="subheading">Feliciano</span>
-              <h1 class="mb-4">Nutritious &amp; Tasty</h1>
+            	<span class="subheading">Quarter Time</span>
+              <h1 class="mb-4">Ici, tu manges bien, tu manges plein.</h1>
             </div>
 
           </div>
         </div>
       </div>
 
-      <div class="slider-item js-fullheight" style="background-image: url(images/bg_3.jpg);">
+      <div class="slider-item js-fullheight" style="background-image: url(images/kebab_site.jpg);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
             <div class="col-md-12 col-sm-12 text-center ftco-animate">
-            	<span class="subheading">Feliciano</span>
-              <h1 class="mb-4">Delicious Specialties</h1>
+            	<span class="subheading">Quarter Time</span>
+              <h1 class="mb-4">Le vrai goût, sans limite.</h1>
             </div>
 
           </div>
@@ -122,37 +150,37 @@
     					<div class="row">
     						<div class="col-md-3">
     							<div class="featured-menus ftco-animate">
-			              <div class="menu-img img" style="background-image: url(images/breakfast-1.jpg);"></div>
+			              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_reine.jpeg);"></div>
 			              <div class="text text-center">
-		                  <h3>Grilled Beef with potatoes</h3>
-				              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+		                  <h3>Pizza</h3>
+				              <p>Base tomate ou crème fraîche, saveur intense</p>
 			              </div>
 			            </div>
     						</div>
     						<div class="col-md-3">
     							<div class="featured-menus ftco-animate">
-			              <div class="menu-img img" style="background-image: url(images/breakfast-2.jpg);"></div>
+			              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Boisson_Dessert/part_gateau.jpeg);"></div>
 			              <div class="text text-center">
-		                  <h3>Grilled Beef with potatoes</h3>
-				              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+		                  <h3>Gâteau</h3>
+				              <p>Dessert gourmand pour finir en douceur</p>
 			              </div>
 			            </div>
     						</div>
     						<div class="col-md-3">
     							<div class="featured-menus ftco-animate">
-			              <div class="menu-img img" style="background-image: url(images/breakfast-3.jpg);"></div>
+			              <div class="menu-img img" style="background-image: url(images/kebab_site.jpeg);"></div>
 			              <div class="text text-center">
-		                  <h3>Grilled Beef with potatoes</h3>
-				              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+		                  <h3>Kebab</h3>
+				              <p>Viande tendre, frites et sauce à volonté</p>
 			              </div>
 			            </div>
     						</div>
     						<div class="col-md-3">
     							<div class="featured-menus ftco-animate">
-			              <div class="menu-img img" style="background-image: url(images/breakfast-4.jpg);"></div>
+			              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Poulet_Braise/poulet_braise.jpeg);"></div>
 			              <div class="text text-center">
-		                  <h3>Grilled Beef with potatoes</h3>
-				              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
+		                  <h3>Poulet braisé</h3>
+				              <p>Poulet bien braisé, goût authentique</p>
 			              </div>
 			            </div>
     						</div>
@@ -164,203 +192,58 @@
     </section>
 	
 
-		<section class="ftco-section ftco-wrap-about">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-7 d-flex">
-						<div class="img img-1 mr-md-2" style="background-image: url(images/about.jpg);"></div>
-						<div class="img img-2 ml-md-2" style="background-image: url(images/about-1.jpg);"></div>
-					</div>
-					<div class="col-md-5 wrap-about pt-5 pt-md-5 pb-md-3 ftco-animate">
-	          <div class="heading-section mb-4 my-5 my-md-0">
-	          	<span class="subheading">About</span>
-	            <h2 class="mb-4">Feliciano Restaurant</h2>
-	          </div>
-	          <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-						<pc class="time">
-							<span>Mon - Fri <strong>8 AM - 11 PM</strong></span>
-							<span><a href="#">+ 1-978-123-4567</a></span>
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		
-		<section class="ftco-section ftco-counter img ftco-no-pt" id="section-counter">
-    	<div class="container">
-    		<div class="row d-md-flex">
-    			<div class="col-md-9">
-    				<div class="row d-md-flex align-items-center">
-		          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18">
-		              <div class="text">
-		                <strong class="number" data-number="18">0</strong>
-		                <span>Years of Experienced</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18">
-		              <div class="text">
-		                <strong class="number" data-number="100">0</strong>
-		                <span>Menus/Dish</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18">
-		              <div class="text">
-		                <strong class="number" data-number="50">0</strong>
-		                <span>Staffs</span>
-		              </div>
-		            </div>
-		          </div>
-		          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18">
-		              <div class="text">
-		                <strong class="number" data-number="15000">0</strong>
-		                <span>Happy Customers</span>
-		              </div>
-		            </div>
-		          </div>
-	          </div>
-          </div>
-          <div class="col-md-3 text-center text-md-left">
-          	<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-          </div>
-        </div>
-    	</div>
-    </section>
-
-		<section class="ftco-section bg-light">
-			<div class="container">
-				<div class="row justify-content-center mb-5 pb-2">
-          <div class="col-md-12 text-center heading-section ftco-animate">
-          	<span class="subheading">Services</span>
-            <h2 class="mb-4">Catering Services</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 d-flex align-self-stretch ftco-animate text-center">
-            <div class="media block-6 services d-block">
-              <div class="icon d-flex justify-content-center align-items-center">
-            		<span class="flaticon-cake"></span>
-              </div>
-              <div class="media-body p-2 mt-3">
-                <h3 class="heading">Birthday Party</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-4 d-flex align-self-stretch ftco-animate text-center">
-            <div class="media block-6 services d-block">
-              <div class="icon d-flex justify-content-center align-items-center">
-            		<span class="flaticon-meeting"></span>
-              </div>
-              <div class="media-body p-2 mt-3">
-                <h3 class="heading">Business Meetings</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-              </div>
-            </div>    
-          </div>
-          <div class="col-md-4 d-flex align-self-stretch ftco-animate text-center">
-            <div class="media block-6 services d-block">
-              <div class="icon d-flex justify-content-center align-items-center">
-            		<span class="flaticon-tray"></span>
-              </div>
-              <div class="media-body p-2 mt-3">
-                <h3 class="heading">Wedding Party</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-              </div>
-            </div>      
-          </div>
-        </div>
-			</div>
-		</section>
-
-    <section class="ftco-section">
+    <section class="ftco-section" id="pizza-section">
     	<div class="container">
     		<div class="row no-gutters justify-content-center mb-5 pb-2">
-          <div class="col-md-12 text-center heading-section ftco-animate">
-          	<span class="subheading">Specialties</span>
-            <h2 class="mb-4">Our Menu</h2>
+          <div class="col-md-12 heading-section ftco-animate">
+            <div class="text-center">
+              <span class="subheading">Specialités</span>
+              <h2 class="mb-4">Menu nos Pizzas</h2>
+              <p class="mb-4">
+                <a href="images/quarter_time_menu.pdf" target="_blank" class="btn btn-primary">
+                  <i class="fas fa-file-pdf mr-2"></i>Télécharger le menu complet (PDF)
+                </a>
+              </p>
+            </div>
           </div>
         </div>
         <div class="row no-gutters d-flex align-items-stretch">
         	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
         		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-              <div class="menu-img img" style="background-image: url(images/breakfast-1.jpg);"></div>
+              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_calzone_souflée.jpeg);"></div>
               <div class="text d-flex align-items-center">
 								<div>
 	              	<div class="d-flex">
 		                <div class="one-half">
-		                  <h3>Grilled Beef with potatoes</h3>
+		                  <h3>Pizza Calzone Soufflée</h3>
 		                </div>
 		                <div class="one-forth">
-		                  <span class="price">$29</span>
+		                  <span class="price">€8,90</span>
 		                </div>
 		              </div>
-		              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-		              <p><a href="#" class="btn btn-primary">Order now</a></p>
+		              <p><span>Base Tomate</span></p>
+		              <p><span>Sauce tomate, mozzarella, jambon, œuf</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
 	              </div>
               </div>
             </div>
         	</div>
         	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
         		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-              <div class="menu-img img" style="background-image: url(images/breakfast-2.jpg);"></div>
+              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_campione.jpeg);"></div>
               <div class="text d-flex align-items-center">
 								<div>
 	              	<div class="d-flex">
 		                <div class="one-half">
-		                  <h3>Grilled Beef with potatoes</h3>
+		                  <h3>Pizza Campione</h3>
 		                </div>
 		                <div class="one-forth">
-		                  <span class="price">$29</span>
+		                  <span class="price">€8,90</span>
 		                </div>
 		              </div>
-		              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-		              <p><a href="#" class="btn btn-primary">Order now</a></p>
-	              </div>
-              </div>
-            </div>
-        	</div>
-
-        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-              <div class="menu-img img order-md-last" style="background-image: url(images/breakfast-3.jpg);"></div>
-              <div class="text d-flex align-items-center">
-								<div>
-	              	<div class="d-flex">
-		                <div class="one-half">
-		                  <h3>Grilled Beef with potatoes</h3>
-		                </div>
-		                <div class="one-forth">
-		                  <span class="price">$29</span>
-		                </div>
-		              </div>
-		              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-		              <p><a href="#" class="btn btn-primary">Order now</a></p>
-	              </div>
-              </div>
-            </div>
-        	</div>
-        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-              <div class="menu-img img order-md-last" style="background-image: url(images/breakfast-5.jpg);"></div>
-              <div class="text d-flex align-items-center">
-								<div>
-	              	<div class="d-flex">
-		                <div class="one-half">
-		                  <h3>Grilled Beef with potatoes</h3>
-		                </div>
-		                <div class="one-forth">
-		                  <span class="price">$29</span>
-		                </div>
-		              </div>
-		              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-		              <p><a href="#" class="btn btn-primary">Order now</a></p>
+		              <p><span>Base Tomate</span></p>
+		              <p><span>Champignons, viande hachée</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
 	              </div>
               </div>
             </div>
@@ -368,38 +251,266 @@
 
         	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
         		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-              <div class="menu-img img" style="background-image: url(images/breakfast-6.jpg);"></div>
+              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_margharita.jpeg);"></div>
               <div class="text d-flex align-items-center">
 								<div>
 	              	<div class="d-flex">
 		                <div class="one-half">
-		                  <h3>Grilled Beef with potatoes</h3>
+		                  <h3>Pizza Margharita</h3>
 		                </div>
 		                <div class="one-forth">
-		                  <span class="price">$29</span>
+		                  <span class="price">€7</span>
 		                </div>
 		              </div>
-		              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-		              <p><a href="#" class="btn btn-primary">Order now</a></p>
+		              <p><span>Base Tomate</span></p>
+		              <p><span>Sauce tomate, origan, mozzarella</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
 	              </div>
               </div>
             </div>
         	</div>
         	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
         		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-              <div class="menu-img img" style="background-image: url(images/breakfast-2.jpg);"></div>
+              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_maxima.jpeg);"></div>
               <div class="text d-flex align-items-center">
 								<div>
 	              	<div class="d-flex">
 		                <div class="one-half">
-		                  <h3>Grilled Beef with potatoes</h3>
+		                  <h3>Pizza Maxima</h3>
 		                </div>
 		                <div class="one-forth">
-		                  <span class="price">$29</span>
+		                  <span class="price">€11</span>
 		                </div>
 		              </div>
-		              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-		              <p><a href="#" class="btn btn-primary">Order now</a></p>
+		              <p><span>Base Tomate</span></p>
+		              <p><span>Viande hachée, jambon, champignons, poivrons, chorizo</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+	              </div>
+              </div>
+            </div>
+        	</div>
+
+        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_neptune.jpeg);"></div>
+              <div class="text d-flex align-items-center">
+								<div>
+	              	<div class="d-flex">
+		                <div class="one-half">
+		                  <h3>Pizza Neptune</h3>
+		                </div>
+		                <div class="one-forth">
+		                  <span class="price">€8,90</span>
+		                </div>
+		              </div>
+		              <p><span>Base Tomate</span></p>
+		              <p><span>Sauce tomate, mozzarella, thon, poivrons, olives, œuf</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+	              </div>
+              </div>
+            </div>
+        	</div>
+        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_orientale.jpeg);"></div>
+              <div class="text d-flex align-items-center">
+								<div>
+	              	<div class="d-flex">
+		                <div class="one-half">
+		                  <h3>Pizza Orientale</h3>
+		                </div>
+		                <div class="one-forth">
+		                  <span class="price">€9,90</span>
+		                </div>
+		              </div>
+		              <p><span>Base Tomate</span></p>
+		              <p><span>Sauce tomate, mozzarella, merguez, poivrons, oignons, olives, œuf</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+	              </div>
+              </div>
+            </div>
+        	</div>
+
+        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_quarter_time_signature.jpeg);"></div>
+              <div class="text d-flex align-items-center">
+								<div>
+	              	<div class="d-flex">
+		                <div class="one-half">
+		                  <h3>Pizza Quarter Time Signature</h3>
+		                </div>
+		                <div class="one-forth">
+		                  <span class="price">€15</span>
+		                </div>
+		              </div>
+		              <p><span>Base Tomate</span></p>
+		              <p><span>Jambon, raclette, tomates cerises, parmesan, burrata</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+	              </div>
+              </div>
+            </div>
+        	</div>
+        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_reine.jpeg);"></div>
+              <div class="text d-flex align-items-center">
+								<div>
+	              	<div class="d-flex">
+		                <div class="one-half">
+		                  <h3>Pizza Reine</h3>
+		                </div>
+		                <div class="one-forth">
+		                  <span class="price">€8,90</span>
+		                </div>
+		              </div>
+		              <p><span>Base Tomate</span></p>
+		              <p><span>Champignons, jambon, sauce tomate, mozzarella</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+	              </div>
+              </div>
+            </div>
+        	</div>
+
+        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_san_pietro.jpeg);"></div>
+              <div class="text d-flex align-items-center">
+								<div>
+	              	<div class="d-flex">
+		                <div class="one-half">
+		                  <h3>Pizza San Pietro</h3>
+		                </div>
+		                <div class="one-forth">
+		                  <span class="price">€11</span>
+		                </div>
+		              </div>
+		              <p><span>Base Tomate</span></p>
+		              <p><span>Champignons, merguez, jambon, chorizo, œuf</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+	              </div>
+              </div>
+            </div>
+        	</div>
+        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_vegetarienne.jpeg);"></div>
+              <div class="text d-flex align-items-center">
+								<div>
+	              	<div class="d-flex">
+		                <div class="one-half">
+		                  <h3>Pizza Végétarienne</h3>
+		                </div>
+		                <div class="one-forth">
+		                  <span class="price">€9,90</span>
+		                </div>
+		              </div>
+		              <p><span>Base Tomate</span></p>
+		              <p><span>Sauce tomate, mozzarella, légumes</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+	              </div>
+              </div>
+            </div>
+        	</div>
+
+        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_barbecue.jpeg);"></div>
+              <div class="text d-flex align-items-center">
+								<div>
+	              	<div class="d-flex">
+		                <div class="one-half">
+		                  <h3>Pizza Barbecue</h3>
+		                </div>
+		                <div class="one-forth">
+		                  <span class="price">€11</span>
+		                </div>
+		              </div>
+		              <p><span>Base Crème Fraîche</span></p>
+		              <p><span>Poulet, maïs, poivrons, oignons</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+	              </div>
+              </div>
+            </div>
+        	</div>
+        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_chevre_miel.jpeg);"></div>
+              <div class="text d-flex align-items-center">
+								<div>
+	              	<div class="d-flex">
+		                <div class="one-half">
+		                  <h3>Pizza Chèvre Miel</h3>
+		                </div>
+		                <div class="one-forth">
+		                  <span class="price">€11</span>
+		                </div>
+		              </div>
+		              <p><span>Base Crème Fraîche</span></p>
+		              <p><span>Chèvre, miel</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+	              </div>
+              </div>
+            </div>
+        	</div>
+
+        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_chicken.jpeg);"></div>
+              <div class="text d-flex align-items-center">
+								<div>
+	              	<div class="d-flex">
+		                <div class="one-half">
+		                  <h3>Pizza Chicken</h3>
+		                </div>
+		                <div class="one-forth">
+		                  <span class="price">€11</span>
+		                </div>
+		              </div>
+		              <p><span>Base Crème Fraîche</span></p>
+		              <p><span>Poulet, oignons, pommes de terre</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+	              </div>
+              </div>
+            </div>
+        	</div>
+        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_dodue.jpeg);"></div>
+              <div class="text d-flex align-items-center">
+								<div>
+	              	<div class="d-flex">
+		                <div class="one-half">
+		                  <h3>Pizza Dodue</h3>
+		                </div>
+		                <div class="one-forth">
+		                  <span class="price">€11</span>
+		                </div>
+		              </div>
+		              <p><span>Base Crème Fraîche</span></p>
+		              <p><span>Champignons, poulet, boursin</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+	              </div>
+              </div>
+            </div>
+        	</div>
+
+        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_quatre_fromage.jpeg);"></div>
+              <div class="text d-flex align-items-center">
+								<div>
+	              	<div class="d-flex">
+		                <div class="one-half">
+		                  <h3>Pizza Quatre Fromages</h3>
+		                </div>
+		                <div class="one-forth">
+		                  <span class="price">€11</span>
+		                </div>
+		              </div>
+		              <p><span>Base Crème Fraîche</span></p>
+		              <p><span>Mélange de quatre fromages</span></p>
+		              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
 	              </div>
               </div>
             </div>
@@ -407,162 +518,147 @@
         </div>
     	</div>
     </section>
-    
-		<section class="ftco-section">
-			<div class="container">
-				<div class="row justify-content-center mb-5 pb-2">
-          <div class="col-md-12 text-center heading-section ftco-animate">
-          	<span class="subheading">Chef</span>
-            <h2 class="mb-4">Our Master Chef</h2>
-          </div>
-        </div>	
-				<div class="row">
-					<div class="col-md-6 col-lg-3 ftco-animate">
-						<div class="staff">
-							<div class="img" style="background-image: url(images/chef-4.jpg);"></div>
-							<div class="text pt-4">
-								<h3>John Smooth</h3>
-								<span class="position mb-2">Restaurant Owner</span>
-								<div class="faded">
-									<ul class="ftco-social d-flex">
-		                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-		                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-		                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-		                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-		              </ul>
-	              </div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3 ftco-animate">
-						<div class="staff">
-							<div class="img" style="background-image: url(images/chef-2.jpg);"></div>
-							<div class="text pt-4">
-								<h3>Rebeca Welson</h3>
-								<span class="position mb-2">Head Chef</span>
-								<div class="faded">
-									<ul class="ftco-social d-flex">
-		                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-		                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-		                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-		                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-		              </ul>
-	              </div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3 ftco-animate">
-						<div class="staff">
-							<div class="img" style="background-image: url(images/chef-3.jpg);"></div>
-							<div class="text pt-4">
-								<h3>Kharl Branyt</h3>
-								<span class="position mb-2">Chef</span>
-								<div class="faded">
-									<ul class="ftco-social d-flex">
-		                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-		                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-		                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-		                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-		              </ul>
-	              </div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3 ftco-animate">
-						<div class="staff">
-							<div class="img" style="background-image: url(images/chef-1.jpg);"></div>
-							<div class="text pt-4">
-								<h3>Luke Simon</h3>
-								<span class="position mb-2">Chef</span>
-								<div class="faded">
-									<ul class="ftco-social d-flex">
-		                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-		                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-		                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-		                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-		              </ul>
-	              </div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
 
 		<section class="ftco-section img" style="background-image: url(images/bg_3.jpg)" data-stellar-background-ratio="0.5">
 			<div class="container">
 				<div class="row d-flex">
           <div class="col-md-7 ftco-animate makereservation p-4 px-md-5 pb-md-5">
           	<div class="heading-section ftco-animate mb-5 text-center">
-	          	<span class="subheading">Book a table</span>
-	            <h2 class="mb-4">Make Reservation</h2>
+	          	<span class="subheading">Réservez une table</span>
+	            <h2 class="mb-4">Faire une réservation</h2>
 	          </div>
-            <form action="#">
+            
+            <form id="reservation-form-index" action="#">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">Name</label>
-                    <input type="text" class="form-control" placeholder="Your Name">
+                    <label for="name-index">Nom</label>
+                    <input type="text" id="name-index" name="name" class="form-control" placeholder="Votre nom" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">Email</label>
-                    <input type="text" class="form-control" placeholder="Your Email">
+                    <label for="email-index">Email</label>
+                    <input type="email" id="email-index" name="email" class="form-control" placeholder="Votre Email" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">Phone</label>
-                    <input type="text" class="form-control" placeholder="Phone">
+                    <label for="phone-index">Téléphone</label>
+                    <input type="tel" id="phone-index" name="phone" class="form-control" placeholder="Téléphone" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">Phone</label>
-                    <input type="text" class="form-control" id="book_date" placeholder="Date">
+                    <label for="book_date">Date</label>
+                    <input type="date" class="form-control" id="book_date" name="date" required>
+                    <small id="date-error-message-index" class="form-text text-danger" style="display: none; font-weight: bold;"></small>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">Time</label>
-                    <input type="text" class="form-control" id="book_time" placeholder="Time">
+                    <label for="book_time">Heure</label>
+                    <input type="text" class="form-control" id="book_time" name="time" placeholder="Heure" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">Person</label>
+                    <label for="guests-index">Personnes</label>
                     <div class="select-wrap one-third">
                       <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                      <select name="" id="" class="form-control">
-                        <option value="">Person</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4+</option>
+                      <select id="guests-index" name="guests" class="form-control" required>
+                        <option value="">Personnes</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10+</option>
                       </select>
                     </div>
                   </div>
                 </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="event_type">Type d'événement (optionnel)</label>
+                    <div class="select-wrap one-third">
+                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                      <select name="event_type" id="event_type" class="form-control">
+                        <option value="standard">Réservation standard</option>
+                        <option value="mariage">Mariage</option>
+                        <option value="rdv_affaires">RDV d'affaires</option>
+                        <option value="anniversaire">Anniversaire</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="details">Détails supplémentaires (optionnel)</label>
+                    <textarea name="details" id="details" cols="30" rows="4" class="form-control" placeholder="Ajoutez ici des informations complémentaires concernant votre réservation ou événement..."></textarea>
+                  </div>
+                </div>
                 <div class="col-md-12 mt-3">
                   <div class="form-group text-center">
-                    <input type="submit" value="Make a Reservation" class="btn btn-primary py-3 px-5">
+                    <button type="submit" class="btn btn-primary py-3 px-5" id="submit-btn-index">
+                      <span class="submit-text">Réserver</span>
+                      <span class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true" style="display: none;"></span>
+                    </button>
                   </div>
                 </div>
               </div>
             </form>
+            
+            <!-- Message de feedback -->
+            <div id="reservation-message-index" class="alert mt-3" role="alert">&nbsp;</div>
           </div>
         </div>
 			</div>
 		</section>
+
+		<section class="ftco-section ftco-wrap-about">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7 d-flex">
+						<div class="img img-1 mr-md-2" style="background-image: url(images/chef.jpeg);"></div>
+						<div class="img img-2 ml-md-2" style="background-image: url(images/photo_façade_Quarter_Time.jpeg);"></div>
+					</div>
+					<div class="col-md-5 wrap-about pt-5 pt-md-5 pb-md-3 ftco-animate">
+	          <div class="heading-section mb-4 my-5 my-md-0">
+	          	<span class="subheading">A propos</span>
+	            <h2 class="mb-4">À propos Restaurant Quarter Time</h2>
+	          </div>
+	          <p>Chez Quarter Time Restaurant, le grill est une véritable signature 🔥<br>
+Nous avons imaginé un concept où les grillades généreuses s'allient à des pizzas savoureuses, préparées avec soin pour offrir une expérience authentique.</p>
+
+<p>Poulets braisés, grillades parfumées et pizzas base tomate ou crème fraîche sont élaborés à partir de produits sélectionnés, inspirés des saveurs méditerranéennes et orientales 🍕🍗</p>
+
+<p><strong>Notre engagement :</strong><br>
+✔️ des saveurs intenses<br>
+✔️ des portions généreuses<br>
+✔️ une qualité constante<br>
+✔️ un esprit convivial</p>
+
+<p>Sur place, à emporter ou en réservation, Quarter Time Restaurant vous accueille dans un cadre moderne et chaleureux pour vous faire découvrir le vrai goût du grill, sans limite ✨</p>
+						
+					</div>
+				</div>
+			</div>
+    </section>
+
+		
 		
 		<section class="ftco-section testimony-section img">
 			<div class="overlay"></div>
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-12 text-center heading-section ftco-animate">
-          	<span class="subheading">Testimony</span>
-            <h2 class="mb-4">Happy Customer</h2>
+          	<span class="subheading">Témoignages</span>
+            <h2 class="mb-4">Témoignage clients heureux</h2>
           </div>
         </div>
         <div class="row ftco-animate justify-content-center">
@@ -570,71 +666,79 @@
             <div class="carousel-testimony owl-carousel ftco-owl">
               <div class="item">
                 <div class="testimony-wrap text-center pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+                  <div class="user-img mb-4" style="background-image: url(images/client2_part1.png)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                   </div>
                   <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Jason McClean</p>
-                    <span class="position">Customer</span>
+                    <p class="mb-4">🌟 6 étoiles bien méritées ! 🌟
+Une expérience exceptionnelle du début à la fin. Les plats sont tout simplement délicieux, avec des saveurs orientales authentiques et généreuses. Le personnel est d'une gentillesse rare : accueillant, souriant, attentionné… On se sent vraiment comme à la maison. Une adresse à ne pas manquer pour les amateurs de bonne cuisine et de chaleur humaine. Je reviendrai sans hésiter !</p>
+                    <p class="name">Abdel Smara</p>
+                    <span class="position">Client</span>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="testimony-wrap text-center pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_2.jpg)">
+                  <div class="user-img mb-4" style="background-image: url(images/client_part1.png)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                   </div>
                   <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Mark Stevenson</p>
-                    <span class="position">Customer</span>
+                    <p class="mb-4">Je suis allé dans ce restaurant samedi 7 au soir et quelle expérience ! Le buffet à volonté est tout simplement magnifique, avec un choix incroyable de plats salés et sucrés. Le tiramisu est à tomber par terre, et le thé est délicieux. Les places sont incroyables, je n'ai pas de mots pour décrire à quel point c'est beau et confortable.
+
+Mais ce qui rend ce restaurant encore plus spécial, c'est l'ambiance et le service. Les serveurs et tout le personnel sont d'une politesse exemplaire, toujours serviables et gentils. Un grand merci à Hiba, l'hôtesse d'accueil, qui m'a particulièrement touché et impressionné par son accueil chaleureux et son professionnalisme.
+
+De plus, pour ceux qui recherchent une cuisine halal, ce restaurant est un véritable havre de paix. On peut manger les yeux fermés, sans avoir à se soucier de vérifier les étiquettes. C'est 100% halal, ce qui est un vrai plus !
+
+Je recommande ce restaurant à 1000% ! Il est accueillant, généreux, incroyable, et surtout, délicieux. Une expérience culinaire à ne pas manquer. Si j'avais pu mettre 10 étoiles, je l'aurais fait ! Bravo à toute l'équipe !</p>
+                    <p class="name">Zed_tns</p>
+                    <span class="position">Client</span>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="testimony-wrap text-center pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
+                  <div class="user-img mb-4" style="background-image: url(images/client_part3.png)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                   </div>
                   <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Art Leonard</p>
-                    <span class="position">Customer</span>
+                    <p class="mb-4">On est venu de Paris jusqu'à Beauvais et pas déçu du tout on étaient 15 il y'a beaucoup d'espace et on a super bien été accueilli, volonté avec produits de qualité on c'est régalé !
+Merci à toutes les serveuses super sympa</p>
+                    <p class="name">Lina</p>
+                    <span class="position">Client</span>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="testimony-wrap text-center pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_4.jpg)">
+                  <div class="user-img mb-4" style="background-image: url(images/cliente.png)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                   </div>
                   <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Rose Henderson</p>
-                    <span class="position">Customer</span>
+                    <p class="mb-4">Super bon, plats maison !!! Pour 20e le menu entrée plat dessert franchement foncez, belle ambiance. Les employés sont très gentils et prennent soin de vous. Je recommande fortement ! Enfin un bon restau à Beauvais !</p>
+                    <p class="name">Sophie Lazar</p>
+                    <span class="position">Client</span>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="testimony-wrap text-center pb-5">
-                  <div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
+                  <div class="user-img mb-4" style="background-image: url(images/client_part4.png)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                   </div>
                   <div class="text p-3">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Ian Boner</p>
-                    <span class="position">Customer</span>
+                    <p class="mb-4">Nous avons mangé sur place sur midi et honnêtement excellent!!! Tout le personnel adorable, à l'écoute, souriant. Nous avons demandé une petite pizza végétarienne pour une de mes filles et ils l'ont fait sans problème. Viande à volonté, des plats super bon, les brochettes de poulet marinées une dinguerie, dessert maison délicieux et café ou thé à volonté! Je recommande fortement et nous reviendrons. Merci à vous tous pour votre gentillesse et votre accueil merveilleux!!!</p>
+                    <p class="name">Aleksandra Novakovic</p>
+                    <span class="position">Client</span>
                   </div>
                 </div>
               </div>
@@ -648,58 +752,58 @@
 			<div class="container">
 				<div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
-          	<span class="subheading">Blog</span>
-            <h2 class="mb-4">Recent Posts</h2>
+          	<span class="subheading">Instagram</span>
+            <h2 class="mb-4">Instagram Posts Récents</h2>
           </div>
         </div>
 				<div class="row">
           <div class="col-md-4 ftco-animate">
             <div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
+              <a href="https://www.instagram.com/p/DHIqjDvoarJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="block-20" target="_blank" style="background-image: url('images/post1.png');">
               </a>
               <div class="text pt-3 pb-4 px-4">
                 <div class="meta">
-                  <div><a href="#">Sept. 06, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
+                  <div><a href="https://www.instagram.com/p/DHIqjDvoarJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">13 mars 2025</a></div>
+
                 </div>
-                <h3 class="heading"><a href="#">Taste the delicious foods in Asia</a></h3>
+                <h3 class="heading"><a href="https://www.instagram.com/p/DHIqjDvoarJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">L'ensemble de nos accompagnements sont là</a></h3>
                 <p class="clearfix">
-                  <a href="#" class="float-left read">Read more</a>
-                  <a href="#" class="float-right meta-chat"><span class="icon-chat"></span> 3</a>
+                  <a href="https://www.instagram.com/p/DHIqjDvoarJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="float-left read" target="_blank">Voir plus</a>
+                  <a href="https://www.instagram.com/p/DHIqjDvoarJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="float-right meta-chat" target="_blank"><span class="icon-instagram"></span></a>
                 </p>
               </div>
             </div>
           </div>
           <div class="col-md-4 ftco-animate">
             <div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
+              <a href="https://www.instagram.com/p/DHS231Tot37/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="block-20" target="_blank" style="background-image: url('images/post2.png');">
               </a>
               <div class="text pt-3 pb-4 px-4">
                 <div class="meta">
-                  <div><a href="#">Sept. 06, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
+                  <div><a href="https://www.instagram.com/p/DHS231Tot37/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">17 mars 2025</a></div>
+
                 </div>
-                <h3 class="heading"><a href="#">Taste the delicious foods in Asia</a></h3>
+                <h3 class="heading"><a href="https://www.instagram.com/p/DHS231Tot37/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">Le poulet braisé aussi est à volonté 🍗</a></h3>
                 <p class="clearfix">
-                  <a href="#" class="float-left read">Read more</a>
-                  <a href="#" class="float-right meta-chat"><span class="icon-chat"></span> 3</a>
+                  <a href="https://www.instagram.com/p/DHS231Tot37/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="float-left read" target="_blank">Voir plus</a>
+                  <a href="https://www.instagram.com/p/DHS231Tot37/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="float-right meta-chat" target="_blank"><span class="icon-instagram"></span></a>
                 </p>
               </div>
             </div>
           </div>
           <div class="col-md-4 ftco-animate">
             <div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
+              <a href="https://www.instagram.com/reel/DIgQ-P7Izff/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="block-20" target="_blank" style="background-image: url('images/post3.png');">
               </a>
               <div class="text pt-3 pb-4 px-4">
                 <div class="meta">
-                  <div><a href="#">Sept. 06, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
+                  <div><a href="https://www.instagram.com/reel/DIgQ-P7Izff/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">16 avril 2025</a></div>
+                  
                 </div>
-                <h3 class="heading"><a href="#">Taste the delicious foods in Asia</a></h3>
+                <h3 class="heading"><a href="https://www.instagram.com/reel/DIgQ-P7Izff/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">🔥 Buffet à volonté à Beauvais ! 🔥</a></h3>
                 <p class="clearfix">
-                  <a href="#" class="float-left read">Read more</a>
-                  <a href="#" class="float-right meta-chat"><span class="icon-chat"></span> 3</a>
+                  <a href="https://www.instagram.com/reel/DIgQ-P7Izff/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="float-left read" target="_blank">Voir plus</a>
+                  <a href="https://www.instagram.com/reel/DIgQ-P7Izff/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="float-right meta-chat" target="_blank"><span class="icon-instagram"></span></a>
                 </p>
               </div>
             </div>
@@ -707,18 +811,171 @@
         </div>
 			</div>
 		</section>
+
+		
+		
+		<section class="ftco-section ftco-counter img ftco-no-pt" id="section-counter">
+    	<div class="container">
+    		<div class="row d-md-flex">
+    			<div class="col-md-9">
+    				<div class="row d-md-flex align-items-center">
+		          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18">
+		              <div class="text">
+		                <strong class="number" data-number="5">0</strong>
+		                <span>Années d'expériences</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18">
+		              <div class="text">
+		                <strong class="number" data-number="100">0</strong>
+		                <span>Nombre de places</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18">
+		              <div class="text">
+		                <strong class="number" data-number="10">0</strong>
+		                <span>Membres de l'équipe</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18">
+		              <div class="text">
+		                <strong class="number" data-number="5000">0</strong>
+		                <span>Clients satisfaits</span>
+		              </div>
+		            </div>
+		          </div>
+	          </div>
+          </div>
+          <div class="col-md-3 text-center text-md-left">
+          	<p>Des plats traditionnels et modernes, pour tous les goûts.
+
+</p>
+          </div>
+        </div>
+    	</div>
+    </section>
+
+		<section class="ftco-section bg-light">
+			<div class="container">
+				<div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-12 text-center heading-section ftco-animate">
+          	<span class="subheading">Services</span>
+            <h2 class="mb-4">Cartes des Services</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 d-flex align-self-stretch ftco-animate text-center">
+            <div class="media block-6 services d-block">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-cake"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Anniversaires</h3>
+                <p>Célébrez vos plus beaux moments en famille ou entre amis autour d’un buffet généreux et festif.</p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-4 d-flex align-self-stretch ftco-animate text-center">
+            <div class="media block-6 services d-block">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-meeting"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Rendez-vous d’affaires</h3>
+                <p>Organisez vos réunions professionnelles dans un cadre agréable et propice à la productivité.</p>
+              </div>
+            </div>    
+          </div>
+          <div class="col-md-4 d-flex align-self-stretch ftco-animate text-center">
+            <div class="media block-6 services d-block">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-tray"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Mariages</h3>
+                <p>Célébrez votre amour avec un mariage inoubliable, entouré de vos proches et un service de qualité.</p>
+              </div>
+            </div>      
+          </div>
+        </div>
+			</div>
+		</section>
+		
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-12 text-center heading-section ftco-animate">
+          	<span class="subheading">Chef</span>
+            <h2 class="mb-4">Nos chefs de cuisine</h2>
+          </div>
+        </div>	
+				<div class="row">
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img" style="background-image: url(images/portrait_4.jpeg);"></div>
+							<div class="text pt-4">
+								<h3>Karim Aït Ahmed</h3>
+								<span class="position mb-2">Chef</span>
+								
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img" style="background-image: url(images/portrait_1.jpeg);"></div>
+							<div class="text pt-4">
+								<h3>Amine Bensaïd</h3>
+								<span class="position mb-2">Chef</span>
+								
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img" style="background-image: url(images/portrait3.png);"></div>
+							<div class="text pt-4">
+								<h3>Yacine Belkacem</h3>
+								<span class="position mb-2">Chef</span>
+								
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img" style="background-image: url(images/portrait5.png);"></div>
+							<div class="text pt-4">
+								<h3>Sofiane Benali</h3>
+								<span class="position mb-2">Chef</span>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-6 col-lg-3">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Feliciano</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <h2 class="ftco-heading-2">Quarter Time</h2>
+              <p>Une cuisine généreuse, savoureuse et halal, préparée avec passion, pour régaler toute la famille sans se ruiner.
+
+📍 Rendez-vous à Quarter Time Beauvais – l’adresse incontournable pour bien manger au meilleur prix !</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.tiktok.com/@quartertime.beauvais?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i>
+
+                <li class="ftco-animate"><a href="https://www.facebook.com/quartertime.restaurant.beauvais/"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><span class="icon-instagram"></span></a></li>
               </ul>
             </div>
           </div>
@@ -726,13 +983,7 @@
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Open Hours</h2>
               <ul class="list-unstyled open-hours">
-                <li class="d-flex"><span>Monday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Tuesday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Wednesday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Thursday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Friday</span><span>9:00 - 02:00</span></li>
-                <li class="d-flex"><span>Saturday</span><span>9:00 - 02:00</span></li>
-                <li class="d-flex"><span>Sunday</span><span> 9:00 - 02:00</span></li>
+                <li class="d-flex justify-content-center"><span style="text-align: center; width: 100%;">Ouvert du lundi au dimanche – 11h30 à 23h<br>(fermé le dimanche)</span></li>
               </ul>
             </div>
           </div>
@@ -740,19 +991,19 @@
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Instagram</h2>
               <div class="thumb d-sm-flex">
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-1.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post1.png);">
 	            	</a>
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-2.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post2.png);">
 	            	</a>
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-3.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post3.png);">
 	            	</a>
 	            </div>
 	            <div class="thumb d-flex">
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-4.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post4.png);">
 	            	</a>
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-5.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post5.png);">
 	            	</a>
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-6.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post6.png);">
 	            	</a>
 	            </div>
             </div>
@@ -760,11 +1011,11 @@
           <div class="col-md-6 col-lg-3">
             <div class="ftco-footer-widget mb-4">
             	<h2 class="ftco-heading-2">Newsletter</h2>
-            	<p>Far far away, behind the word mountains, far from the countries.</p>
+            	<p>Recevez nos offres spéciales directement dans votre boîte mail.</p>
               <form action="#" class="subscribe-form">
                 <div class="form-group">
-                  <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
-                  <input type="submit" value="Subscribe" class="form-control submit px-3">
+                  <input type="text" class="form-control mb-2 text-center" placeholder="Entrer votre adresse email">
+                  <input type="submit" value="S'abonner" class="form-control submit px-3">
                 </div>
               </form>
             </div>
@@ -774,8 +1025,7 @@
           <div class="col-md-12 text-center">
 
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
           </div>
         </div>
       </div>
@@ -803,6 +1053,66 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+
+  <script>
+    // Fonction pour ajouter un article au panier depuis la page d'accueil
+    document.addEventListener('DOMContentLoaded', function() {
+      // Attacher les événements aux boutons Ajouter
+      const commanderButtons = document.querySelectorAll('.btn-primary');
+      
+      commanderButtons.forEach(button => {
+        // Vérifier que c'est bien un bouton "Ajouter" et pas autre chose
+        if (button.textContent.trim().includes('Ajouter')) {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Récupérer les informations du plat depuis le DOM
+            const menuItem = this.closest('.menus, .text');
+            const name = menuItem.querySelector('h3').textContent.trim();
+            const priceText = menuItem.querySelector('.price').textContent.trim();
+            const price = parseFloat(priceText.replace('€', '').replace(',', '.'));
+            const description = menuItem.querySelector('p span') ? 
+              menuItem.querySelector('p span').textContent : '';
+            
+            // Essayer de récupérer l'image
+            let image = 'images/default.jpg'; // Image par défaut
+            const imageDiv = menuItem.parentElement.querySelector('.menu-img');
+            if (imageDiv) {
+              const bgImage = imageDiv.style.backgroundImage;
+              if (bgImage) {
+                image = bgImage.replace(/url\(['"]?(.+?)['"]?\)/i, '$1');
+              }
+            }
+            
+            // Créer un ID unique basé sur le nom
+            const id = name.toLowerCase().replace(/\s+/g, '-');
+            
+            // Ajouter au panier
+            const item = {
+              id: id,
+              name: name,
+              price: price,
+              description: description,
+              image: image
+            };
+            
+            addToCart(item);
+          });
+        }
+      });
+    });
+
+    // Gestion du scroll navbar
+    window.addEventListener("scroll", function () {
+      var navbar = document.querySelector(".navbar");
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+  </script>
     
   </body>
 </html>

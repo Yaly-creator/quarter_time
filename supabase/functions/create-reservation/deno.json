@@ -1,0 +1,7 @@
+{
+  "imports": {},
+  "permissions": {
+    "env": true,
+    "net": true
+  }
+}

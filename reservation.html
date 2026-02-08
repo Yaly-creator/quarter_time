@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Feliciano - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Quarter Time - Restaurant de type buffet</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   </head>
   <body>
     <div class="py-1 bg-black top">
@@ -35,14 +37,14 @@
 		    		<div class="row d-flex">
 		    			<div class="col-md pr-4 d-flex topper align-items-center">
 					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-						    <span class="text">+ 1235 2355 98</span>
+						    <span class="text">03 44 05 74 74</span>
 					    </div>
 					    <div class="col-md pr-4 d-flex topper align-items-center">
-					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-						    <span class="text">youremail@email.com</span>
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"></div>
+						    <p class="mb-0 register-link"><span>Horaire:</span> <span>Samedi</span> <span>11h30 - 23h30</span></p>
 					    </div>
 					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
-						    <p class="mb-0 register-link"><span>Open hours:</span> <span>Monday - Sunday</span> <span>8:00AM - 9:00PM</span></p>
+						    <p class="mb-0 register-link"><span>Horaire:</span> <span>Lundi - Vendredi</span> <span>11h30 - 15h00 et 18h30-23h00</span></p>
 					    </div>
 				    </div>
 			    </div>
@@ -51,23 +53,32 @@
     </div>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Feliciano</a>
+	      <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Quarter Time" height="140"></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	        	<li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-	        	<li class="nav-item"><a href="blog.html" class="nav-link">Stories</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta"><a href="reservation.html" class="nav-link">Book a table</a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
+	      
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a href="index.html" class="nav-link">Accueil</a></li>
+        <li class="nav-item active"><a href="notre_resto.html" class="nav-link">Notre restaurant</a></li>
+        <li class="nav-item"><a href="reservation.html" class="nav-link">Réserver une table</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="connexion.html" class="nav-link">Connexion</a></li>
+        <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
+        
+        <!-- 🛒 Panier -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fas fa-shopping-cart"></i> Panier
+            <span class="badge badge-warning" id="cart-count">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
     <!-- END nav -->
     
     <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
@@ -75,8 +86,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center mb-4">
-            <h1 class="mb-2 bread">Book a Table</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Reservation <i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-2 bread">Réserver une table</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Accueil <i class="ion-ios-arrow-forward"></i></a></span> <span>Réservation <i class="ion-ios-arrow-forward"></i></span></p>
           </div>
         </div>
       </div>
@@ -88,83 +99,131 @@
           <div class="col-md-6 order-md-last ftco-animate makereservation p-4 p-md-5 pt-5">
           	<div class="py-md-5">
 	          	<div class="heading-section ftco-animate mb-5">
-		          	<span class="subheading">Book a table</span>
-		            <h2 class="mb-4">Make Reservation</h2>
+		          	<span class="subheading">Réserver une table</span>
+		            <h2 class="mb-4">Faire une réservation</h2>
 		          </div>
-	            <form action="#">
+                  
+	            <form id="reservation-form-reservation" action="#">
 	              <div class="row">
 	                <div class="col-md-6">
 	                  <div class="form-group">
-	                    <label for="">Name</label>
-	                    <input type="text" class="form-control" placeholder="Your Name">
+	                    <label for="name-reservation">Nom</label>
+	                    <input type="text" id="name-reservation" name="name" class="form-control" placeholder="Votre nom" required>
 	                  </div>
 	                </div>
 	                <div class="col-md-6">
 	                  <div class="form-group">
-	                    <label for="">Email</label>
-	                    <input type="text" class="form-control" placeholder="Your Email">
+	                    <label for="email-reservation">Email</label>
+	                    <input type="email" id="email-reservation" name="email" class="form-control" placeholder="Votre Email" required>
 	                  </div>
 	                </div>
 	                <div class="col-md-6">
 	                  <div class="form-group">
-	                    <label for="">Phone</label>
-	                    <input type="text" class="form-control" placeholder="Phone">
+	                    <label for="phone-reservation">Téléphone</label>
+	                    <input type="tel" id="phone-reservation" name="phone" class="form-control" placeholder="Votre téléphone" required>
 	                  </div>
 	                </div>
 	                <div class="col-md-6">
 	                  <div class="form-group">
-	                    <label for="">Phone</label>
-	                    <input type="text" class="form-control" id="book_date" placeholder="Date">
+	                    <label for="book_date_reservation">Date</label>
+	                    <input type="date" class="form-control" id="book_date_reservation" name="date" required>
+	                    <small id="date-error-message" class="form-text text-danger" style="display: none; font-weight: bold;"></small>
 	                  </div>
 	                </div>
 	                <div class="col-md-6">
 	                  <div class="form-group">
-	                    <label for="">Time</label>
-	                    <input type="text" class="form-control" id="book_time" placeholder="Time">
+	                    <label for="book_time_reservation">Heure</label>
+	                    <input type="text" class="form-control" id="book_time_reservation" name="time" placeholder="Heure" required>
 	                  </div>
 	                </div>
 	                <div class="col-md-6">
 	                  <div class="form-group">
-	                    <label for="">Person</label>
+	                    <label for="guests-reservation">Personnes</label>
 	                    <div class="select-wrap one-third">
 	                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                      <select name="" id="" class="form-control">
-	                        <option value="">Person</option>
-	                        <option value="">1</option>
-	                        <option value="">2</option>
-	                        <option value="">3</option>
-	                        <option value="">4+</option>
+	                      <select id="guests-reservation" name="guests" class="form-control" required>
+	                        <option value="">Personnes</option>
+	                        <option value="1">1</option>
+	                        <option value="2">2</option>
+	                        <option value="3">3</option>
+	                        <option value="4">4</option>
+	                        <option value="5">5</option>
+	                        <option value="6">6</option>
+	                        <option value="7">7</option>
+	                        <option value="8">8</option>
+	                        <option value="9">9</option>
+	                        <option value="10">10+</option>
 	                      </select>
 	                    </div>
 	                  </div>
 	                </div>
+	                <div class="col-md-12">
+	                  <div class="form-group">
+	                    <label for="event_type_reservation">Type d'événement (optionnel)</label>
+	                    <div class="select-wrap one-third">
+	                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+	                      <select name="event_type" id="event_type_reservation" class="form-control">
+	                        <option value="standard">Réservation standard</option>
+	                        <option value="mariage">Mariage</option>
+	                        <option value="rdv_affaires">RDV d'affaires</option>
+	                        <option value="anniversaire">Anniversaire</option>
+	                      </select>
+	                    </div>
+	                  </div>
+	                </div>
+	                <div class="col-md-12">
+	                  <div class="form-group">
+	                    <label for="details_reservation">Détails supplémentaires (optionnel)</label>
+	                    <textarea name="details" id="details_reservation" cols="30" rows="4" class="form-control" placeholder="Ajoutez ici des informations complémentaires concernant votre réservation ou événement..."></textarea>
+	                  </div>
+	                </div>
 	                <div class="col-md-12 mt-3">
 	                  <div class="form-group">
-	                    <input type="submit" value="Make a Reservation" class="btn btn-primary py-3 px-5">
+	                    <button type="submit" class="btn btn-primary py-3 px-5" id="submit-btn-reservation">
+                          <span class="submit-text">Faire une réservation</span>
+                          <span class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true" style="display: none;"></span>
+                        </button>
 	                  </div>
 	                </div>
 	              </div>
 	            </form>
+                
+                <!-- Message de feedback -->
+                <div id="reservation-message-reservation" class="alert mt-3" role="alert">&nbsp;</div>
 	          </div>
           </div>
           <div class="col-md-6 d-flex align-items-stretch pb-5 pb-md-0">
-						<div id="map"></div>
-					</div>
+		  <div class="map-container" style="width: 100%; height: 100%;">
+			<iframe 
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.789508411399!2d2.1150390763740208!3d49.41288617141266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e701d0c5d18ff3%3A0x235a3ff54f0c95ff!2sQuarter%20Time%20by%20Q.F.D!5e0!3m2!1sfr!2sfr!4v1756202608466!5m2!1sfr!2sfr" 
+			width="100%" 
+			height="100%" 
+			style="border:0;" 
+			allowfullscreen="" 
+			loading="lazy" 
+			referrerpolicy="no-referrer-when-downgrade">
+			</iframe>
+		  </div>
+</div>
+
         </div>
 			</div>
 		</section>
 		
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
+  <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-6 col-lg-3">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Feliciano</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <h2 class="ftco-heading-2">Quarter Time</h2>
+              <p>Une cuisine généreuse, savoureuse et halal, préparée avec passion, pour régaler toute la famille sans se ruiner.
+
+📍 Rendez-vous à Quarter Time Beauvais – l’adresse incontournable pour bien manger au meilleur prix !</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.tiktok.com/@quartertime.beauvais?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i>
+
+                <li class="ftco-animate"><a href="https://www.facebook.com/quartertime.restaurant.beauvais/"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><span class="icon-instagram"></span></a></li>
               </ul>
             </div>
           </div>
@@ -172,13 +231,13 @@
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Open Hours</h2>
               <ul class="list-unstyled open-hours">
-                <li class="d-flex"><span>Monday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Tuesday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Wednesday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Thursday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Friday</span><span>9:00 - 02:00</span></li>
-                <li class="d-flex"><span>Saturday</span><span>9:00 - 02:00</span></li>
-                <li class="d-flex"><span>Sunday</span><span> 9:00 - 02:00</span></li>
+                <li class="d-flex"><span>Lundi</span><span>11h30 - 15h00 et 18h30-23h00</span></li>
+                <li class="d-flex"><span>Mardi</span><span>11h30 - 15h00 et 18h30-23h00</span></li>
+                <li class="d-flex"><span>Mercredi</span><span>11h30 - 15h00 et 18h30-23h00</span></li>
+                <li class="d-flex"><span>Jeudi</span><span>11h30 - 15h00 et 18h30-23h00</span></li>
+                <li class="d-flex"><span>Vendredi</span><span>11h30 - 15h00 et 18h30-23h00</span></li>
+                <li class="d-flex"><span>Samedi</span><span>11h30-23h30</span></li>
+                <li class="d-flex"><span>Dimanche</span><span>Fermé</span></li>
               </ul>
             </div>
           </div>
@@ -186,19 +245,19 @@
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Instagram</h2>
               <div class="thumb d-sm-flex">
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-1.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post1.png);">
 	            	</a>
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-2.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post2.png);">
 	            	</a>
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-3.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post3.png);">
 	            	</a>
 	            </div>
 	            <div class="thumb d-flex">
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-4.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post4.png);">
 	            	</a>
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-5.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post5.png);">
 	            	</a>
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-6.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post6.png);">
 	            	</a>
 	            </div>
             </div>
@@ -206,11 +265,11 @@
           <div class="col-md-6 col-lg-3">
             <div class="ftco-footer-widget mb-4">
             	<h2 class="ftco-heading-2">Newsletter</h2>
-            	<p>Far far away, behind the word mountains, far from the countries.</p>
+            	<p>Recevez nos offres spéciales directement dans votre boîte mail.</p>
               <form action="#" class="subscribe-form">
                 <div class="form-group">
-                  <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
-                  <input type="submit" value="Subscribe" class="form-control submit px-3">
+                  <input type="text" class="form-control mb-2 text-center" placeholder="Entrer votre adresse email">
+                  <input type="submit" value="S'abonner" class="form-control submit px-3">
                 </div>
               </form>
             </div>
@@ -220,8 +279,7 @@
           <div class="col-md-12 text-center">
 
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
           </div>
         </div>
       </div>

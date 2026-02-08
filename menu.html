@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Feliciano - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Quarter Time - Restaurant de type buffet</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -26,48 +26,59 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   </head>
   <body>
-    <div class="py-1 bg-black top">
+  <div class="py-1 bg-black top">
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
 	    		<div class="col-lg-12 d-block">
 		    		<div class="row d-flex">
 		    			<div class="col-md pr-4 d-flex topper align-items-center">
 					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-						    <span class="text">+ 1235 2355 98</span>
+						    <span class="text">03 44 05 74 74</span>
 					    </div>
 					    <div class="col-md pr-4 d-flex topper align-items-center">
-					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-						    <span class="text">youremail@email.com</span>
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"></div>
+						    <p class="mb-0 register-link"><span>Horaire:</span> <span>Samedi</span> <span>11h30 - 23h30</span></p>
 					    </div>
 					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
-						    <p class="mb-0 register-link"><span>Open hours:</span> <span>Monday - Sunday</span> <span>8:00AM - 9:00PM</span></p>
+						    <p class="mb-0 register-link"><span>Horaire:</span> <span>Lundi - Vendredi</span> <span>11h30 - 15h00 et 18h30-23h00</span></p>
 					    </div>
 				    </div>
 			    </div>
 		    </div>
 		  </div>
     </div>
+    
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Feliciano</a>
+	      <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Quarter Time" height="140"></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	        	<li class="nav-item active"><a href="menu.html" class="nav-link">Menu</a></li>
-	        	<li class="nav-item"><a href="blog.html" class="nav-link">Stories</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta"><a href="reservation.html" class="nav-link">Book a table</a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
+	      
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a href="index.html" class="nav-link">Accueil</a></li>
+        <li class="nav-item active"><a href="notre_resto.html" class="nav-link">Notre restaurant</a></li>
+        <li class="nav-item"><a href="reservation.html" class="nav-link">Réserver une table</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="connexion.html" class="nav-link">Connexion</a></li>
+        <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
+        
+        <!-- 🛒 Panier -->
+        <li class="nav-item">
+          <a href="panier.html" class="nav-link">
+            <i class="fas fa-shopping-cart"></i> Panier
+            <span class="badge badge-warning" id="cart-count">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
     <!-- END nav -->
     
     <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
@@ -85,22 +96,30 @@
 
 		<section class="ftco-section">
     	<div class="container">
+        <!-- Lien vers le menu PDF -->
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-12 text-center">
+            <a href="images/quarter_time_menu.pdf" target="_blank" class="btn btn-primary btn-lg">
+              <i class="fas fa-file-pdf mr-2"></i>Télécharger le menu complet (PDF)
+            </a>
+          </div>
+        </div>
+        
         <div class="ftco-search">
 					<div class="row">
             <div class="col-md-12 nav-link-wrap">
 	            <div class="nav nav-pills d-flex text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-	              <a class="nav-link ftco-animate active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Breakfast</a>
+	              
 
-	              <a class="nav-link ftco-animate" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Lunch</a>
+	              <a class="nav-link ftco-animate" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Pizza</a>
 
-	              <a class="nav-link ftco-animate" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Dinner</a>
+	              <a class="nav-link ftco-animate" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Kebab</a>
 
-	              <a class="nav-link ftco-animate" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Drinks</a>
+	              <a class="nav-link ftco-animate" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Poulet Braisé</a>
 
-	              <a class="nav-link ftco-animate" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Desserts</a>
+	              <a class="nav-link ftco-animate" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Boissons et Desserts</a>
 
-	              <a class="nav-link ftco-animate" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Wine</a>
-
+	              
 	            </div>
 	          </div>
 	          <div class="col-md-12 tab-wrap">
@@ -109,321 +128,647 @@
 
 	              <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="day-1-tab">
 	              	<div class="row no-gutters d-flex align-items-stretch">
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/breakfast-1.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+				        	<!-- Pizza 1: Calzone Soufflée -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_calzone_souflée.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Calzone Soufflée</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€8,90</span>
+						                </div>
 						              </div>
+						              <p><span>Base Tomate</span></p>
+						              <p><span>Sauce tomate, mozzarella, jambon, œuf</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
 					              </div>
-					            </div>
-					        	</div>
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/breakfast-2.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
-					              </div>
-					            </div>
-					        	</div>
+				              </div>
+				            </div>
+				        	</div>
 
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/breakfast-3.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+				        	<!-- Pizza 2: Campione -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_campione.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Campione</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€8,90</span>
+						                </div>
 						              </div>
+						              <p><span>Base Tomate</span></p>
+						              <p><span>Champignons, viande hachée</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
 					              </div>
-					            </div>
-					        	</div>
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/breakfast-4.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
-					              </div>
-					            </div>
-					        	</div>
+				              </div>
+				            </div>
+				        	</div>
 
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/breakfast-5.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+				        	<!-- Pizza 3: Margharita -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_margharita.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Margharita</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€7</span>
+						                </div>
 						              </div>
+						              <p><span>Base Tomate</span></p>
+						              <p><span>Sauce tomate, origan, mozzarella</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
 					              </div>
-					            </div>
-					        	</div>
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/breakfast-6.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
-					              </div>
-					            </div>
-					        	</div>
+				              </div>
+				            </div>
+				        	</div>
 
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/breakfast-7.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+				        	<!-- Pizza 4: Maxima -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_maxima.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Maxima</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€11</span>
+						                </div>
 						              </div>
+						              <p><span>Base Tomate</span></p>
+						              <p><span>Viande hachée, jambon, champignons, poivrons, chorizo</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
 					              </div>
-					            </div>
-					        	</div>
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/breakfast-8.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+				              </div>
+				            </div>
+				        	</div>
+
+				        	<!-- Pizza 5: Neptune -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_neptune.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Neptune</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€8,90</span>
+						                </div>
 						              </div>
+						              <p><span>Base Tomate</span></p>
+						              <p><span>Sauce tomate, mozzarella, thon, poivrons, olives, œuf</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
 					              </div>
-					            </div>
-					        	</div>
-					        </div>
+				              </div>
+				            </div>
+				        	</div>
+
+				        	<!-- Pizza 6: Orientale -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_orientale.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Orientale</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€9,90</span>
+						                </div>
+						              </div>
+						              <p><span>Base Tomate</span></p>
+						              <p><span>Sauce tomate, mozzarella, merguez, poivrons, oignons, olives, œuf</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+					              </div>
+				              </div>
+				            </div>
+				        	</div>
+
+				        	<!-- Pizza 7: Quarter Time Signature -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_quarter_time_signature.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Quarter Time Signature</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€15</span>
+						                </div>
+						              </div>
+						              <p><span>Base Tomate</span></p>
+						              <p><span>Jambon, raclette, tomates cerises, parmesan, burrata</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+					              </div>
+				              </div>
+				            </div>
+				        	</div>
+
+				        	<!-- Pizza 8: Reine -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_reine.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Reine</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€8,90</span>
+						                </div>
+						              </div>
+						              <p><span>Base Tomate</span></p>
+						              <p><span>Champignons, jambon, sauce tomate, mozzarella</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+					              </div>
+				              </div>
+				            </div>
+				        	</div>
+
+				        	<!-- Pizza 9: San Pietro -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_san_pietro.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza San Pietro</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€11</span>
+						                </div>
+						              </div>
+						              <p><span>Base Tomate</span></p>
+						              <p><span>Champignons, merguez, jambon, chorizo, œuf</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+					              </div>
+				              </div>
+				            </div>
+				        	</div>
+
+				        	<!-- Pizza 10: Végétarienne -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_vegetarienne.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Végétarienne</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€9,90</span>
+						                </div>
+						              </div>
+						              <p><span>Base Tomate</span></p>
+						              <p><span>Sauce tomate, mozzarella, légumes</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+					              </div>
+				              </div>
+				            </div>
+				        	</div>
+
+				        	<!-- Pizza 11: Barbecue -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_barbecue.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Barbecue</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€11</span>
+						                </div>
+						              </div>
+						              <p><span>Base Crème Fraîche</span></p>
+						              <p><span>Poulet, maïs, poivrons, oignons</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+					              </div>
+				              </div>
+				            </div>
+				        	</div>
+
+				        	<!-- Pizza 12: Chèvre Miel -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_chevre_miel.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Chèvre Miel</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€11</span>
+						                </div>
+						              </div>
+						              <p><span>Base Crème Fraîche</span></p>
+						              <p><span>Chèvre, miel</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+					              </div>
+				              </div>
+				            </div>
+				        	</div>
+
+				        	<!-- Pizza 13: Chicken -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_chicken.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Chicken</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€11</span>
+						                </div>
+						              </div>
+						              <p><span>Base Crème Fraîche</span></p>
+						              <p><span>Poulet, oignons, pommes de terre</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+					              </div>
+				              </div>
+				            </div>
+				        	</div>
+
+				        	<!-- Pizza 14: Dodue -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_dodue.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Dodue</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€11</span>
+						                </div>
+						              </div>
+						              <p><span>Base Crème Fraîche</span></p>
+						              <p><span>Champignons, poulet, boursin</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+					              </div>
+				              </div>
+				            </div>
+				        	</div>
+
+				        	<!-- Pizza 15: Quatre Fromages -->
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_quatre_fromage.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Quatre Fromages</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€11</span>
+						                </div>
+						              </div>
+						              <p><span>Base Crème Fraîche</span></p>
+						              <p><span>Mélange de quatre fromages</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+					              </div>
+				              </div>
+				            </div>
+				        	</div>
+				        </div>
 	              </div>
 
 	              <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-day-2-tab">
 	              	<div class="row no-gutters d-flex align-items-stretch">
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/lunch-1.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_calzone_souflée.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Pizza Calzone Soufflée</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€8,90</span>
+						                </div>
 						              </div>
+						              <p><span>Base Tomate</span></p>
+						              <p><span>Sauce tomate, mozzarella, jambon, œuf</span></p>
+						              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
 					              </div>
-					            </div>
-					        	</div>
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/lunch-2.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
+				              </div>
+				            </div>
+				        	</div>
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_campione.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza Campione</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€8,90</span>
+					                </div>
 					              </div>
-					            </div>
-					        	</div>
+					              <p><span>Base Tomate</span></p>
+					              <p><span>Champignons, viande hachée</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
 
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/lunch-3.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_margharita.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza Margharita</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€7</span>
+					                </div>
 					              </div>
-					            </div>
-					        	</div>
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/lunch-4.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
+					              <p><span>Base Tomate</span></p>
+					              <p><span>Sauce tomate, origan, mozzarella</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_maxima.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza Maxima</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€11</span>
+					                </div>
 					              </div>
-					            </div>
-					        	</div>
+					              <p><span>Base Tomate</span></p>
+					              <p><span>Viande hachée, jambon, champignons, poivrons, chorizo</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
 
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/lunch-5.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_neptune.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza Neptune</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€8,90</span>
+					                </div>
 					              </div>
-					            </div>
-					        	</div>
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/lunch-6.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
+					              <p><span>Base Tomate</span></p>
+					              <p><span>Sauce tomate, mozzarella, thon, poivrons, olives, œuf</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_orientale.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza Orientale</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€9,90</span>
+					                </div>
 					              </div>
-					            </div>
-					        	</div>
+					              <p><span>Base Tomate</span></p>
+					              <p><span>Sauce tomate, mozzarella, merguez, poivrons, oignons, olives, œuf</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
 
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/lunch-7.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_quarter_time_signature.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza Quarter Time Signature</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€15</span>
+					                </div>
 					              </div>
-					            </div>
-					        	</div>
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/lunch-8.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
+					              <p><span>Base Tomate</span></p>
+					              <p><span>Jambon, raclette, tomates cerises, parmesan, burrata</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_reine.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza Reine</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€8,90</span>
+					                </div>
 					              </div>
-					            </div>
-					        	</div>
+					              <p><span>Base Tomate</span></p>
+					              <p><span>Champignons, jambon, sauce tomate, mozzarella</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
+
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_san_pietro.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza San Pietro</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€11</span>
+					                </div>
+					              </div>
+					              <p><span>Base Tomate</span></p>
+					              <p><span>Champignons, merguez, jambon, chorizo, œuf</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Tomate/pizza_vegetarienne.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza Végétarienne</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€9,90</span>
+					                </div>
+					              </div>
+					              <p><span>Base Tomate</span></p>
+					              <p><span>Sauce tomate, mozzarella, légumes</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
+
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_barbecue.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza Barbecue</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€11</span>
+					                </div>
+					              </div>
+					              <p><span>Base Crème Fraîche</span></p>
+					              <p><span>Poulet, maïs, poivrons, oignons</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_chevre_miel.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza Chèvre Miel</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€11</span>
+					                </div>
+					              </div>
+					              <p><span>Base Crème Fraîche</span></p>
+					              <p><span>Chèvre, miel</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
+
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_chicken.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza Chicken</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€11</span>
+					                </div>
+					              </div>
+					              <p><span>Base Crème Fraîche</span></p>
+					              <p><span>Poulet, oignons, pommes de terre</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_dodue.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza Dodue</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€11</span>
+					                </div>
+					              </div>
+					              <p><span>Base Crème Fraîche</span></p>
+					              <p><span>Champignons, poulet, boursin</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
+
+			        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+			        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+			              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Pizza/Base%20Crème%20Fraiche/pizza_quatre_fromage.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+												<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Pizza Quatre Fromages</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">€11</span>
+					                </div>
+					              </div>
+					              <p><span>Base Crème Fraîche</span></p>
+					              <p><span>Mélange de quatre fromages</span></p>
+					              <p><a href="#" class="btn btn-primary">Ajouter <i class="fas fa-shopping-cart"></i></a></p>
+				              </div>
+			              </div>
+			            </div>
+			        	</div>
 					        </div>
 	              </div>
 
@@ -431,38 +776,36 @@
 	              	<div class="row no-gutters d-flex align-items-stretch">
 					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
 					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/dinner-1.jpg);"></div>
+					              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Kebab/Assiette_viande_kebab.jpeg);"></div>
 					              <div class="text d-flex align-items-center">
 													<div>
 						              	<div class="d-flex">
 							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
+							                  <h3>Assiette Viande Kebab</h3>
 							                </div>
 							                <div class="one-forth">
-							                  <span class="price">$29</span>
+							                  <span class="price">€9,90</span>
 							                </div>
 							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+							              <p><span>Viande kebab servie en assiette avec frites et accompagnement.</span></p>
 						              </div>
 					              </div>
 					            </div>
 					        	</div>
 					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
 					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/dinner-2.jpg);"></div>
+					              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Kebab/kebab_3viandes.jpeg);"></div>
 					              <div class="text d-flex align-items-center">
 													<div>
 						              	<div class="d-flex">
 							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
+							                  <h3>Kebab 3 Viandes</h3>
 							                </div>
 							                <div class="one-forth">
-							                  <span class="price">$29</span>
+							                  <span class="price">€9,90</span>
 							                </div>
 							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+							              <p><span>Sandwich garni de trois viandes, accompagné de frites et sauce à volonté.</span></p>
 						              </div>
 					              </div>
 					            </div>
@@ -470,200 +813,135 @@
 
 					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
 					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/dinner-3.jpg);"></div>
+					              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Kebab/kebab_chicken.jpeg);"></div>
 					              <div class="text d-flex align-items-center">
 													<div>
 						              	<div class="d-flex">
 							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
+							                  <h3>Kebab Chicken</h3>
 							                </div>
 							                <div class="one-forth">
-							                  <span class="price">$29</span>
+							                  <span class="price">€8,90</span>
 							                </div>
 							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+							              <p><span>Viande Chicken, servi en sandwich, frites et sauce à volonté.</span></p>
 						              </div>
 					              </div>
 					            </div>
 					        	</div>
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/dinner-4.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Kebab/kebab_viande.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Kebab Viande</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€8,90</span>
+						                </div>
 						              </div>
+						              <p><span>Viande kebab, servi en sandwich, frites et sauce à volonté.</span></p>
 					              </div>
-					            </div>
-					        	</div>
+				              </div>
+				            </div>
+				        	</div>
 
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/dinner-5.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
+				              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Kebab/Assiette_viande_kebab.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Assiette viande kebab XXL</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€12,90</span>
+						                </div>
 						              </div>
+						              <p><span>Viande kebab (250 g) servie en assiette avec frites et accompagnement à volonté.</span></p>
 					              </div>
-					            </div>
-					        	</div>
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/dinner-6.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
-					              </div>
-					            </div>
-					        	</div>
-					        </div>
+				              </div>
+				            </div>
+				        	</div>
+				        </div>
 	              </div>
 
 	              <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-day-4-tab">
 	              	<div class="row no-gutters d-flex align-items-stretch">
 					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
 					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/drink-1.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+					              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Poulet_Braise/assiette_sportive.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Assiette Sportive</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€11,90</span>
+						                </div>
 						              </div>
+						              <p><span>Assiette sportive :<br>Assiette composée de salade, crudités et trois brochettes de poulet à l'ardonaise.</span></p>
 					              </div>
+				              </div>
 					            </div>
 					        	</div>
 					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
 					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/drink-2.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+					              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Poulet_Braise/demi_poulet_braisé.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Demi Poulet Braisé</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€6,90</span>
+						                </div>
 						              </div>
+						              <p><span>Demi-poulet braisé, tendre et savoureux.</span></p>
 					              </div>
-					            </div>
-					        	</div>
-
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/drink-3.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
-					              </div>
-					            </div>
-					        	</div>
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/drink-4.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
-					              </div>
+				              </div>
 					            </div>
 					        	</div>
 
 					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
 					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/drink-5.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+					              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Poulet_Braise/menu_enfant.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Menu Enfant</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">$29</span>
+						                </div>
 						              </div>
+						              <p><span>Deux brochettes de poulet ou nuggets, frites, Capri-Sun et compote.</span></p>
 					              </div>
+				              </div>
 					            </div>
 					        	</div>
 					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
 					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/drink-6.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
+					              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Poulet_Braise/poulet_braise.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Poulet Braisé</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">€12,90</span>
+						                </div>
 						              </div>
+						              <p><span>Poulet entier braisé, cuisson maîtrisée, saveur authentique.</span></p>
 					              </div>
+				              </div>
 					            </div>
 					        	</div>
 					        </div>
@@ -671,120 +949,77 @@
 
 	              <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-day-5-tab">
 	              	<div class="row no-gutters d-flex align-items-stretch">
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/dessert-1.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
-					              </div>
-					            </div>
-					        	</div>
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/dessert-2.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
-					              </div>
-					            </div>
-					        	</div>
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch" style="min-height: 400px;">
+				              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Boisson_Dessert/bouteille_eau.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+											<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Bouteille d'Eau</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">3,90 €</span>
+					                </div>
+				              </div>
+				              <p><span>Boisson</span></p>
+				              </div>
+			              </div>
+				            </div>
+				        	</div>
+				        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
+				        		<div class="menus d-sm-flex ftco-animate align-items-stretch" style="min-height: 400px;">
+				              <div class="menu-img img" style="background-image: url(images/images_plats_quarter_time/Boisson_Dessert/cafe.jpeg);"></div>
+			              <div class="text d-flex align-items-center">
+											<div>
+				              	<div class="d-flex">
+					                <div class="one-half">
+					                  <h3>Café</h3>
+					                </div>
+					                <div class="one-forth">
+					                  <span class="price">1,50 €</span>
+					                </div>
+				              </div>
+				              <p><span>Boisson</span></p>
+				              </div>
+			              </div>
+				            </div>
+				        	</div>
 
 					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
 					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/dessert-3.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
+					              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Boisson_Dessert/coca.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Coca Cola</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">1,50 €</span>
+						                </div>
 					              </div>
+					              <p><span>Boisson</span></p>
+					              </div>
+				              </div>
 					            </div>
 					        	</div>
 					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
 					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img order-md-last" style="background-image: url(images/dessert-4.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
+					              <div class="menu-img img order-md-last" style="background-image: url(images/images_plats_quarter_time/Boisson_Dessert/part_gateau.jpeg);"></div>
+				              <div class="text d-flex align-items-center">
+												<div>
+					              	<div class="d-flex">
+						                <div class="one-half">
+						                  <h3>Part de Gâteau</h3>
+						                </div>
+						                <div class="one-forth">
+						                  <span class="price">3,90 €</span>
+						                </div>
 					              </div>
-					            </div>
-					        	</div>
-
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/dessert-5.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
+					              <p><span>Gâteau au choix pour une touche sucrée en fin de repas.</span></p>
 					              </div>
-					            </div>
-					        	</div>
-					        	<div class="col-md-12 col-lg-6 d-flex align-self-stretch">
-					        		<div class="menus d-sm-flex ftco-animate align-items-stretch">
-					              <div class="menu-img img" style="background-image: url(images/drink-6.jpg);"></div>
-					              <div class="text d-flex align-items-center">
-													<div>
-						              	<div class="d-flex">
-							                <div class="one-half">
-							                  <h3>Grilled Beef with potatoes</h3>
-							                </div>
-							                <div class="one-forth">
-							                  <span class="price">$29</span>
-							                </div>
-							              </div>
-							              <p><span>Meat</span>, <span>Potatoes</span>, <span>Rice</span>, <span>Tomatoe</span></p>
-							              <p><a href="#" class="btn btn-primary">Order now</a></p>
-						              </div>
-					              </div>
+				              </div>
 					            </div>
 					        	</div>
 					        </div>
@@ -955,18 +1190,20 @@
         </div>
     	</div>
     </section>
-		
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
+	<footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-6 col-lg-3">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Feliciano</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <h2 class="ftco-heading-2">Quarter Time</h2>
+              <p>Une cuisine généreuse, savoureuse et halal, préparée avec passion, pour régaler toute la famille sans se ruiner.
+
+📍 Rendez-vous à Quarter Time Beauvais – l’adresse incontournable pour bien manger au meilleur prix !</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.tiktok.com/@quartertime.beauvais?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i>
+
+                <li class="ftco-animate"><a href="https://www.facebook.com/quartertime.restaurant.beauvais/"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><span class="icon-instagram"></span></a></li>
               </ul>
             </div>
           </div>
@@ -974,13 +1211,13 @@
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Open Hours</h2>
               <ul class="list-unstyled open-hours">
-                <li class="d-flex"><span>Monday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Tuesday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Wednesday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Thursday</span><span>9:00 - 24:00</span></li>
-                <li class="d-flex"><span>Friday</span><span>9:00 - 02:00</span></li>
-                <li class="d-flex"><span>Saturday</span><span>9:00 - 02:00</span></li>
-                <li class="d-flex"><span>Sunday</span><span> 9:00 - 02:00</span></li>
+                <li class="d-flex"><span>Lundi</span><span>11h30 - 15h00 et 18h30-23h00</span></li>
+                <li class="d-flex"><span>Mardi</span><span>11h30 - 15h00 et 18h30-23h00</span></li>
+                <li class="d-flex"><span>Mercredi</span><span>11h30 - 15h00 et 18h30-23h00</span></li>
+                <li class="d-flex"><span>Jeudi</span><span>11h30 - 15h00 et 18h30-23h00</span></li>
+                <li class="d-flex"><span>Vendredi</span><span>11h30 - 15h00 et 18h30-23h00</span></li>
+                <li class="d-flex"><span>Samedi</span><span>11h30-23h30</span></li>
+                <li class="d-flex"><span>Dimanche</span><span>Fermé</span></li>
               </ul>
             </div>
           </div>
@@ -988,19 +1225,19 @@
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Instagram</h2>
               <div class="thumb d-sm-flex">
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-1.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post1.png);">
 	            	</a>
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-2.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post2.png);">
 	            	</a>
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-3.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post3.png);">
 	            	</a>
 	            </div>
 	            <div class="thumb d-flex">
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-4.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post4.png);">
 	            	</a>
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-5.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post5.png);">
 	            	</a>
-	            	<a href="#" class="thumb-menu img" style="background-image: url(images/insta-6.jpg);">
+	            	<a href="https://www.instagram.com/quartertime.beauvais?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="thumb-menu img" style="background-image: url(images/post6.png);">
 	            	</a>
 	            </div>
             </div>
@@ -1008,11 +1245,11 @@
           <div class="col-md-6 col-lg-3">
             <div class="ftco-footer-widget mb-4">
             	<h2 class="ftco-heading-2">Newsletter</h2>
-            	<p>Far far away, behind the word mountains, far from the countries.</p>
+            	<p>Recevez nos offres spéciales directement dans votre boîte mail.</p>
               <form action="#" class="subscribe-form">
                 <div class="form-group">
-                  <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
-                  <input type="submit" value="Subscribe" class="form-control submit px-3">
+                  <input type="text" class="form-control mb-2 text-center" placeholder="Entrer votre adresse email">
+                  <input type="submit" value="S'abonner" class="form-control submit px-3">
                 </div>
               </form>
             </div>
@@ -1022,12 +1259,12 @@
           <div class="col-md-12 text-center">
 
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
           </div>
         </div>
       </div>
-    </footer>
+    </footer>.	
+   
   
 
   <!-- loader -->
@@ -1051,6 +1288,122 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+
+  <script>
+    // Fonction pour ajouter un article au panier depuis la page menu
+    function initializeCartButtons() {
+      console.log('Initialisation des boutons Ajouter au panier...');
+      
+      // Vérifier que addToCart est disponible
+      if (typeof addToCart !== 'function') {
+        console.error('addToCart n\'est pas disponible. Nouvelle tentative dans 100ms...');
+        setTimeout(initializeCartButtons, 100);
+        return;
+      }
+      
+      console.log('addToCart est disponible!');
+      
+      // Attacher les événements aux boutons Ajouter
+      const commanderButtons = document.querySelectorAll('.btn-primary');
+      console.log('Nombre de boutons .btn-primary trouvés:', commanderButtons.length);
+      
+      let addButtonsCount = 0;
+      
+      commanderButtons.forEach(button => {
+        // Vérifier que c'est bien un bouton "Ajouter" et pas autre chose
+        if (button.textContent.trim().includes('Ajouter')) {
+          addButtonsCount++;
+          
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Bouton Ajouter cliqué!');
+            
+            // Récupérer les informations du plat depuis le DOM
+            const menusContainer = this.closest('.menus');
+            if (!menusContainer) {
+              console.error('Impossible de trouver le conteneur du plat');
+              return;
+            }
+            console.log('Conteneur .menus trouvé:', menusContainer);
+
+            const nameElement = menusContainer.querySelector('h3');
+            const priceElement = menusContainer.querySelector('.price');
+
+            if (!nameElement || !priceElement) {
+              console.error('Informations du plat manquantes (nom ou prix)');
+              return;
+            }
+
+            const name = nameElement.textContent.trim();
+            const priceText = priceElement.textContent.trim();
+            const price = parseFloat(priceText.replace('€', '').replace(',', '.'));
+
+            // Vérifier que le prix est valide
+            if (isNaN(price)) {
+              console.error('Prix invalide:', priceText);
+              return;
+            }
+
+            // Récupérer la description (optionnel)
+            const descriptionElement = menusContainer.querySelector('p span');
+            const description = descriptionElement ? descriptionElement.textContent.trim() : '';
+            
+            // Essayer de récupérer l'image
+            let image = 'images/default.jpg'; // Image par défaut
+            const imageDiv = menusContainer.querySelector('.menu-img');
+            if (imageDiv) {
+              const bgImage = imageDiv.style.backgroundImage;
+              if (bgImage) {
+                // Extraire l'URL de l'image depuis background-image
+                image = bgImage.replace(/url\(['"]?(.+?)['"]?\)/i, '$1');
+              }
+            }
+            
+            // Créer un ID unique basé sur le nom (gérer les caractères accentués)
+            const id = name.toLowerCase()
+              .replace(/\s+/g, '-')
+              .replace(/[àâä]/g, 'a')
+              .replace(/[éèêë]/g, 'e')
+              .replace(/[îï]/g, 'i')
+              .replace(/[ôö]/g, 'o')
+              .replace(/[ùûü]/g, 'u')
+              .replace(/ç/g, 'c')
+              .replace(/[^a-z0-9-]/g, '');
+            
+            // Ajouter au panier
+            const item = {
+              id: id,
+              name: name,
+              price: price,
+              description: description,
+              image: image
+            };
+            
+            console.log('Article à ajouter au panier:', item);
+            
+            try {
+              addToCart(item);
+              console.log('Article ajouté avec succès!');
+            } catch (error) {
+              console.error('Erreur lors de l\'ajout au panier:', error);
+            }
+          });
+        }
+      });
+      
+      console.log('Nombre de boutons "Ajouter" configurés:', addButtonsCount);
+    }
+    
+    // Attendre que le DOM et tous les scripts soient chargés
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeCartButtons);
+    } else {
+      // DOM déjà chargé, exécuter immédiatement
+      initializeCartButtons();
+    }
+  </script>
+
     
   </body>
 </html>
