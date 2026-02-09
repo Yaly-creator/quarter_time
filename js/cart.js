@@ -48,9 +48,12 @@ class ShoppingCart {
     });
 
     // Bouton validation
-    document.getElementById('checkout-btn').addEventListener('click', () => {
-      this.checkout();
-    });
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', () => {
+        this.checkout();
+      });
+    }
   }
 
   // Ajouter un article au panier
@@ -119,10 +122,13 @@ class ShoppingCart {
 
   // Mettre à jour les totaux affichés
   updateTotals() {
+    const subtotalEl = document.getElementById('subtotal');
+    if (!subtotalEl) return;
+
     const subtotal = this.getSubtotal();
     const total = this.getTotal();
 
-    document.getElementById('subtotal').textContent = `${subtotal.toFixed(2)} €`;
+    subtotalEl.textContent = `${subtotal.toFixed(2)} €`;
     document.getElementById('delivery-fee').textContent = `${this.deliveryFee.toFixed(2)} €`;
     document.getElementById('total').textContent = `${total.toFixed(2)} €`;
   }
@@ -132,6 +138,9 @@ class ShoppingCart {
     const cartItemsContainer = document.getElementById('cart-items-container');
     const emptyCart = document.getElementById('empty-cart');
     const cartWithItems = document.getElementById('cart-with-items');
+
+    // Ne rien faire si on n'est pas sur la page panier
+    if (!cartItemsContainer || !emptyCart || !cartWithItems) return;
 
     if (this.items.length === 0) {
       emptyCart.style.display = 'block';

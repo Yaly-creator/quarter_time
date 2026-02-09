@@ -65,7 +65,8 @@
         <li class="nav-item active"><a href="notre_resto.html" class="nav-link">Notre restaurant</a></li>
         <li class="nav-item"><a href="reservation.html" class="nav-link">Réserver une table</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-        <li class="nav-item"><a href="connexion.html" class="nav-link">Connexion</a></li>
+        <li class="nav-item" id="nav-connexion"><a href="connexion.html" class="nav-link">Connexion</a></li>
+        <li class="nav-item" id="nav-logout" style="display:none;"><a href="#" class="nav-link" id="logout-link"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
         <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
         
         <!-- 🛒 Panier -->
@@ -307,6 +308,8 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/auth.js"></script>
+
   </body>
 </html>

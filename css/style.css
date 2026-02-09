@@ -9940,15 +9940,17 @@ strong.number {
 
 /* === Champs du formulaire (email & password) === */
 .signin-form input[type="email"],
-.signin-form input[type="password"] {
-  background-color: transparent !important; /* fond transparent */
+.signin-form input[type="password"],
+.signin-form input[type="text"] {
+  background-color: #fff !important;        /* fond blanc */
   border: 2px solid #FFD700 !important;     /* bordure jaune */
-  color: #fff !important;                   /* texte blanc */
+  color: #000 !important;                   /* texte noir */
 }
 
 .signin-form input[type="email"]::placeholder,
-.signin-form input[type="password"]::placeholder {
-  color: #ccc !important; /* placeholder gris clair */
+.signin-form input[type="password"]::placeholder,
+.signin-form input[type="text"]::placeholder {
+  color: #999 !important; /* placeholder gris */
 }
 
 /* === Bouton Se connecter === */
@@ -9972,19 +9974,20 @@ strong.number {
 
 /* === Formulaire de connexion === */
 .signin-form input[type="email"],
-.signin-form input[type="password"] {
+.signin-form input[type="password"],
+.signin-form input[type="text"] {
   width: 100%;
   padding: 12px;
   margin-bottom: 15px;
-  background: transparent;
+  background: #fff;
   border: 2px solid #FFD700;   /* bordure jaune */
   border-radius: 5px;
-  color: #fff;                 /* texte blanc */
+  color: #000;                 /* texte noir */
   font-size: 16px;
 }
 
 .signin-form input::placeholder {
-  color: #aaa; /* placeholder gris clair */
+  color: #999; /* placeholder gris */
 }
 
 /* === Bouton === */
@@ -10104,6 +10107,11 @@ body:not(.menu-show) {
 
 /* Média queries spécifiques pour mobile - Correctifs de scroll */
 @media (max-width: 991px) {
+  /* Masquer les images rondes (Pizza, Gâteau, Kebab, Poulet braisé) sur mobile */
+  .ftco-section.ftco-no-pt.ftco-no-pb {
+    display: none !important;
+  }
+
   /* Ajuster le padding-top sur mobile */
   body {
     padding-top: 70px !important; /* moins d'espace sur mobile */

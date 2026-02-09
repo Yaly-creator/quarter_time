@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
     /* === Header noir === */
     header,
@@ -119,7 +120,8 @@
         <li class="nav-item"><a href="notre_resto.html" class="nav-link">Notre restaurant</a></li>
         <li class="nav-item"><a href="reservation.html" class="nav-link">Réserver une table</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-        <li class="nav-item active"><a href="connexion.html" class="nav-link">Connexion</a></li>
+        <li class="nav-item active" id="nav-connexion"><a href="connexion.html" class="nav-link">Connexion</a></li>
+        <li class="nav-item" id="nav-logout" style="display:none;"><a href="#" class="nav-link" id="logout-link"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
         <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
         
         <!-- 🛒 Panier -->
@@ -143,9 +145,11 @@
           <h3 class="mb-4 text-center">Mot de passe oublié</h3>
           <p class="text-center text-muted mb-4">Entrez votre adresse e-mail pour recevoir un lien de réinitialisation</p>
           
-          <form action="#" class="signin-form">
+          <div id="reset-alert" class="alert" style="display:none;"></div>
+
+          <form id="reset-form" class="signin-form">
             <div class="form-group">
-              <input type="email" name="email" placeholder="Ajouter votre adresse email" required>
+              <input type="email" id="reset-email" name="email" placeholder="Ajouter votre adresse email" required>
             </div>
             <div class="form-group">
               <button type="submit">Envoyer le lien</button>
@@ -274,6 +278,66 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/auth.js"></script>
+
+  <script>
+  document.getElementById('reset-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    var email = document.getElementById('reset-email').value.trim();
+    var btn = this.querySelector('button[type="submit"]');
+    var originalText = btn.textContent;
+
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours...';
+
+    try {
+      var client = window.supabaseClient;
+      if (!client) {
+        showResetAlert('Erreur de connexion au serveur. Réessayez.', 'danger');
+        btn.disabled = false;
+        btn.textContent = originalText;
+        return;
+      }
+
+      var result = await client.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + '/reinitialiser-mot-de-passe.html'
+      });
+
+      if (result.error) {
+        showResetAlert('Erreur : ' + result.error.message, 'danger');
+        btn.disabled = false;
+        btn.textContent = originalText;
+        return;
+      }
+
+      showResetAlert('Un lien de réinitialisation a été envoyé à votre adresse e-mail.', 'success');
+      btn.disabled = false;
+      btn.textContent = originalText;
+
+    } catch (err) {
+      console.error('Erreur réinitialisation:', err);
+      showResetAlert('Erreur de connexion au serveur. Réessayez.', 'danger');
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }
+  });
+
+  function showResetAlert(message, type) {
+    var alertDiv = document.getElementById('reset-alert');
+    alertDiv.textContent = message;
+    alertDiv.className = 'alert alert-' + type;
+    alertDiv.style.display = 'block';
+    alertDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    if (type !== 'success') {
+      setTimeout(function() {
+        alertDiv.style.display = 'none';
+      }, 5000);
+    }
+  }
+  </script>
+
   </body>
 </html>

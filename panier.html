@@ -256,7 +256,8 @@
           <li class="nav-item"><a href="notre_resto.html" class="nav-link">Notre restaurant</a></li>
           <li class="nav-item"><a href="reservation.html" class="nav-link">Réserver une table</a></li>
           <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-          <li class="nav-item"><a href="connexion.html" class="nav-link">Connexion</a></li>
+          <li class="nav-item" id="nav-connexion"><a href="connexion.html" class="nav-link">Connexion</a></li>
+          <li class="nav-item" id="nav-logout" style="display:none;"><a href="#" class="nav-link" id="logout-link"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
           <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
           
           <!-- 🛒 Panier -->
@@ -311,24 +312,16 @@
             <div class="cart-summary">
               <h4 class="mb-4">Récapitulatif</h4>
 
-              <!-- Options de livraison -->
+              <!-- Mode de récupération -->
               <div class="delivery-options">
                 <h6>Mode de récupération</h6>
                 <label class="delivery-option selected">
                   <input type="radio" name="delivery" value="pickup" checked>
                   <div>
                     <strong>À emporter</strong><br>
-                    <small>Gratuit - Retrait au restaurant</small>
+                    <small>Retrait au restaurant</small>
                   </div>
                   <span class="ml-auto font-weight-bold">Gratuit</span>
-                </label>
-                <label class="delivery-option">
-                  <input type="radio" name="delivery" value="delivery">
-                  <div>
-                    <strong>Livraison</strong><br>
-                    <small>Livraison à domicile</small>
-                  </div>
-                  <span class="ml-auto font-weight-bold">3,00 €</span>
                 </label>
               </div>
 
@@ -336,10 +329,6 @@
               <div class="summary-row">
                 <span>Sous-total:</span>
                 <span id="subtotal">0,00 €</span>
-              </div>
-              <div class="summary-row">
-                <span>Frais de livraison:</span>
-                <span id="delivery-fee">0,00 €</span>
               </div>
               <div class="summary-row total">
                 <span>Total TTC:</span>
@@ -437,6 +426,8 @@
   <script src="js/scrollax.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/cart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/auth.js"></script>
     
   </body>
 </html>

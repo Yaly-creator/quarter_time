@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
     /* === Header noir === */
     header,
@@ -170,6 +171,28 @@
       border: 1px solid #f5c6cb;
       color: #721c24;
     }
+
+    /* Oeil toggle mot de passe */
+    .password-wrap {
+      position: relative;
+    }
+
+    .password-wrap input {
+      padding-right: 45px !important;
+    }
+
+    .password-wrap .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      cursor: pointer;
+      color: #999;
+      font-size: 16px;
+    }
+
+    .password-wrap .toggle-password:hover {
+      color: #FFD700;
+    }
     </style>
   </head>
   <body>
@@ -209,7 +232,8 @@
         <li class="nav-item"><a href="notre_resto.html" class="nav-link">Notre restaurant</a></li>
         <li class="nav-item"><a href="reservation.html" class="nav-link">Réserver une table</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-        <li class="nav-item active"><a href="connexion.html" class="nav-link">Connexion</a></li>
+        <li class="nav-item active" id="nav-connexion"><a href="connexion.html" class="nav-link">Connexion</a></li>
+        <li class="nav-item" id="nav-logout" style="display:none;"><a href="#" class="nav-link" id="logout-link"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
         <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
         
         <!-- 🛒 Panier -->
@@ -263,14 +287,20 @@
             </div>
 
             <!-- Mot de passe -->
-            <div class="form-group">
+            <div class="form-group password-wrap">
               <input type="password" id="password" name="password" placeholder="Mot de passe * (min. 8 caractères)" required minlength="8">
+              <span class="toggle-password" data-target="password">
+                <i class="fas fa-eye-slash"></i>
+              </span>
               <div id="password-error" class="error-message">Le mot de passe doit contenir au moins 8 caractères</div>
             </div>
 
             <!-- Confirmation mot de passe -->
-            <div class="form-group">
+            <div class="form-group password-wrap">
               <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmer le mot de passe *" required>
+              <span class="toggle-password" data-target="confirm_password">
+                <i class="fas fa-eye-slash"></i>
+              </span>
               <div id="confirm-password-error" class="error-message">Les mots de passe ne correspondent pas</div>
             </div>
 
@@ -433,9 +463,13 @@
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
 
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/auth.js"></script>
+
   <!-- Script de validation du formulaire -->
   <script>
-    document.getElementById('signup-form').addEventListener('submit', function(e) {
+    document.getElementById('signup-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       
       // Récupération des valeurs
@@ -490,64 +524,63 @@
       
       // Si pas d'erreur, soumettre le formulaire
       if (!hasError) {
-        // Préparer les données
-        const userData = {
-          prenom: prenom,
-          nom: nom,
-          email: email,
-          telephone: telephone,
-          password: password,
-          adresse: adresse,
-          code_postal: codePostal,
-          ville: ville,
-          newsletter: newsletter
-        };
-        
-        // Désactiver le bouton pendant la soumission
         const submitBtn = document.getElementById('submit-btn');
         submitBtn.disabled = true;
         submitBtn.textContent = 'Création du compte...';
-        
-        // TODO: Intégration avec Supabase
-        // Pour l'instant, simuler une inscription réussie
-        setTimeout(() => {
-          showAlert('Compte créé avec succès ! Redirection...', 'success');
-          
-          // Redirection vers la page de connexion après 2 secondes
-          setTimeout(() => {
-            window.location.href = 'connexion.html';
-          }, 2000);
-        }, 1000);
-        
-        // Note: Dans la version finale, vous devrez intégrer avec Supabase Auth
-        // Exemple de code à ajouter:
-        /*
-        fetch('YOUR_SUPABASE_FUNCTION_URL/create-user', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(userData)
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            showAlert('Compte créé avec succès ! Redirection...', 'success');
-            setTimeout(() => {
-              window.location.href = 'connexion.html';
-            }, 2000);
-          } else {
-            showAlert('Erreur: ' + data.message, 'danger');
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Créer mon compte';
-          }
-        })
-        .catch(error => {
-          showAlert('Erreur lors de la création du compte', 'danger');
+
+        const client = window.supabaseClient;
+        if (!client) {
+          showAlert('Erreur de connexion au serveur. Réessayez.', 'danger');
           submitBtn.disabled = false;
           submitBtn.textContent = 'Créer mon compte';
+          return;
+        }
+
+        const { data, error: signUpError } = await client.auth.signUp({
+          email: email,
+          password: password,
+          options: {
+            emailRedirectTo: window.location.origin + '/premiere-connexion.html',
+            data: {
+              prenom: prenom,
+              nom: nom,
+              telephone: telephone,
+              adresse: adresse,
+              code_postal: codePostal,
+              ville: ville,
+              newsletter: newsletter
+            }
+          }
         });
-        */
+
+        if (signUpError) {
+          console.error('Erreur Supabase signUp:', signUpError);
+          let message = 'Erreur lors de la création du compte';
+          if (signUpError.message.includes('already registered')) {
+            message = 'Un compte avec cet e-mail existe déjà';
+          } else if (signUpError.message.includes('Password')) {
+            message = 'Le mot de passe ne respecte pas les critères de sécurité';
+          } else if (signUpError.message.includes('rate limit') || signUpError.status === 429) {
+            message = 'Trop de tentatives. Veuillez patienter quelques minutes avant de réessayer.';
+          }
+          showAlert(message, 'danger');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Créer mon compte';
+          return;
+        }
+
+        // Vérifier si l'email existe déjà (Supabase ne renvoie pas d'erreur dans ce cas)
+        if (data.user && data.user.identities && data.user.identities.length === 0) {
+          showAlert('Vous avez déjà un compte avec cet email', 'danger');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Créer mon compte';
+          return;
+        }
+
+        showAlert('Inscription réussie, consultez vos mails pour vous connecter', 'success');
+        setTimeout(() => {
+          window.location.href = 'connexion.html';
+        }, 3000);
       }
     });
     
@@ -557,7 +590,8 @@
       alertDiv.textContent = message;
       alertDiv.className = 'alert alert-' + type;
       alertDiv.style.display = 'block';
-      
+      alertDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
       // Masquer l'alerte après 5 secondes (sauf si c'est un succès)
       if (type !== 'success') {
         setTimeout(() => {
@@ -577,6 +611,25 @@
       } else {
         errorDiv.style.display = 'none';
       }
+    });
+
+    // Toggle affichage mot de passe
+    document.querySelectorAll('.toggle-password').forEach(function(toggle) {
+      toggle.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const input = document.getElementById(targetId);
+        const icon = this.querySelector('i');
+
+        if (input.type === 'password') {
+          input.type = 'text';
+          icon.classList.remove('fa-eye-slash');
+          icon.classList.add('fa-eye');
+        } else {
+          input.type = 'password';
+          icon.classList.remove('fa-eye');
+          icon.classList.add('fa-eye-slash');
+        }
+      });
     });
   </script>
 

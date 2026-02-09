@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Quarter Time - Restaurant de type buffet</title>
+    <title>Quarter Time - Réinitialiser le mot de passe</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
-    
+
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -22,27 +22,28 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-    
+
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>/* === Header noir === */
+    <style>
+    /* === Header noir === */
     header,
     .navbar,
     .ftco-navbar-light {
-      background-color: #000 !important;  /* noir profond */
+      background-color: #000 !important;
     }
 
     .navbar-nav > li > a {
-      color: #fff !important;   /* liens blancs */
+      color: #fff !important;
     }
 
     .navbar-nav > li > a:hover,
     .navbar-nav > li.active > a {
-      color: #FFD700 !important; /* hover + actif en jaune */
+      color: #FFD700 !important;
     }
-        /* Supprime l’espace au-dessus du header */
+
     header,
     .navbar,
     .ftco-navbar-light {
@@ -50,108 +51,52 @@
       padding-top: 0 !important;
       top: 0;
     }
+
     body {
       margin: 0;
       padding: 0;
     }
 
-    /* Titre du formulaire */
-    .login-wrap h3 {
-      color: #000 !important;
+    .back-arrow {
+      position: relative;
+      margin-top: 20px;
+      text-align: center;
     }
 
-    /* Champs du formulaire */
-    .signin-form input[type="email"],
-    .signin-form input[type="password"],
-    .signin-form input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      padding-right: 45px;
-      margin-bottom: 15px;
-      background: #fff;
-      border: 2px solid #FFD700;
-      border-radius: 5px;
-      color: #000;
+    .back-arrow a {
+      color: #999;
+      font-size: 14px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .back-arrow a:hover {
+      color: #FFD700;
+    }
+
+    .back-arrow i {
       font-size: 16px;
     }
 
-    .signin-form input::placeholder {
-      color: #999;
-    }
-
-    /* Bouton */
-    .signin-form button {
-      width: 100%;
-      padding: 12px;
-      background-color: #FFD700;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      font-size: 18px;
-      color: #000;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .signin-form button:hover {
-      background-color: #FFA500;
-      color: #fff;
-    }
-
-    .signin-form button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-
-    /* Alertes */
-    .alert {
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      display: none;
-    }
-
-    .alert-success {
-      background-color: #d4edda;
-      border: 1px solid #c3e6cb;
-      color: #155724;
-    }
-
-    .alert-danger {
-      background-color: #f8d7da;
-      border: 1px solid #f5c6cb;
-      color: #721c24;
-    }
-
-    /* Liens */
-    .text-center a {
-      color: #FFD700;
-      font-weight: bold;
-    }
-
-    .text-center a:hover {
-      color: #FFA500;
-    }
-
-    /* Oeil toggle mot de passe */
     .password-wrap {
       position: relative;
     }
 
-    .password-wrap .toggle-password {
+    .toggle-password {
       position: absolute;
-      right: 12px;
+      right: 15px;
       top: 50%;
       transform: translateY(-50%);
       cursor: pointer;
       color: #999;
-      font-size: 16px;
     }
 
-    .password-wrap .toggle-password:hover {
+    .toggle-password:hover {
       color: #FFD700;
     }
-
     </style>
   </head>
   <body>
@@ -176,7 +121,7 @@
 		    </div>
 		  </div>
     </div>
-    
+
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	      <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Quarter Time" height="140"></a>
@@ -184,18 +129,18 @@
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
-	      
+
     <div class="collapse navbar-collapse" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a href="index.html" class="nav-link">Accueil</a></li>
-        <li class="nav-item active"><a href="notre_resto.html" class="nav-link">Notre restaurant</a></li>
+        <li class="nav-item"><a href="notre_resto.html" class="nav-link">Notre restaurant</a></li>
         <li class="nav-item"><a href="reservation.html" class="nav-link">Réserver une table</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
         <li class="nav-item" id="nav-connexion"><a href="connexion.html" class="nav-link">Connexion</a></li>
         <li class="nav-item" id="nav-logout" style="display:none;"><a href="#" class="nav-link" id="logout-link"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
         <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
 
-        <!-- 🛒 Panier -->
+        <!-- Panier -->
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="fas fa-shopping-cart"></i> Panier
@@ -212,28 +157,36 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6 col-lg-5">
-        <div class="login-wrap p-4 p-md-5" style="background: #fff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-          <h3 class="mb-4 text-center">Connexion</h3>
-          <!-- Message d'alerte -->
-          <div id="login-alert" class="alert"></div>
+        <div class="login-wrap p-4 p-md-5">
+          <h3 class="mb-4 text-center">Réinitialisez votre mot de passe</h3>
+          <p class="text-center text-muted mb-4">Entrez votre nouveau mot de passe ci-dessous</p>
 
-          <form id="login-form" class="signin-form">
-          <div class="form-group">
-            <input type="email" id="login-email" name="email" placeholder="Adresse e-mail" required>
-          </div>
-          <div class="form-group password-wrap">
-            <input type="password" id="login-password" name="password" placeholder="Mot de passe" required>
-            <span class="toggle-password" id="toggle-password">
-              <i class="fas fa-eye-slash"></i>
-            </span>
-          </div>
-          <div class="form-group">
-            <button type="submit" id="login-btn">Se connecter</button>
-          </div>
+          <div id="newpw-alert" class="alert" style="display:none;"></div>
+
+          <form id="newpw-form" class="signin-form">
+            <div class="form-group password-wrap">
+              <input type="password" id="newpw-password" name="password" placeholder="Nouveau mot de passe" required minlength="6">
+              <span class="toggle-password" id="toggle-password-1">
+                <i class="fas fa-eye-slash"></i>
+              </span>
+            </div>
+            <div class="form-group password-wrap">
+              <input type="password" id="newpw-confirm" name="password_confirm" placeholder="Confirmer le mot de passe" required minlength="6">
+              <span class="toggle-password" id="toggle-password-2">
+                <i class="fas fa-eye-slash"></i>
+              </span>
+            </div>
+            <div class="form-group">
+              <button type="submit" id="newpw-btn">Réinitialiser le mot de passe</button>
+            </div>
           </form>
 
-          <p class="text-center"><a href="mot-de-passe-oublie.html">Mot de passe oublié ?</a></p>
-          <p class="text-center">Pas encore inscrit ? <a href="inscription.html">Créer un compte</a></p>
+          <div class="back-arrow">
+            <a href="connexion.html">
+              <i class="ion-ios-arrow-back"></i>
+              Retour à la connexion
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -246,8 +199,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center mb-4">
-            <h1 class="mb-2 bread">Connexion</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Accueil <i class="ion-ios-arrow-forward"></i></a></span> <span>Connexion<i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-2 bread">Réinitialisation</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Accueil <i class="ion-ios-arrow-forward"></i></a></span> <span>Réinitialiser le mot de passe<i class="ion-ios-arrow-forward"></i></span></p>
           </div>
         </div>
       </div>
@@ -261,7 +214,7 @@
               <h2 class="ftco-heading-2">Quarter Time</h2>
               <p>Une cuisine généreuse, savoureuse et halal, préparée avec passion, pour régaler toute la famille sans se ruiner.
 
-📍 Rendez-vous à Quarter Time Beauvais – l’adresse incontournable pour bien manger au meilleur prix !</p>
+📍 Rendez-vous à Quarter Time Beauvais – l'adresse incontournable pour bien manger au meilleur prix !</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
                 <li class="ftco-animate"><a href="https://www.tiktok.com/@quartertime.beauvais?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i>
 
@@ -322,14 +275,16 @@
           <div class="col-md-12 text-center">
 
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
           </div>
         </div>
       </div>
     </footer>
 
+
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -345,99 +300,91 @@
   <script src="js/bootstrap-datepicker.js"></script>
   <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-
-  <!-- Toggle affichage mot de passe -->
-  <script>
-    document.getElementById('toggle-password').addEventListener('click', function() {
-      var passwordInput = document.getElementById('login-password');
-      var icon = this.querySelector('i');
-
-      if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        icon.classList.remove('fa-eye-slash');
-        icon.classList.add('fa-eye');
-      } else {
-        passwordInput.type = 'password';
-        icon.classList.remove('fa-eye');
-        icon.classList.add('fa-eye-slash');
-      }
-    });
-  </script>
-
-  <!-- Supabase JS Client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/auth.js"></script>
 
   <script>
-    // Gestion du formulaire de connexion
-    document.getElementById('login-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      const email = document.getElementById('login-email').value.trim();
-      const password = document.getElementById('login-password').value;
-      const loginBtn = document.getElementById('login-btn');
-
-      loginBtn.disabled = true;
-      loginBtn.textContent = 'Connexion en cours...';
-
-      try {
-        var client = window.supabaseClient;
-        if (!client) {
-          showAlert('Erreur de connexion au serveur. Réessayez.', 'danger');
-          loginBtn.disabled = false;
-          loginBtn.textContent = 'Se connecter';
-          return;
-        }
-
-        const { data, error } = await client.auth.signInWithPassword({
-          email: email,
-          password: password
-        });
-
-        if (error) {
-          let message = 'Erreur lors de la connexion';
-          if (error.message.includes('Invalid login credentials')) {
-            message = 'E-mail ou mot de passe incorrect';
-          } else if (error.message.includes('Email not confirmed')) {
-            message = 'Veuillez confirmer votre adresse e-mail avant de vous connecter';
-          }
-          showAlert(message, 'danger');
-          loginBtn.disabled = false;
-          loginBtn.textContent = 'Se connecter';
-          return;
-        }
-
-        showAlert('Connexion réussie ! Redirection...', 'success');
-        // Afficher immédiatement Se déconnecter dans la navbar
-        document.getElementById('nav-logout').style.display = '';
-        document.getElementById('nav-connexion').style.display = 'none';
-        setTimeout(function() {
-          window.location.href = 'menu.html';
-        }, 2000);
-
-      } catch (err) {
-        console.error('Erreur connexion:', err);
-        showAlert('Erreur de connexion au serveur. Réessayez.', 'danger');
-        loginBtn.disabled = false;
-        loginBtn.textContent = 'Se connecter';
+  // Toggle visibilité mot de passe
+  document.querySelectorAll('.toggle-password').forEach(function(toggle) {
+    toggle.addEventListener('click', function() {
+      var input = this.parentElement.querySelector('input');
+      var icon = this.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
       }
     });
+  });
 
-    function showAlert(message, type) {
-      const alertDiv = document.getElementById('login-alert');
-      alertDiv.textContent = message;
-      alertDiv.className = 'alert alert-' + type;
-      alertDiv.style.display = 'block';
-      alertDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // Soumission du formulaire de réinitialisation
+  document.getElementById('newpw-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-      if (type !== 'success') {
-        setTimeout(function() {
-          alertDiv.style.display = 'none';
-        }, 5000);
-      }
+    var password = document.getElementById('newpw-password').value;
+    var confirm = document.getElementById('newpw-confirm').value;
+    var btn = document.getElementById('newpw-btn');
+    var originalText = btn.textContent;
+
+    if (password !== confirm) {
+      showNewPwAlert('Les mots de passe ne correspondent pas.', 'danger');
+      return;
     }
+
+    btn.disabled = true;
+    btn.textContent = 'Réinitialisation en cours...';
+
+    try {
+      var client = window.supabaseClient;
+      if (!client) {
+        showNewPwAlert('Erreur de connexion au serveur. Réessayez.', 'danger');
+        btn.disabled = false;
+        btn.textContent = originalText;
+        return;
+      }
+
+      var result = await client.auth.updateUser({ password: password });
+
+      if (result.error) {
+        showNewPwAlert('Erreur : ' + result.error.message, 'danger');
+        btn.disabled = false;
+        btn.textContent = originalText;
+        return;
+      }
+
+      showNewPwAlert('Mot de passe réinitialisé avec succès ! Redirection...', 'success');
+      setTimeout(function() {
+        window.location.href = 'connexion.html';
+      }, 2000);
+
+    } catch (err) {
+      console.error('Erreur réinitialisation:', err);
+      showNewPwAlert('Erreur de connexion au serveur. Réessayez.', 'danger');
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }
+  });
+
+  function showNewPwAlert(message, type) {
+    var alertDiv = document.getElementById('newpw-alert');
+    alertDiv.textContent = message;
+    alertDiv.className = 'alert alert-' + type;
+    alertDiv.style.display = 'block';
+    alertDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    if (type !== 'success') {
+      setTimeout(function() {
+        alertDiv.style.display = 'none';
+      }, 5000);
+    }
+  }
   </script>
 
   </body>
