@@ -53,14 +53,13 @@
 		    </div>
 		  </div>
     </div>
-	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="ftco-navbar">
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Quarter Time"></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
+	      <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Quarter Time" height="140"></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
 
 
 
@@ -86,12 +85,6 @@
     </div>
   </div>
 </nav>
-
-	        </ul>
-	      </div>
-	      </div>
-	    </div>
-	  </nav>
     <!-- END nav -->
     
     <!-- Bouton Menu Sticky Global -->
@@ -621,38 +614,6 @@
 			</div>
 		</section>
 
-		<section class="ftco-section ftco-wrap-about">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-7 d-flex">
-						<div class="img img-1 mr-md-2" style="background-image: url(images/chef.jpeg);"></div>
-						<div class="img img-2 ml-md-2" style="background-image: url(images/photo_façade_Quarter_Time.jpeg);"></div>
-					</div>
-					<div class="col-md-5 wrap-about pt-5 pt-md-5 pb-md-3 ftco-animate">
-	          <div class="heading-section mb-4 my-5 my-md-0">
-	          	<span class="subheading">A propos</span>
-	            <h2 class="mb-4">À propos Restaurant Quarter Time</h2>
-	          </div>
-	          <p>Chez Quarter Time Restaurant, le grill est une véritable signature 🔥<br>
-Nous avons imaginé un concept où les grillades généreuses s'allient à des pizzas savoureuses, préparées avec soin pour offrir une expérience authentique.</p>
-
-<p>Poulets braisés, grillades parfumées et pizzas base tomate ou crème fraîche sont élaborés à partir de produits sélectionnés, inspirés des saveurs méditerranéennes et orientales 🍕🍗</p>
-
-<p><strong>Notre engagement :</strong><br>
-✔️ des saveurs intenses<br>
-✔️ des portions généreuses<br>
-✔️ une qualité constante<br>
-✔️ un esprit convivial</p>
-
-<p>Sur place, à emporter ou en réservation, Quarter Time Restaurant vous accueille dans un cadre moderne et chaleureux pour vous faire découvrir le vrai goût du grill, sans limite ✨</p>
-						
-					</div>
-				</div>
-			</div>
-    </section>
-
-		
-		
 		<section class="ftco-section testimony-section img">
 			<div class="overlay"></div>
       <div class="container">
@@ -747,6 +708,36 @@ Merci à toutes les serveuses super sympa</p>
           </div>
         </div>
       </div>
+    </section>
+
+		<section class="ftco-section ftco-wrap-about">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7 d-flex">
+						<div class="img img-1 mr-md-2" style="background-image: url(images/chef.jpeg);"></div>
+						<div class="img img-2 ml-md-2" style="background-image: url(images/photo_façade_Quarter_Time.jpeg);"></div>
+					</div>
+					<div class="col-md-5 wrap-about pt-5 pt-md-5 pb-md-3 ftco-animate">
+	          <div class="heading-section mb-4 my-5 my-md-0">
+	          	<span class="subheading">A propos</span>
+	            <h2 class="mb-4">À propos Restaurant Quarter Time</h2>
+	          </div>
+	          <p>Chez Quarter Time Restaurant, le grill est une véritable signature 🔥<br>
+Nous avons imaginé un concept où les grillades généreuses s'allient à des pizzas savoureuses, préparées avec soin pour offrir une expérience authentique.</p>
+
+<p>Poulets braisés, grillades parfumées et pizzas base tomate ou crème fraîche sont élaborés à partir de produits sélectionnés, inspirés des saveurs méditerranéennes et orientales 🍕🍗</p>
+
+<p><strong>Notre engagement :</strong><br>
+✔️ des saveurs intenses<br>
+✔️ des portions généreuses<br>
+✔️ une qualité constante<br>
+✔️ un esprit convivial</p>
+
+<p>Sur place, à emporter ou en réservation, Quarter Time Restaurant vous accueille dans un cadre moderne et chaleureux pour vous faire découvrir le vrai goût du grill, sans limite ✨</p>
+
+					</div>
+				</div>
+			</div>
     </section>
 		
 		<section class="ftco-section bg-light">
@@ -1013,11 +1004,12 @@ Merci à toutes les serveuses super sympa</p>
             <div class="ftco-footer-widget mb-4">
             	<h2 class="ftco-heading-2">Newsletter</h2>
             	<p>Recevez nos offres spéciales directement dans votre boîte mail.</p>
-              <form action="#" class="subscribe-form">
+              <form action="#" class="subscribe-form" id="newsletter-form">
                 <div class="form-group">
-                  <input type="text" class="form-control mb-2 text-center" placeholder="Entrer votre adresse email">
+                  <input type="email" id="newsletter-email" class="form-control mb-2 text-center" placeholder="Entrer votre adresse email" required>
                   <input type="submit" value="S'abonner" class="form-control submit px-3">
                 </div>
+                <div id="newsletter-message" class="mt-2" style="display:none;"></div>
               </form>
             </div>
           </div>

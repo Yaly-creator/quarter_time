@@ -89,6 +89,7 @@ try {
 				dots: false,
 				autoplayHoverPause: false,
 				items: 1,
+				touchDrag: false,
 				navText : ["<span class='ion-ios-arrow-back'></span>","<span class='ion-ios-arrow-forward'></span>"],
 				responsive:{
 					0:{
@@ -107,6 +108,7 @@ try {
 		}
 		
 		try {
+			var isMobile = window.innerWidth < 768;
 			$('.carousel-testimony').owlCarousel({
 				center: true,
 				loop: true,
@@ -114,6 +116,11 @@ try {
 				margin: 30,
 				stagePadding: 0,
 				nav: false,
+				dots: true,
+				autoplay: true,
+				autoplayTimeout: 5000,
+				touchDrag: !isMobile,
+				mouseDrag: !isMobile,
 				navText: ['<span class="ion-ios-arrow-back">', '<span class="ion-ios-arrow-forward">'],
 				responsive:{
 					0:{
@@ -744,5 +751,108 @@ if (contactForm) {
 		}
 		
 		await submitContactForm(formData);
+	});
+}
+
+// ====================================
+// NEWSLETTER SUBSCRIPTION SYSTEM
+// ====================================
+
+// Fonction pour afficher un message newsletter
+function showNewsletterMessage(message, isSuccess) {
+	const messageEl = document.getElementById('newsletter-message');
+	if (messageEl) {
+		messageEl.textContent = message;
+		messageEl.style.display = 'block';
+		messageEl.style.padding = '8px 12px';
+		messageEl.style.borderRadius = '4px';
+		messageEl.style.fontSize = '14px';
+		messageEl.style.textAlign = 'center';
+		if (isSuccess) {
+			messageEl.style.background = 'rgba(40, 167, 69, 0.2)';
+			messageEl.style.color = '#7dcea0';
+		} else {
+			messageEl.style.background = 'rgba(220, 53, 69, 0.2)';
+			messageEl.style.color = '#f1948a';
+		}
+
+		if (isSuccess) {
+			setTimeout(() => {
+				messageEl.style.display = 'none';
+				messageEl.textContent = '';
+			}, 5000);
+		}
+	}
+}
+
+// Handler pour le formulaire newsletter
+const newsletterForm = document.getElementById('newsletter-form');
+if (newsletterForm) {
+	newsletterForm.addEventListener('submit', async function(e) {
+		e.preventDefault();
+
+		const emailInput = document.getElementById('newsletter-email');
+		const email = emailInput.value.trim().toLowerCase();
+
+		// Validation email
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!email || !emailRegex.test(email)) {
+			showNewsletterMessage('Veuillez entrer une adresse email valide.', false);
+			return;
+		}
+
+		// Vérifier que le client Supabase est disponible
+		if (!window.supabaseClient) {
+			showNewsletterMessage('Erreur de connexion au service. Veuillez réessayer.', false);
+			return;
+		}
+
+		try {
+			// Vérifier si l'email existe déjà
+			const { data: existing, error: selectError } = await window.supabaseClient
+				.from('newsletter_subscribers')
+				.select('id')
+				.eq('email', email)
+				.maybeSingle();
+
+			if (selectError) {
+				console.error('Erreur vérification newsletter:', selectError);
+				showNewsletterMessage('Une erreur est survenue. Veuillez réessayer.', false);
+				return;
+			}
+
+			if (existing) {
+				showNewsletterMessage('Vous êtes déjà abonné', false);
+				return;
+			}
+
+			// Préparer les données à insérer
+			const insertData = { email: email };
+
+			// Si l'utilisateur est connecté, ajouter ses infos
+			const { data: sessionData } = await window.supabaseClient.auth.getSession();
+			if (sessionData && sessionData.session) {
+				insertData.user_id = sessionData.session.user.id;
+				insertData.user_email = sessionData.session.user.email;
+			}
+
+			// Insérer dans la base de données
+			const { error: insertError } = await window.supabaseClient
+				.from('newsletter_subscribers')
+				.insert(insertData);
+
+			if (insertError) {
+				console.error('Erreur insertion newsletter:', insertError);
+				showNewsletterMessage('Une erreur est survenue. Veuillez réessayer.', false);
+				return;
+			}
+
+			showNewsletterMessage('Merci de vous être abonné', true);
+			emailInput.value = '';
+
+		} catch (error) {
+			console.error('Erreur newsletter:', error);
+			showNewsletterMessage('Erreur de connexion. Veuillez réessayer.', false);
+		}
 	});
 }

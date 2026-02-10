@@ -4,13 +4,13 @@
     <title>Quarter Time - Restaurant de type buffet</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
-    
+
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-    
+
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
@@ -58,20 +58,20 @@
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
-	      
+
     <div class="collapse navbar-collapse" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a href="index.html" class="nav-link">Accueil</a></li>
-        <li class="nav-item active"><a href="notre_resto.html" class="nav-link">Notre restaurant</a></li>
-        <li class="nav-item"><a href="reservation.html" class="nav-link">Réserver une table</a></li>
+        <li class="nav-item"><a href="notre_resto.html" class="nav-link">Notre restaurant</a></li>
+        <li class="nav-item active"><a href="reservation.html" class="nav-link">Réserver une table</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
         <li class="nav-item" id="nav-connexion"><a href="connexion.html" class="nav-link">Connexion</a></li>
         <li class="nav-item" id="nav-logout" style="display:none;"><a href="#" class="nav-link" id="logout-link"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
         <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
-        
-        <!-- 🛒 Panier -->
+
+        <!-- Panier -->
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="panier.html" class="nav-link">
             <i class="fas fa-shopping-cart"></i> Panier
             <span class="badge badge-warning" id="cart-count">0</span>
           </a>
@@ -81,7 +81,7 @@
   </div>
 </nav>
     <!-- END nav -->
-    
+
     <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -93,124 +93,128 @@
         </div>
       </div>
     </section>
-		
-		<section class="ftco-section ftco-no-pt ftco-no-pb">
-			<div class="container-fluid px-0">
-				<div class="row d-flex no-gutters">
-          <div class="col-md-6 order-md-last ftco-animate makereservation p-4 p-md-5 pt-5">
-          	<div class="py-md-5">
-	          	<div class="heading-section ftco-animate mb-5">
-		          	<span class="subheading">Réserver une table</span>
-		            <h2 class="mb-4">Faire une réservation</h2>
-		          </div>
-                  
-	            <form id="reservation-form-reservation" action="#">
-	              <div class="row">
-	                <div class="col-md-6">
-	                  <div class="form-group">
-	                    <label for="name-reservation">Nom</label>
-	                    <input type="text" id="name-reservation" name="name" class="form-control" placeholder="Votre nom" required>
-	                  </div>
-	                </div>
-	                <div class="col-md-6">
-	                  <div class="form-group">
-	                    <label for="email-reservation">Email</label>
-	                    <input type="email" id="email-reservation" name="email" class="form-control" placeholder="Votre Email" required>
-	                  </div>
-	                </div>
-	                <div class="col-md-6">
-	                  <div class="form-group">
-	                    <label for="phone-reservation">Téléphone</label>
-	                    <input type="tel" id="phone-reservation" name="phone" class="form-control" placeholder="Votre téléphone" required>
-	                  </div>
-	                </div>
-	                <div class="col-md-6">
-	                  <div class="form-group">
-	                    <label for="book_date_reservation">Date</label>
-	                    <input type="date" class="form-control" id="book_date_reservation" name="date" required>
-	                    <small id="date-error-message" class="form-text text-danger" style="display: none; font-weight: bold;"></small>
-	                  </div>
-	                </div>
-	                <div class="col-md-6">
-	                  <div class="form-group">
-	                    <label for="book_time_reservation">Heure</label>
-	                    <input type="text" class="form-control" id="book_time_reservation" name="time" placeholder="Heure" required>
-	                  </div>
-	                </div>
-	                <div class="col-md-6">
-	                  <div class="form-group">
-	                    <label for="guests-reservation">Personnes</label>
-	                    <div class="select-wrap one-third">
-	                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                      <select id="guests-reservation" name="guests" class="form-control" required>
-	                        <option value="">Personnes</option>
-	                        <option value="1">1</option>
-	                        <option value="2">2</option>
-	                        <option value="3">3</option>
-	                        <option value="4">4</option>
-	                        <option value="5">5</option>
-	                        <option value="6">6</option>
-	                        <option value="7">7</option>
-	                        <option value="8">8</option>
-	                        <option value="9">9</option>
-	                        <option value="10">10+</option>
-	                      </select>
-	                    </div>
-	                  </div>
-	                </div>
-	                <div class="col-md-12">
-	                  <div class="form-group">
-	                    <label for="event_type_reservation">Type d'événement (optionnel)</label>
-	                    <div class="select-wrap one-third">
-	                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                      <select name="event_type" id="event_type_reservation" class="form-control">
-	                        <option value="standard">Réservation standard</option>
-	                        <option value="mariage">Mariage</option>
-	                        <option value="rdv_affaires">RDV d'affaires</option>
-	                        <option value="anniversaire">Anniversaire</option>
-	                      </select>
-	                    </div>
-	                  </div>
-	                </div>
-	                <div class="col-md-12">
-	                  <div class="form-group">
-	                    <label for="details_reservation">Détails supplémentaires (optionnel)</label>
-	                    <textarea name="details" id="details_reservation" cols="30" rows="4" class="form-control" placeholder="Ajoutez ici des informations complémentaires concernant votre réservation ou événement..."></textarea>
-	                  </div>
-	                </div>
-	                <div class="col-md-12 mt-3">
-	                  <div class="form-group">
-	                    <button type="submit" class="btn btn-primary py-3 px-5" id="submit-btn-reservation">
-                          <span class="submit-text">Faire une réservation</span>
-                          <span class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true" style="display: none;"></span>
-                        </button>
-	                  </div>
-	                </div>
-	              </div>
-	            </form>
-                
-                <!-- Message de feedback -->
-                <div id="reservation-message-reservation" class="alert mt-3" role="alert">&nbsp;</div>
-	          </div>
-          </div>
-          <div class="col-md-6 d-flex align-items-stretch pb-5 pb-md-0">
-		  <div class="map-container" style="width: 100%; height: 100%;">
-			<iframe 
-			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.789508411399!2d2.1150390763740208!3d49.41288617141266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e701d0c5d18ff3%3A0x235a3ff54f0c95ff!2sQuarter%20Time%20by%20Q.F.D!5e0!3m2!1sfr!2sfr!4v1756202608466!5m2!1sfr!2sfr" 
-			width="100%" 
-			height="100%" 
-			style="border:0;" 
-			allowfullscreen="" 
-			loading="lazy" 
-			referrerpolicy="no-referrer-when-downgrade">
-			</iframe>
-		  </div>
-</div>
 
+    <section class="ftco-section img" style="background-image: url(images/bg_3.jpg)" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-7 ftco-animate makereservation p-4 px-md-5 pb-md-5">
+            <div class="heading-section ftco-animate mb-5 text-center">
+              <span class="subheading">Réservez une table</span>
+              <h2 class="mb-4">Faire une réservation</h2>
+            </div>
+
+            <form id="reservation-form-reservation" action="#">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name-reservation">Nom</label>
+                    <input type="text" id="name-reservation" name="name" class="form-control" placeholder="Votre nom" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="email-reservation">Email</label>
+                    <input type="email" id="email-reservation" name="email" class="form-control" placeholder="Votre Email" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="phone-reservation">Téléphone</label>
+                    <input type="tel" id="phone-reservation" name="phone" class="form-control" placeholder="Téléphone" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="book_date_reservation">Date</label>
+                    <input type="date" class="form-control" id="book_date_reservation" name="date" required>
+                    <small id="date-error-message" class="form-text text-danger" style="display: none; font-weight: bold;"></small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="book_time_reservation">Heure</label>
+                    <input type="text" class="form-control" id="book_time_reservation" name="time" placeholder="Heure" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="guests-reservation">Personnes</label>
+                    <div class="select-wrap one-third">
+                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                      <select id="guests-reservation" name="guests" class="form-control" required>
+                        <option value="">Personnes</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10+</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="event_type_reservation">Type d'événement (optionnel)</label>
+                    <div class="select-wrap one-third">
+                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                      <select name="event_type" id="event_type_reservation" class="form-control">
+                        <option value="standard">Réservation standard</option>
+                        <option value="mariage">Mariage</option>
+                        <option value="rdv_affaires">RDV d'affaires</option>
+                        <option value="anniversaire">Anniversaire</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="details_reservation">Détails supplémentaires (optionnel)</label>
+                    <textarea name="details" id="details_reservation" cols="30" rows="4" class="form-control" placeholder="Ajoutez ici des informations complémentaires concernant votre réservation ou événement..."></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12 mt-3">
+                  <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary py-3 px-5" id="submit-btn-reservation">
+                      <span class="submit-text">Réserver</span>
+                      <span class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true" style="display: none;"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+            <!-- Message de feedback -->
+            <div id="reservation-message-reservation" class="alert mt-3" role="alert">&nbsp;</div>
+          </div>
         </div>
-			</div>
-		</section>
-		
+      </div>
+    </section>
+
+    <section class="ftco-section ftco-no-pt ftco-no-pb">
+      <div class="container-fluid px-0">
+        <div class="row no-gutters">
+          <div class="col-md-12">
+            <div class="map-container" style="width: 100%; min-height: 400px;">
+              <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.789508411399!2d2.1150390763740208!3d49.41288617141266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e701d0c5d18ff3%3A0x235a3ff54f0c95ff!2sQuarter%20Time%20by%20Q.F.D!5e0!3m2!1sfr!2sfr!4v1756202608466!5m2!1sfr!2sfr"
+              width="100%"
+              height="400"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
@@ -219,7 +223,7 @@
               <h2 class="ftco-heading-2">Quarter Time</h2>
               <p>Une cuisine généreuse, savoureuse et halal, préparée avec passion, pour régaler toute la famille sans se ruiner.
 
-📍 Rendez-vous à Quarter Time Beauvais – l’adresse incontournable pour bien manger au meilleur prix !</p>
+📍 Rendez-vous à Quarter Time Beauvais – l'adresse incontournable pour bien manger au meilleur prix !</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
                 <li class="ftco-animate"><a href="https://www.tiktok.com/@quartertime.beauvais?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i>
 
@@ -267,11 +271,12 @@
             <div class="ftco-footer-widget mb-4">
             	<h2 class="ftco-heading-2">Newsletter</h2>
             	<p>Recevez nos offres spéciales directement dans votre boîte mail.</p>
-              <form action="#" class="subscribe-form">
+              <form action="#" class="subscribe-form" id="newsletter-form">
                 <div class="form-group">
-                  <input type="text" class="form-control mb-2 text-center" placeholder="Entrer votre adresse email">
+                  <input type="email" id="newsletter-email" class="form-control mb-2 text-center" placeholder="Entrer votre adresse email" required>
                   <input type="submit" value="S'abonner" class="form-control submit px-3">
                 </div>
+                <div id="newsletter-message" class="mt-2" style="display:none;"></div>
               </form>
             </div>
           </div>
@@ -280,12 +285,12 @@
           <div class="col-md-12 text-center">
 
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
           </div>
         </div>
       </div>
     </footer>
-  
+
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
@@ -308,6 +313,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/auth.js"></script>
 

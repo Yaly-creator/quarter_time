@@ -1247,11 +1247,12 @@
             <div class="ftco-footer-widget mb-4">
             	<h2 class="ftco-heading-2">Newsletter</h2>
             	<p>Recevez nos offres spéciales directement dans votre boîte mail.</p>
-              <form action="#" class="subscribe-form">
+              <form action="#" class="subscribe-form" id="newsletter-form">
                 <div class="form-group">
-                  <input type="text" class="form-control mb-2 text-center" placeholder="Entrer votre adresse email">
+                  <input type="email" id="newsletter-email" class="form-control mb-2 text-center" placeholder="Entrer votre adresse email" required>
                   <input type="submit" value="S'abonner" class="form-control submit px-3">
                 </div>
+                <div id="newsletter-message" class="mt-2" style="display:none;"></div>
               </form>
             </div>
           </div>

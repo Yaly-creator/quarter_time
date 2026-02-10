@@ -8362,6 +8362,14 @@ h1, h2, h3, h4, h5,
       transition: .3s all ease-out; }
     .ftco-navbar-light.scrolled .navbar-brand {
       color: #000000; }
+    @media (max-width: 991.98px) {
+      .ftco-navbar-light.scrolled {
+        margin-top: 0px !important; }
+      .ftco-navbar-light.scrolled .navbar-toggler {
+        color: rgba(255, 255, 255, 0.5) !important;
+        border-color: rgba(255, 255, 255, 0.1) !important; }
+      .ftco-navbar-light.scrolled .navbar-brand {
+        color: #fff !important; } }
 
 .navbar-brand {
   font-weight: 900;
@@ -8404,6 +8412,12 @@ h1, h2, h3, h4, h5,
           border-bottom: 2px solid rgba(255, 255, 255, 0.1); }
           .hero-wrap.hero-wrap-2 .slider-text .breadcrumbs span a {
             color: #fff; }
+  @media (max-width: 991.98px) {
+    .hero-wrap.hero-wrap-2 {
+      height: 300px; }
+    .hero-wrap.hero-wrap-2 .slider-text {
+      height: 300px;
+      padding-bottom: 90px; } }
 
 .owl-carousel {
   position: relative; }
@@ -8698,6 +8712,11 @@ h1, h2, h3, h4, h5,
       -ms-border-radius: 50%;
       border-radius: 50%; }
 
+.ftco-wrap-about,
+.ftco-wrap-about * {
+  -webkit-transform: none !important;
+  transform: none !important; }
+
 .ftco-wrap-about {
   background-position: bottom center !important; }
   .ftco-wrap-about .heading-section h2 {
@@ -8706,13 +8725,17 @@ h1, h2, h3, h4, h5,
     width: 100%; }
   @media (min-width: 992px) {
     .ftco-wrap-about .img-1 {
-      margin-top: -30px; } }
+      margin-top: 0; } }
   @media (min-width: 992px) {
     .ftco-wrap-about .img-2 {
-      margin-bottom: -30px; } }
+      margin-bottom: 0; } }
 
 @media (max-width: 767.98px) {
-  .img-2 {
+  .ftco-wrap-about .col-md-7 {
+    gap: 10px; }
+  .ftco-wrap-about .img-1,
+  .ftco-wrap-about .img-2 {
+    margin-top: 0;
     height: 700px; } }
 
 .video {
@@ -9309,6 +9332,10 @@ textarea.form-control {
     margin: 0; }
   .testimony-section .owl-carousel .owl-stage-outer {
     position: relative; }
+  .testimony-section .owl-carousel .owl-stage {
+    touch-action: pan-y !important; }
+  .home-slider.owl-drag .owl-item {
+    touch-action: pan-y !important; }
   .testimony-section .owl-nav {
     position: absolute;
     top: 100%;
@@ -10070,14 +10097,17 @@ body {
 /* --- Corrige la section à propos sur tablette et mobile --- */
 @media (max-width: 1024px) {
   .ftco-wrap-about {
-    overflow: hidden; /* masque tout ce qui dépasse */
-    max-height: 650px; /* limite la hauteur pour couper le blanc */
+    overflow: visible;
+    max-height: none;
+    height: auto;
   }
 }
 
 @media (max-width: 768px) {
   .ftco-wrap-about {
-    max-height: 500px; /* rogne encore plus bas pour mobile */
+    overflow: visible;
+    max-height: none;
+    height: auto;
   }
 }
 
