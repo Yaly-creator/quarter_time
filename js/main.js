@@ -551,7 +551,7 @@ async function submitReservation(formData, formId, messageElementId) {
 		
 		if (response.ok && result.ok) {
 			// Succès
-			showMessage(messageElementId, '✅ Réservation confirmée ! Un email de confirmation vous a été envoyé.', true);
+			showMessage(messageElementId, '✅ Réservation confirmée, à bientôt au restaurant Quarter Time !', true);
 			
 			// Réinitialiser le formulaire
 			document.getElementById(formId).reset();
