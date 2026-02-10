@@ -129,7 +129,8 @@ class ShoppingCart {
     const total = this.getTotal();
 
     subtotalEl.textContent = `${subtotal.toFixed(2)} €`;
-    document.getElementById('delivery-fee').textContent = `${this.deliveryFee.toFixed(2)} €`;
+    const deliveryFeeEl = document.getElementById('delivery-fee');
+    if (deliveryFeeEl) deliveryFeeEl.textContent = `${this.deliveryFee.toFixed(2)} €`;
     document.getElementById('total').textContent = `${total.toFixed(2)} €`;
   }
 
@@ -220,33 +221,57 @@ class ShoppingCart {
     });
   }
 
-  // Valider la commande
-  checkout() {
+  // Valider la commande - Redirection vers Stripe Checkout
+  async checkout() {
     if (this.items.length === 0) {
       alert('Votre panier est vide !');
       return;
     }
 
+    const checkoutBtn = document.getElementById('checkout-btn');
     const deliveryMode = document.querySelector('input[name="delivery"]:checked').value;
-    const total = this.getTotal();
 
-    // Pour l'instant, on affiche juste une confirmation
-    // Plus tard, cela pourrait rediriger vers une page de paiement
-    const message = `
-Récapitulatif de votre commande:
+    // Désactiver le bouton pendant le chargement
+    if (checkoutBtn) {
+      checkoutBtn.disabled = true;
+      checkoutBtn.innerHTML = '<span class="spinner-border spinner-border-sm mr-2"></span>Redirection vers le paiement...';
+    }
 
-Articles: ${this.items.length}
-Mode: ${deliveryMode === 'pickup' ? 'À emporter' : 'Livraison'}
-Total: ${total.toFixed(2)} €
+    try {
+      const SUPABASE_URL = 'https://ljbghtwstlwtqrwrzcat.supabase.co';
+      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqYmdodHdzdGx3dHFyd3J6Y2F0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3MDYyOTcsImV4cCI6MjA4NTI4MjI5N30.ITL_iy5w2ppxvm2yMQaJ68gbBNm272wkK2wFc6m-k5M';
 
-Votre commande est prête à être validée !
-(Cette fonctionnalité sera bientôt disponible)
-    `;
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/create-checkout-session`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify({
+          items: this.items,
+          deliveryMode: deliveryMode,
+        }),
+      });
 
-    alert(message);
+      const data = await response.json();
 
-    // TODO: Implémenter l'envoi de la commande au backend
-    // Rediriger vers une page de confirmation/paiement
+      if (data.ok && data.url) {
+        // Rediriger vers la page de paiement Stripe
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || 'Erreur lors de la création du paiement');
+      }
+    } catch (error) {
+      console.error('Erreur checkout:', error);
+      alert('Une erreur est survenue. Veuillez réessayer.');
+
+      // Réactiver le bouton
+      if (checkoutBtn) {
+        checkoutBtn.disabled = false;
+        checkoutBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Valider la commande';
+      }
+    }
   }
 
   // Vider le panier
