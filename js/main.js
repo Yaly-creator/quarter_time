@@ -832,8 +832,16 @@ if (newsletterForm) {
 			// Si l'utilisateur est connecté, ajouter ses infos
 			const { data: sessionData } = await window.supabaseClient.auth.getSession();
 			if (sessionData && sessionData.session) {
-				insertData.user_id = sessionData.session.user.id;
-				insertData.user_email = sessionData.session.user.email;
+				const user = sessionData.session.user;
+				const meta = user.user_metadata || {};
+				insertData.user_id = user.id;
+				insertData.user_email = user.email;
+				if (meta.prenom) insertData.prenom = meta.prenom;
+				if (meta.nom) insertData.nom = meta.nom;
+				if (meta.telephone) insertData.telephone = meta.telephone;
+				if (meta.adresse) insertData.adresse = meta.adresse;
+				if (meta.code_postal) insertData.code_postal = meta.code_postal;
+				if (meta.ville) insertData.ville = meta.ville;
 			}
 
 			// Insérer dans la base de données
