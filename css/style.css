@@ -10141,6 +10141,9 @@ body:not(.menu-show) {
   .ftco-section.ftco-no-pt.ftco-no-pb {
     display: none !important;
   }
+  .ftco-section.ftco-no-pt.ftco-no-pb.ftco-map-section {
+    display: block !important;
+  }
 
   /* Ajuster le padding-top sur mobile */
   body {
