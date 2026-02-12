@@ -5,7 +5,11 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(supabase secrets set:*)",
-      "Bash(xxd:*)"
+      "Bash(xxd:*)",
+      "Bash(git init:*)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\PCIetF\\Documents\\GitHub\\hweb-dashboard\\js"
     ]
   }
 }

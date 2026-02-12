@@ -10307,3 +10307,22 @@ button[type=" submit\]:disabled {
 .makereservation {
  position: relative;
 }
+
+/* Preparation time styling */
+.prep-time {
+  color: #F96D00;
+  font-size: 14px;
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.prep-time i {
+  color: #F96D00;
+  font-size: 16px;
+}
+
+.prep-time strong {
+  font-weight: 600;
+}

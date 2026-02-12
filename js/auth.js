@@ -23,15 +23,18 @@
     var session = result.data.session;
     var navConnexion = document.getElementById('nav-connexion');
     var navLogout = document.getElementById('nav-logout');
+    var navOrders = document.getElementById('nav-orders');
 
     if (!navConnexion || !navLogout) return;
 
     if (session) {
       navConnexion.style.display = 'none';
       navLogout.style.display = '';
+      if (navOrders) navOrders.style.display = '';
     } else {
       navConnexion.style.display = '';
       navLogout.style.display = 'none';
+      if (navOrders) navOrders.style.display = 'none';
     }
   });
 

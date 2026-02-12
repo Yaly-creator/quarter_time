@@ -159,6 +159,7 @@ class ShoppingCart {
         <div class="cart-item-details">
           <h5 class="cart-item-name">${item.name}</h5>
           <p class="cart-item-description">${item.description || ''}</p>
+          ${item.prepTime ? `<p class="prep-time"><i class="far fa-clock"></i> <strong>Temps de préparation : ${item.prepTime} min</strong></p>` : ''}
           <span class="cart-item-price">${item.price.toFixed(2)} €</span>
         </div>
         <div class="d-flex flex-column align-items-end">
