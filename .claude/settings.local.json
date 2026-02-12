@@ -6,7 +6,9 @@
       "Bash(git push:*)",
       "Bash(supabase secrets set:*)",
       "Bash(xxd:*)",
-      "Bash(git init:*)"
+      "Bash(git init:*)",
+      "Bash(supabase --version:*)",
+      "Bash(supabase functions deploy:*)"
     ],
     "additionalDirectories": [
       "c:\\Users\\PCIetF\\Documents\\GitHub\\hweb-dashboard\\js"
