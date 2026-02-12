@@ -71,9 +71,10 @@ Deno.serve(async (req) => {
     }))
 
     // Créer la session Stripe Checkout via l'API REST
+    const deliveryMode = payload.deliveryMode || "pickup"
     const params = new URLSearchParams()
     params.append("mode", "payment")
-    params.append("success_url", `${siteUrl}/panier.html?payment=success`)
+    params.append("success_url", `${siteUrl}/panier.html?payment=success&session_id={CHECKOUT_SESSION_ID}&delivery=${deliveryMode}`)
     params.append("cancel_url", `${siteUrl}/panier.html?payment=cancel`)
 
     // Ajouter chaque line_item

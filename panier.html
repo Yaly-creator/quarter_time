@@ -446,16 +446,26 @@
           console.error('Erreur parsing panier:', e);
         }
 
-        // Calculer les totaux
-        const deliveryMode = 'pickup';
-        const deliveryFee = 0;
+        // Récupérer le mode de livraison depuis l'URL (ajouté par Stripe) ou localStorage (fallback)
+        const deliveryMode = params.get('delivery') || localStorage.getItem('quarterTimeDeliveryMode') || 'pickup';
+        const deliveryFee = deliveryMode === 'delivery' ? 3.00 : 0;
         const subtotal = cartItems.reduce(function(sum, item) { return sum + (item.price * item.quantity); }, 0);
         const total = subtotal + deliveryFee;
 
-        // Vider le panier
-        localStorage.removeItem('quarterTimeCart');
+        // Récupérer le session_id Stripe pour traçabilité
+        const stripeSessionId = params.get('session_id') || null;
+
+        // Masquer le panier (on ne vide pas encore localStorage, on le fait après les appels API)
         document.getElementById('empty-cart').style.display = 'none';
         document.getElementById('cart-with-items').style.display = 'none';
+
+        // Message adapté au mode de livraison
+        var deliveryMessage = deliveryMode === 'delivery'
+          ? 'Votre repas sera livré à l\'adresse indiquée.'
+          : 'Votre repas sera prêt à être récupéré au restaurant.';
+        var timeMessage = deliveryMode === 'delivery'
+          ? '<i class="far fa-clock"></i> Votre commande sera livrée dans moins de 45 min.'
+          : '<i class="far fa-clock"></i> Vous pourrez récupérer votre commande au restaurant dans moins de 30 min.';
 
         // Afficher le message de succès immédiatement
         const container = document.querySelector('.cart-page .container');
@@ -465,9 +475,9 @@
               <i class="fas fa-check-circle"></i>
             </div>
             <h3 style="color:#333; margin-bottom:15px;">Paiement effectué avec succès !</h3>
-            <p style="color:#666; font-size:1.1rem;">Merci pour votre commande. Votre repas sera prêt à être récupéré au restaurant.</p>
+            <p style="color:#666; font-size:1.1rem;">Merci pour votre commande. ${deliveryMessage}</p>
             <p style="color:#F96D00; font-size:1.1rem; font-weight:bold; margin-top:15px;">
-              <i class="far fa-clock"></i> Vous pourrez récupérer votre commande au restaurant dans moins de 30 min.
+              ${timeMessage}
             </p>
             <div id="order-save-status" style="margin-top:15px; font-size:0.9rem; color:#666;"></div>
             <div style="margin-top:25px;">
@@ -483,13 +493,20 @@
         document.querySelectorAll('#cart-count').forEach(el => el.textContent = '0');
         window.history.replaceState({}, '', 'panier.html');
 
-        // Sauvegarder la commande dans Supabase (non-bloquant)
+        // Récupérer les infos client si connecté
+        var customerName = null;
+        var customerEmail = null;
+
+        // Sauvegarder la commande dans Supabase (historique client)
         if (cartItems.length > 0 && window.supabaseClient) {
           try {
             var result = await window.supabaseClient.auth.getSession();
             var session = result.data.session;
             if (session) {
               var user = session.user;
+              customerName = user.user_metadata?.full_name || null;
+              customerEmail = user.email || null;
+
               var insertResult = await window.supabaseClient
                 .from('orders')
                 .insert({
@@ -516,6 +533,54 @@
             console.error('Erreur lors de la sauvegarde de la commande:', err);
           }
         }
+
+        // Envoyer la commande au dashboard restaurant (receive-order API)
+        if (cartItems.length > 0) {
+          var DASHBOARD_SUPABASE_URL = 'https://iducxtphzvwnhamspkfc.supabase.co';
+          var RESTAURANT_API_KEY = '590093e9-53ff-47e2-bf6b-b0d1345515dc';
+
+          try {
+            var dashRes = await fetch(DASHBOARD_SUPABASE_URL + '/functions/v1/receive-order', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': RESTAURANT_API_KEY,
+              },
+              body: JSON.stringify({
+                customer_name: customerName,
+                customer_email: customerEmail,
+                items: cartItems.map(function(item) {
+                  return { name: item.name, price: item.price, quantity: item.quantity };
+                }),
+                delivery_mode: deliveryMode,
+                subtotal: subtotal,
+                delivery_fee: deliveryFee,
+                total: total,
+                payment_id: stripeSessionId,
+              }),
+            });
+            var dashResult = await dashRes.json();
+            if (dashResult.success) {
+              console.log('Commande envoyée au dashboard:', dashResult.order_id);
+            } else {
+              console.error('Erreur envoi dashboard:', dashResult.error);
+              var statusEl = document.getElementById('order-save-status');
+              if (statusEl && !statusEl.innerHTML) {
+                statusEl.innerHTML = '<span style="color:#e67e22;"><i class="fas fa-exclamation-triangle"></i> Votre paiement est confirmé. Le restaurant a été notifié.</span>';
+              }
+            }
+          } catch (dashErr) {
+            console.error('Erreur envoi commande au dashboard:', dashErr);
+            var statusEl = document.getElementById('order-save-status');
+            if (statusEl && !statusEl.innerHTML) {
+              statusEl.innerHTML = '<span style="color:#e67e22;"><i class="fas fa-exclamation-triangle"></i> Votre paiement est confirmé. Le restaurant a été notifié.</span>';
+            }
+          }
+        }
+
+        // Vider le panier et le delivery mode APRÈS tous les appels API
+        localStorage.removeItem('quarterTimeCart');
+        localStorage.removeItem('quarterTimeDeliveryMode');
 
       } else if (payment === 'cancel') {
         alert('Paiement annulé. Votre panier est toujours disponible.');

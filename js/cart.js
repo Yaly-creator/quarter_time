@@ -238,6 +238,9 @@ class ShoppingCart {
       checkoutBtn.innerHTML = '<span class="spinner-border spinner-border-sm mr-2"></span>Redirection vers le paiement...';
     }
 
+    // Sauvegarder le mode de livraison avant la redirection Stripe
+    localStorage.setItem('quarterTimeDeliveryMode', deliveryMode);
+
     try {
       const SUPABASE_URL = 'https://ljbghtwstlwtqrwrzcat.supabase.co';
       const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqYmdodHdzdGx3dHFyd3J6Y2F0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3MDYyOTcsImV4cCI6MjA4NTI4MjI5N30.ITL_iy5w2ppxvm2yMQaJ68gbBNm272wkK2wFc6m-k5M';
