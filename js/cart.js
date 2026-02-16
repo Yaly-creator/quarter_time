@@ -255,6 +255,7 @@ class ShoppingCart {
         body: JSON.stringify({
           items: this.items,
           deliveryMode: deliveryMode,
+          origin: window.location.origin,
         }),
       });
 

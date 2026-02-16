@@ -12,6 +12,7 @@ interface CartItem {
 interface CheckoutPayload {
   items: CartItem[]
   deliveryMode: string
+  origin?: string
 }
 
 const corsHeaders = {
@@ -36,7 +37,7 @@ Deno.serve(async (req) => {
 
   try {
     const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY") ?? ""
-    const siteUrl = Deno.env.get("SITE_URL") ?? "https://quarter-time.vercel.app"
+    const defaultSiteUrl = Deno.env.get("SITE_URL") ?? "https://quarter-time.vercel.app"
 
     if (!stripeSecretKey) {
       console.error("Missing STRIPE_SECRET_KEY")
@@ -56,6 +57,18 @@ Deno.serve(async (req) => {
         headers: corsHeaders,
       })
     }
+
+    // Utiliser l'origin du client si fourni, sinon fallback sur SITE_URL
+    const allowedOrigins = [
+      "https://quarter-time.vercel.app",
+      "http://localhost:5500",
+      "http://127.0.0.1:5500",
+      "http://localhost:5501",
+      "http://127.0.0.1:5501",
+    ]
+    const siteUrl = payload.origin && allowedOrigins.includes(payload.origin)
+      ? payload.origin
+      : defaultSiteUrl
 
     // Construire les line_items pour Stripe Checkout
     const lineItems = payload.items.map((item) => ({
