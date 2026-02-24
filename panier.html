@@ -539,11 +539,14 @@
           var DASHBOARD_SUPABASE_URL = 'https://iducxtphzvwnhamspkfc.supabase.co';
           var RESTAURANT_API_KEY = '590093e9-53ff-47e2-bf6b-b0d1345515dc';
 
+          var DASHBOARD_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlkdWN4dHBoenZ3bmhhbXNwa2ZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5MTAyMDgsImV4cCI6MjA4NjQ4NjIwOH0.n5foM-2wFZQe6_sERM05scz_ceVlrHAhJo3Rx24p680';
+
           try {
             var dashRes = await fetch(DASHBOARD_SUPABASE_URL + '/functions/v1/receive-order', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + DASHBOARD_ANON_KEY,
                 'x-api-key': RESTAURANT_API_KEY,
               },
               body: JSON.stringify({

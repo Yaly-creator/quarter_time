@@ -8,7 +8,22 @@
       "Bash(xxd:*)",
       "Bash(git init:*)",
       "Bash(supabase --version:*)",
-      "Bash(supabase functions deploy:*)"
+      "Bash(supabase functions deploy:*)",
+      "Bash(npx supabase:*)",
+      "Bash(supabase projects list:*)",
+      "Bash(supabase db execute:*)",
+      "Bash(supabase orgs list:*)",
+      "Bash(supabase --help:*)",
+      "Bash(supabase inspect db:*)",
+      "Bash(supabase projects api-keys:*)",
+      "Bash(curl:*)",
+      "Bash(gh repo create:*)",
+      "Bash(where:*)",
+      "Bash(git config:*)",
+      "Bash(scoop install:*)",
+      "Bash(\"/c/Users/PCIetF/scoop/shims/gh\" auth status)",
+      "Bash(git remote add:*)",
+      "Bash(ls:*)"
     ],
     "additionalDirectories": [
       "c:\\Users\\PCIetF\\Documents\\GitHub\\hweb-dashboard\\js"
