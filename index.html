@@ -797,6 +797,12 @@ Nous avons imaginé un concept où les grillades généreuses s'allient à des p
           var imgClass = (index % 4 >= 2) ? 'menu-img img order-md-last' : 'menu-img img';
           var catName = catMap[item.category_id] || '';
 
+          var isDisabled = item.available === false || item.orderable_online === false;
+          var disabledReason = item.available === false ? 'Indisponible' : 'Non commandable en ligne';
+          var addBtnHtml = isDisabled
+            ? '<p><a href="#" class="btn btn-primary btn-add-pizza disabled" style="opacity:0.5;pointer-events:none;cursor:not-allowed;">' + disabledReason + '</a></p>'
+            : '<p><a href="#" class="btn btn-primary btn-add-pizza">Ajouter <i class="fas fa-shopping-cart"></i></a></p>';
+
           var col = document.createElement('div');
           col.className = 'col-md-12 col-lg-6 d-flex align-self-stretch';
           col.innerHTML =
@@ -810,7 +816,7 @@ Nous avons imaginé un concept où les grillades généreuses s'allient à des p
                   '</div>' +
                   (catName ? '<p><span>' + catName + '</span></p>' : '') +
                   (item.description ? '<p><span>' + item.description + '</span></p>' : '') +
-                  '<p><a href="#" class="btn btn-primary btn-add-pizza">Ajouter <i class="fas fa-shopping-cart"></i></a></p>' +
+                  addBtnHtml +
                 '</div>' +
               '</div>' +
             '</div>';
@@ -837,6 +843,7 @@ Nous avons imaginé un concept où les grillades généreuses s'allient à des p
       document.querySelectorAll('.btn-add-pizza').forEach(function(button) {
         button.addEventListener('click', function(e) {
           e.preventDefault();
+          if (this.classList.contains('disabled')) return;
           var menuItem = this.closest('.menus');
           var name = menuItem.querySelector('h3').textContent.trim();
           var priceText = menuItem.querySelector('.price').textContent.trim();

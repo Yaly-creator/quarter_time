@@ -329,9 +329,11 @@
               ? '<p class="prep-time"><i class="far fa-clock"></i> <strong>Temps de pr\u00e9paration : ' + item.prep_time + ' min</strong></p>'
               : '';
 
-            var addButtonHtml = item.orderable_online !== false
-              ? '<p><a href="#" class="btn btn-primary btn-add-to-cart">Ajouter <i class="fas fa-shopping-cart"></i></a></p>'
-              : '';
+            var isDisabled = item.available === false || item.orderable_online === false;
+            var disabledReason = item.available === false ? 'Indisponible' : 'Non commandable en ligne';
+            var addButtonHtml = isDisabled
+              ? '<p><a href="#" class="btn btn-primary btn-add-to-cart disabled" style="opacity:0.5;pointer-events:none;cursor:not-allowed;">' + disabledReason + '</a></p>'
+              : '<p><a href="#" class="btn btn-primary btn-add-to-cart">Ajouter <i class="fas fa-shopping-cart"></i></a></p>';
 
             col.innerHTML =
               '<div class="menus d-sm-flex align-items-stretch">' +
@@ -379,6 +381,7 @@
       document.querySelectorAll('.btn-add-to-cart').forEach(function(button) {
         button.addEventListener('click', function(e) {
           e.preventDefault();
+          if (this.classList.contains('disabled')) return;
 
           var menusContainer = this.closest('.menus');
           if (!menusContainer) return;
