@@ -37,7 +37,7 @@ Deno.serve(async (req) => {
 
   try {
     const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY") ?? ""
-    const defaultSiteUrl = Deno.env.get("SITE_URL") ?? "https://quarter-time.vercel.app"
+    const defaultSiteUrl = Deno.env.get("SITE_URL") ?? "https://quartertime.netlify.app"
 
     if (!stripeSecretKey) {
       console.error("Missing STRIPE_SECRET_KEY")
@@ -60,6 +60,7 @@ Deno.serve(async (req) => {
 
     // Utiliser l'origin du client si fourni, sinon fallback sur SITE_URL
     const allowedOrigins = [
+      "https://quartertime.netlify.app",
       "https://quarter-time.vercel.app",
       "http://localhost:5500",
       "http://127.0.0.1:5500",
