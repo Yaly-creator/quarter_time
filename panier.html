@@ -430,6 +430,74 @@
   <script src="js/cart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/auth.js"></script>
+
+  <script>
+    // V\u00e9rification commandes actives + horaires d'ouverture
+    (function checkOrdersAvailability() {
+      var HWEB_BASE_URL = 'https://iducxtphzvwnhamspkfc.supabase.co/rest/v1';
+      var HWEB_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlkdWN4dHBoenZ3bmhhbXNwa2ZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5MTAyMDgsImV4cCI6MjA4NjQ4NjIwOH0.n5foM-2wFZQe6_sERM05scz_ceVlrHAhJo3Rx24p680';
+      var RESTAURANT_ID = 'b4ec1d9d-593a-4a24-a78d-fd3881f19c88';
+      var headers = { 'apikey': HWEB_API_KEY, 'Authorization': 'Bearer ' + HWEB_API_KEY };
+
+      var DAYS_FR = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+
+      function isWithinOpeningHours(openingHours) {
+        if (!openingHours) return true;
+        var now = new Date();
+        var dayName = DAYS_FR[now.getDay()];
+        var dayData = openingHours[dayName];
+        if (!dayData || !dayData.open) return false;
+        if (!dayData.slots || dayData.slots.length === 0) return false;
+
+        var currentMinutes = now.getHours() * 60 + now.getMinutes();
+        for (var i = 0; i < dayData.slots.length; i++) {
+          var slot = dayData.slots[i];
+          var startParts = slot.start.split(':');
+          var endParts = slot.end.split(':');
+          var startMin = parseInt(startParts[0]) * 60 + parseInt(startParts[1]);
+          var endMin = parseInt(endParts[0]) * 60 + parseInt(endParts[1]);
+          if (currentMinutes >= startMin && currentMinutes <= endMin) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function disableCheckout(message) {
+        var btn = document.getElementById('checkout-btn');
+        if (btn) {
+          btn.disabled = true;
+          btn.style.opacity = '0.5';
+          btn.style.cursor = 'not-allowed';
+          btn.innerHTML = '<i class="fas fa-ban mr-2"></i>' + message;
+        }
+        // Store state globally for cart.js guard
+        window._ordersDisabled = true;
+      }
+
+      fetch(HWEB_BASE_URL + '/restaurant_settings?restaurant_id=eq.' + RESTAURANT_ID + '&select=orders_enabled,opening_hours', {
+        headers: headers
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (!data || data.length === 0) return;
+        var settings = data[0];
+
+        if (settings.orders_enabled === false) {
+          disableCheckout('Commandes actuellement ferm\u00e9es');
+          return;
+        }
+
+        if (!isWithinOpeningHours(settings.opening_hours)) {
+          disableCheckout('Restaurant ferm\u00e9 \u2013 commandes indisponibles');
+        }
+      })
+      .catch(function(err) {
+        console.warn('Erreur v\u00e9rification commandes:', err);
+      });
+    })();
+  </script>
+
   <script>
     // Gestion du retour Stripe
     document.addEventListener('DOMContentLoaded', async function() {

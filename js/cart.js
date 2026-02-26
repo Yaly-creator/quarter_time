@@ -224,6 +224,11 @@ class ShoppingCart {
 
   // Valider la commande - Redirection vers Stripe Checkout
   async checkout() {
+    if (window._ordersDisabled) {
+      alert('Les commandes sont actuellement ferm\u00e9es. Veuillez r\u00e9essayer plus tard.');
+      return;
+    }
+
     if (this.items.length === 0) {
       alert('Votre panier est vide !');
       return;
