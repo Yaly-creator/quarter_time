@@ -907,6 +907,46 @@ Nous avons imaginé un concept où les grillades généreuses s'allient à des p
     });
   </script>
 
-  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
+  <!-- PWA Install -->
+  <div id="pwa-install-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#c49b63;color:#fff;padding:14px 20px;z-index:99999;text-align:center;box-shadow:0 -2px 10px rgba(0,0,0,.3);font-family:Poppins,sans-serif;">
+    <span style="margin-right:12px;">Installer Quarter Time sur votre mobile</span>
+    <button id="pwa-install-btn" style="background:#fff;color:#c49b63;border:none;padding:8px 20px;border-radius:25px;font-weight:600;cursor:pointer;font-size:14px;">Installer</button>
+    <button id="pwa-install-close" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer;position:absolute;right:10px;top:8px;">&times;</button>
+  </div>
+  <script>
+  if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}
+
+  let deferredPrompt;
+  const banner = document.getElementById('pwa-install-banner');
+  const installBtn = document.getElementById('pwa-install-btn');
+  const closeBtn = document.getElementById('pwa-install-close');
+
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    if(!localStorage.getItem('pwa-dismissed')){
+      banner.style.display = 'block';
+    }
+  });
+
+  installBtn.addEventListener('click', function() {
+    banner.style.display = 'none';
+    if(deferredPrompt){
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(function(result){
+        deferredPrompt = null;
+      });
+    }
+  });
+
+  closeBtn.addEventListener('click', function() {
+    banner.style.display = 'none';
+    localStorage.setItem('pwa-dismissed','1');
+  });
+
+  window.addEventListener('appinstalled', function() {
+    banner.style.display = 'none';
+  });
+  </script>
   </body>
 </html>
