@@ -1,20 +1,19 @@
 {
-  "name": "Quarter Time",
+  "name": "Quarter Time - Restaurant",
   "short_name": "Quarter Time",
-  "start_url": "/",
+  "description": "Restaurant de type buffet",
+  "start_url": "/index.html",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#c49b63",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "images/logo.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "images/logo.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "sizes": "225x225",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
