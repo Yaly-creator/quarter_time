@@ -24,6 +24,7 @@
     var navConnexion = document.getElementById('nav-connexion');
     var navLogout = document.getElementById('nav-logout');
     var navOrders = document.getElementById('nav-orders');
+    var navReservations = document.getElementById('nav-reservations');
 
     if (!navConnexion || !navLogout) return;
 
@@ -31,10 +32,12 @@
       navConnexion.style.display = 'none';
       navLogout.style.display = '';
       if (navOrders) navOrders.style.display = '';
+      if (navReservations) navReservations.style.display = '';
     } else {
       navConnexion.style.display = '';
       navLogout.style.display = 'none';
       if (navOrders) navOrders.style.display = 'none';
+      if (navReservations) navReservations.style.display = 'none';
     }
   });
 

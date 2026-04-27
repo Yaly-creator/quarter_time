@@ -71,6 +71,7 @@
         <li class="nav-item" id="nav-connexion"><a href="connexion.html" class="nav-link">Connexion</a></li>
         <li class="nav-item" id="nav-logout" style="display:none;"><a href="#" class="nav-link" id="logout-link"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
         <li class="nav-item" id="nav-orders" style="display:none;"><a href="historique-commandes.html" class="nav-link"><i class="fas fa-receipt"></i> Mes commandes</a></li>
+        <li class="nav-item" id="nav-reservations" style="display:none;"><a href="mes-reservations.html" class="nav-link"><i class="fas fa-calendar-check"></i> Mes réservations</a></li>
         <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
 
         <!-- Panier -->
@@ -226,6 +227,7 @@
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/pizza-choice-modal.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/auth.js"></script>
 
@@ -278,6 +280,16 @@
           .order('sort_order', { ascending: true });
 
         if (itemsError) throw itemsError;
+
+        // Exposer la liste des pizzas (hors formules) pour le modal de sélection
+        var catMap = {};
+        categories.forEach(function(c) { catMap[c.id] = c.name; });
+        window._quarterTimePizzas = items.filter(function(it) {
+          var catName = (catMap[it.category_id] || '').toLowerCase();
+          return catName.indexOf('pizza') !== -1 &&
+                 catName.indexOf('formule') === -1 &&
+                 it.available !== false;
+        });
 
         // Générer les onglets
         var tabsContainer = document.getElementById('v-pills-tab');
@@ -334,9 +346,14 @@
 
             var isDisabled = item.available === false || item.orderable_online === false;
             var disabledReason = item.available === false ? 'Indisponible' : 'Non commandable en ligne';
+            var pizzaChoices = item.options && item.options.pizza_choices ? parseInt(item.options.pizza_choices) : 0;
+            var pizzaChoicesAttr = pizzaChoices > 0 ? ' data-pizza-choices="' + pizzaChoices + '"' : '';
+            var catNameLower = (cat.name || '').toLowerCase();
+            var isPizzaCat = catNameLower.indexOf('pizza') !== -1 && catNameLower.indexOf('formule') === -1;
+            var isPizzaAttr = (isPizzaCat && pizzaChoices === 0) ? ' data-is-pizza="1"' : '';
             var addButtonHtml = isDisabled
               ? '<p><a href="#" class="btn btn-primary btn-add-to-cart disabled" style="opacity:0.5;pointer-events:none;cursor:not-allowed;">' + disabledReason + '</a></p>'
-              : '<p><a href="#" class="btn btn-primary btn-add-to-cart">Ajouter <i class="fas fa-shopping-cart"></i></a></p>';
+              : '<p><a href="#" class="btn btn-primary btn-add-to-cart"' + pizzaChoicesAttr + isPizzaAttr + '>Ajouter <i class="fas fa-shopping-cart"></i></a></p>';
 
             col.innerHTML =
               '<div class="menus d-sm-flex align-items-stretch">' +
@@ -427,14 +444,34 @@
             .replace(/\u00e7/g, 'c')
             .replace(/[^a-z0-9-]/g, '');
 
-          addToCart({
+          var pizzaChoicesCount = parseInt(this.getAttribute('data-pizza-choices') || '0', 10);
+          var isPizzaItem = this.getAttribute('data-is-pizza') === '1' && pizzaChoicesCount === 0;
+
+          var baseItem = {
             id: id,
             name: name,
             price: price,
             description: description,
             image: image,
-            prepTime: prepTime
-          });
+            prepTime: prepTime,
+            isPizza: isPizzaItem
+          };
+
+          if (pizzaChoicesCount > 0 && typeof openPizzaChoiceModal === 'function') {
+            openPizzaChoiceModal(baseItem, pizzaChoicesCount, function(choices) {
+              var suffix = '-' + choices.map(function(c) {
+                return c.toLowerCase().replace(/\s+/g, '');
+              }).join('-');
+              addToCart(Object.assign({}, baseItem, {
+                id: baseItem.id + suffix,
+                choices: choices,
+                isPizza: false
+              }));
+            });
+            return;
+          }
+
+          addToCart(baseItem);
         });
       });
     }

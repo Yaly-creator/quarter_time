@@ -71,6 +71,7 @@
         <li class="nav-item" id="nav-connexion"><a href="connexion.html" class="nav-link">Connexion</a></li>
         <li class="nav-item" id="nav-logout" style="display:none;"><a href="#" class="nav-link" id="logout-link"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
         <li class="nav-item" id="nav-orders" style="display:none;"><a href="historique-commandes.html" class="nav-link"><i class="fas fa-receipt"></i> Mes commandes</a></li>
+        <li class="nav-item" id="nav-reservations" style="display:none;"><a href="mes-reservations.html" class="nav-link"><i class="fas fa-calendar-check"></i> Mes réservations</a></li>
         <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
 
         <!-- Panier -->
@@ -314,6 +315,27 @@
   <script src="js/cart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/auth.js"></script>
+
+  <script>
+    // Pré-remplir nom + email depuis le compte connecté (pour que la réservation
+    // soit reliée au user et apparaisse dans "Mes réservations").
+    document.addEventListener('DOMContentLoaded', async function () {
+      if (!window.supabaseClient) return;
+      try {
+        var res = await window.supabaseClient.auth.getSession();
+        var s = res.data.session;
+        if (!s || !s.user) return;
+        var nameInput = document.getElementById('name-reservation');
+        var emailInput = document.getElementById('email-reservation');
+        if (emailInput && !emailInput.value && s.user.email) {
+          emailInput.value = s.user.email;
+        }
+        if (nameInput && !nameInput.value && s.user.user_metadata && s.user.user_metadata.full_name) {
+          nameInput.value = s.user.user_metadata.full_name;
+        }
+      } catch (e) { /* ignore */ }
+    });
+  </script>
 
   <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}</script>
 </body>

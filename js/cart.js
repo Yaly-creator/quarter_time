@@ -159,6 +159,7 @@ class ShoppingCart {
         <div class="cart-item-details">
           <h5 class="cart-item-name">${item.name}</h5>
           <p class="cart-item-description">${item.description || ''}</p>
+          ${item.choices && item.choices.length ? `<ul class="cart-item-choices" style="margin:4px 0;padding-left:18px;font-size:14px;color:#555;">${item.choices.map((c, i) => `<li>Pizza ${i + 1} : <strong>${c}</strong></li>`).join('')}</ul>` : ''}
           ${item.prepTime ? `<p class="prep-time"><i class="far fa-clock"></i> <strong>Temps de préparation : ${item.prepTime} min</strong></p>` : ''}
           <span class="cart-item-price">${item.price.toFixed(2)} €</span>
         </div>
@@ -222,6 +223,153 @@ class ShoppingCart {
     });
   }
 
+  // Compter le nombre total de pizzas individuelles dans le panier
+  countPizzas() {
+    return this.items.reduce(function (sum, it) {
+      return sum + (it.isPizza ? it.quantity : 0);
+    }, 0);
+  }
+
+  // Construire la liste \u00e0 plat (1 entr\u00e9e par unit\u00e9 de pizza) dans l'ordre du panier
+  getPizzaSlots() {
+    var slots = [];
+    this.items.forEach(function (it) {
+      if (!it.isPizza) return;
+      for (var i = 0; i < it.quantity; i++) {
+        slots.push({ id: it.id, name: it.name, price: parseFloat(it.price) });
+      }
+    });
+    return slots;
+  }
+
+  // D\u00e9cr\u00e9menter N pizzas du panier en suivant l'ordre des slots fournis
+  decrementPizzasBySlots(slotsToRemove) {
+    var self = this;
+    slotsToRemove.forEach(function (slot) {
+      var item = self.items.find(function (i) { return i.id === slot.id && i.isPizza; });
+      if (!item) return;
+      item.quantity -= 1;
+      if (item.quantity <= 0) {
+        self.items = self.items.filter(function (i) { return i !== item; });
+      }
+    });
+    this.saveCart();
+  }
+
+  // Construire le plan de formules \u00e0 proposer en fonction du nombre de pizzas
+  planFormulesForPizzaCount(count) {
+    var formules = (window._quarterTimeFormules || []).filter(function (f) {
+      return f && f.available !== false && f.orderable_online !== false;
+    });
+    if (formules.length === 0 || count <= 0) return [];
+
+    function findFormule3p() {
+      return formules.find(function (f) {
+        var pc = f.options && f.options.pizza_choices ? parseInt(f.options.pizza_choices) : 0;
+        return pc === 3;
+      });
+    }
+    function findFormulePizzaCannette() {
+      return formules.find(function (f) {
+        var n = (f.name || '').toLowerCase();
+        var pc = f.options && f.options.pizza_choices ? parseInt(f.options.pizza_choices) : 0;
+        return n.indexOf('pizza') !== -1
+          && (n.indexOf('cannette') !== -1 || n.indexOf('canette') !== -1)
+          && pc <= 1;
+      });
+    }
+
+    var plan = [];
+    if (count >= 3) {
+      var f3 = findFormule3p();
+      if (f3) {
+        var nbPacks = Math.floor(count / 3);
+        for (var i = 0; i < nbPacks; i++) {
+          plan.push({ formule: f3, pizzasToReplace: 3 });
+        }
+      }
+    } else {
+      // 1 ou 2 pizzas \u2192 proposer la formule pizza+cannette sur 1 pizza
+      var fPC = findFormulePizzaCannette();
+      if (fPC) {
+        plan.push({ formule: fPC, pizzasToReplace: 1 });
+      }
+    }
+    return plan;
+  }
+
+  // Trouver la boisson par d\u00e9faut (1\u00e8re disponible)
+  getDefaultBoisson() {
+    var boissons = (window._quarterTimeBoissons || []).filter(function (b) {
+      return b && b.available !== false && b.orderable_online !== false;
+    });
+    return boissons.length > 0 ? boissons[0] : null;
+  }
+
+  // Appliquer le plan : retirer les pizzas concern\u00e9es, ajouter les lignes formule
+  applyFormulePlan(plan) {
+    var slots = this.getPizzaSlots();
+    var defaultBoisson = this.getDefaultBoisson();
+    var slotIndex = 0;
+
+    for (var i = 0; i < plan.length; i++) {
+      var entry = plan[i];
+      var n = entry.pizzasToReplace;
+      var taken = slots.slice(slotIndex, slotIndex + n);
+      slotIndex += n;
+      if (taken.length < n) break; // s\u00e9curit\u00e9
+
+      var choices = taken.map(function (s) { return s.name; });
+      if (defaultBoisson) choices.push(defaultBoisson.name);
+
+      this.decrementPizzasBySlots(taken);
+
+      var formule = entry.formule;
+      var newItem = {
+        id: String(formule.id) + '-formule-' + Date.now() + '-' + i,
+        name: formule.name,
+        price: parseFloat(formule.price),
+        description: formule.description || '',
+        image: formule.image_url || 'images/default.jpg',
+        prepTime: formule.prep_time || null,
+        choices: choices,
+        isPizza: false,
+        quantity: 1
+      };
+      this.items.push(newItem);
+    }
+
+    this.saveCart();
+    this.render();
+  }
+
+  // Demander \u00e0 l'utilisateur s'il veut profiter d'une formule plus avantageuse.
+  // Resolve sans rien faire si aucune formule applicable ou si l'utilisateur refuse.
+  maybeSuggestFormule() {
+    var self = this;
+    return new Promise(function (resolve) {
+      if (typeof window.openFormuleSuggestionModal !== 'function') {
+        return resolve();
+      }
+      var count = self.countPizzas();
+      var plan = self.planFormulesForPizzaCount(count);
+      if (plan.length === 0) return resolve();
+
+      var slots = self.getPizzaSlots();
+      var totalSlotsUsed = plan.reduce(function (s, e) { return s + e.pizzasToReplace; }, 0);
+      var pizzasTotal = slots.slice(0, totalSlotsUsed).reduce(function (s, sl) {
+        return s + sl.price;
+      }, 0);
+
+      window.openFormuleSuggestionModal(plan, pizzasTotal, function onAccept() {
+        self.applyFormulePlan(plan);
+        resolve();
+      }, function onDecline() {
+        resolve();
+      });
+    });
+  }
+
   // Valider la commande - Redirection vers Stripe Checkout
   async checkout() {
     if (window._ordersDisabled) {
@@ -234,8 +382,49 @@ class ShoppingCart {
       return;
     }
 
+    // Sugg\u00e9rer une formule plus avantageuse si applicable (avant la session check)
+    await this.maybeSuggestFormule();
+
+    if (this.items.length === 0) {
+      alert('Votre panier est vide !');
+      return;
+    }
+
+    // V\u00e9rifier que le client est connect\u00e9 (obligatoire pour commander)
+    if (window.supabaseClient) {
+      try {
+        const sess = await window.supabaseClient.auth.getSession();
+        if (!sess.data.session) {
+          alert('Vous devez \u00eatre connect\u00e9 pour passer une commande. Vous allez \u00eatre redirig\u00e9 vers la page de connexion.');
+          localStorage.setItem('quarterTimeRedirectAfterLogin', 'panier.html');
+          window.location.href = 'connexion.html';
+          return;
+        }
+      } catch (e) {
+        console.error('Erreur v\u00e9rification session:', e);
+        alert('Impossible de v\u00e9rifier votre session. Veuillez r\u00e9essayer.');
+        return;
+      }
+    }
+
     const checkoutBtn = document.getElementById('checkout-btn');
     const deliveryMode = document.querySelector('input[name="delivery"]:checked').value;
+
+    // Valider le nom du client (obligatoire)
+    const nameInput = document.getElementById('customer-name-input');
+    const customerName = nameInput ? nameInput.value.trim() : '';
+    if (!customerName) {
+      alert('Veuillez indiquer votre nom pour valider la commande.');
+      if (nameInput) {
+        nameInput.focus();
+        nameInput.classList.add('is-invalid');
+        nameInput.addEventListener('input', function once() {
+          nameInput.classList.remove('is-invalid');
+          nameInput.removeEventListener('input', once);
+        });
+      }
+      return;
+    }
 
     // Désactiver le bouton pendant le chargement
     if (checkoutBtn) {
@@ -243,8 +432,9 @@ class ShoppingCart {
       checkoutBtn.innerHTML = '<span class="spinner-border spinner-border-sm mr-2"></span>Redirection vers le paiement...';
     }
 
-    // Sauvegarder le mode de livraison avant la redirection Stripe
+    // Sauvegarder le mode de livraison et le nom avant la redirection Stripe
     localStorage.setItem('quarterTimeDeliveryMode', deliveryMode);
+    localStorage.setItem('quarterTimeCustomerName', customerName);
 
     try {
       const SUPABASE_URL = 'https://ljbghtwstlwtqrwrzcat.supabase.co';
@@ -294,55 +484,106 @@ class ShoppingCart {
     }
   }
 
-  // Afficher une notification
+  // Afficher une notification persistante avec lien "Voir mon panier" clignotant
   showNotification(message) {
-    // Créer une notification simple
-    const notification = document.createElement('div');
-    notification.style.cssText = `
-      position: fixed;
-      top: 100px;
-      right: 20px;
-      background: #F96D00;
-      color: white;
-      padding: 15px 25px;
-      border-radius: 5px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      z-index: 9999;
-      animation: slideIn 0.3s ease;
-    `;
-    notification.textContent = message;
+    // Réutiliser le bandeau existant s'il est déjà affiché
+    var existing = document.getElementById('cart-notification-banner');
+    if (existing) {
+      var msgEl = existing.querySelector('.cart-notification-message');
+      if (msgEl) msgEl.textContent = message;
+      return;
+    }
+
+    var notification = document.createElement('div');
+    notification.id = 'cart-notification-banner';
+    notification.className = 'cart-notification-banner';
+    notification.innerHTML =
+      '<span class="cart-notification-message"></span>' +
+      '<a href="panier.html" class="cart-notification-link">Voir mon panier</a>' +
+      '<button type="button" class="cart-notification-close" aria-label="Fermer">&times;</button>';
+
+    notification.querySelector('.cart-notification-message').textContent = message;
+    notification.querySelector('.cart-notification-close').addEventListener('click', function () {
+      notification.remove();
+    });
+
+    // Sur la page panier elle-même, pas besoin d'afficher le lien "Voir mon panier"
+    if (/panier\.html$/i.test(window.location.pathname)) {
+      var link = notification.querySelector('.cart-notification-link');
+      if (link) link.style.display = 'none';
+    }
 
     document.body.appendChild(notification);
-
-    setTimeout(() => {
-      notification.style.animation = 'slideOut 0.3s ease';
-      setTimeout(() => notification.remove(), 300);
-    }, 2000);
   }
 }
 
-// Ajouter les animations CSS
+// Styles du bandeau de notification panier (persistant, lien clignotant)
 const style = document.createElement('style');
 style.textContent = `
-  @keyframes slideIn {
-    from {
-      transform: translateX(400px);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
+  .cart-notification-banner {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #F96D00;
+    color: #fff;
+    padding: 14px 18px;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-family: Poppins, sans-serif;
+    font-size: 0.95rem;
+    animation: cartBannerSlideUp 0.3s ease;
   }
-  
-  @keyframes slideOut {
-    from {
-      transform: translateX(0);
-      opacity: 1;
+  .cart-notification-message {
+    font-weight: 500;
+  }
+  .cart-notification-link {
+    background: #fff;
+    color: #F96D00;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-weight: 700;
+    text-decoration: none;
+    animation: cartLinkBlink 1s ease-in-out infinite;
+  }
+  .cart-notification-link:hover {
+    text-decoration: none;
+    color: #F96D00;
+    background: #fff5e8;
+  }
+  .cart-notification-close {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 8px;
+  }
+  @keyframes cartBannerSlideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes cartLinkBlink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(0.96); }
+  }
+  @media (max-width: 576px) {
+    .cart-notification-banner {
+      padding: 12px 36px 12px 14px;
+      font-size: 0.9rem;
     }
-    to {
-      transform: translateX(400px);
-      opacity: 0;
+    .cart-notification-link {
+      padding: 7px 14px;
     }
   }
 `;

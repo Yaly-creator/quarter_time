@@ -76,6 +76,7 @@
         <li class="nav-item" id="nav-connexion"><a href="connexion.html" class="nav-link">Connexion</a></li>
         <li class="nav-item" id="nav-logout" style="display:none;"><a href="#" class="nav-link" id="logout-link"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
         <li class="nav-item" id="nav-orders" style="display:none;"><a href="historique-commandes.html" class="nav-link"><i class="fas fa-receipt"></i> Mes commandes</a></li>
+        <li class="nav-item" id="nav-reservations" style="display:none;"><a href="mes-reservations.html" class="nav-link"><i class="fas fa-calendar-check"></i> Mes réservations</a></li>
         <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
         
         <!-- 🛒 Panier -->
@@ -748,6 +749,7 @@ Nous avons imaginé un concept où les grillades généreuses s'allient à des p
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/pizza-choice-modal.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/auth.js"></script>
 
@@ -785,6 +787,12 @@ Nous avons imaginé un concept où les grillades généreuses s'allient à des p
           return pizzaCatIds.indexOf(item.category_id) !== -1;
         });
 
+        // Exposer la liste des pizzas (hors formules) pour le modal de sélection
+        window._quarterTimePizzas = pizzas.filter(function(it) {
+          var catName = (catMap[it.category_id] || '').toLowerCase();
+          return catName.indexOf('formule') === -1 && it.available !== false;
+        });
+
         if (loader) loader.remove();
 
         if (pizzas.length === 0) {
@@ -802,9 +810,11 @@ Nous avons imaginé un concept où les grillades généreuses s'allient à des p
 
           var isDisabled = item.available === false || item.orderable_online === false;
           var disabledReason = item.available === false ? 'Indisponible' : 'Non commandable en ligne';
+          var pizzaChoices = item.options && item.options.pizza_choices ? parseInt(item.options.pizza_choices) : 0;
+          var pizzaChoicesAttr = pizzaChoices > 0 ? ' data-pizza-choices="' + pizzaChoices + '"' : '';
           var addBtnHtml = isDisabled
             ? '<p><a href="#" class="btn btn-primary btn-add-pizza disabled" style="opacity:0.5;pointer-events:none;cursor:not-allowed;">' + disabledReason + '</a></p>'
-            : '<p><a href="#" class="btn btn-primary btn-add-pizza">Ajouter <i class="fas fa-shopping-cart"></i></a></p>';
+            : '<p><a href="#" class="btn btn-primary btn-add-pizza"' + pizzaChoicesAttr + '>Ajouter <i class="fas fa-shopping-cart"></i></a></p>';
 
           var col = document.createElement('div');
           col.className = 'col-md-12 col-lg-6 d-flex align-self-stretch';
@@ -862,7 +872,24 @@ Nous avons imaginé un concept où les grillades généreuses s'allient à des p
             }
           }
           var id = name.toLowerCase().replace(/\s+/g, '-');
-          addToCart({ id: id, name: name, price: price, description: description, image: image });
+          var pizzaChoicesCount = parseInt(this.getAttribute('data-pizza-choices') || '0', 10);
+          var baseItem = { id: id, name: name, price: price, description: description, image: image, isPizza: pizzaChoicesCount === 0 };
+
+          if (pizzaChoicesCount > 0 && typeof openPizzaChoiceModal === 'function') {
+            openPizzaChoiceModal(baseItem, pizzaChoicesCount, function(choices) {
+              var suffix = '-' + choices.map(function(c) {
+                return c.toLowerCase().replace(/\s+/g, '');
+              }).join('-');
+              addToCart(Object.assign({}, baseItem, {
+                id: baseItem.id + suffix,
+                choices: choices,
+                isPizza: false
+              }));
+            });
+            return;
+          }
+
+          addToCart(baseItem);
         });
       });
     }

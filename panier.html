@@ -262,6 +262,7 @@
           <li class="nav-item" id="nav-connexion"><a href="connexion.html" class="nav-link">Connexion</a></li>
           <li class="nav-item" id="nav-logout" style="display:none;"><a href="#" class="nav-link" id="logout-link"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
           <li class="nav-item" id="nav-orders" style="display:none;"><a href="historique-commandes.html" class="nav-link"><i class="fas fa-receipt"></i> Mes commandes</a></li>
+          <li class="nav-item" id="nav-reservations" style="display:none;"><a href="mes-reservations.html" class="nav-link"><i class="fas fa-calendar-check"></i> Mes réservations</a></li>
           <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
           
           <!-- 🛒 Panier -->
@@ -329,6 +330,17 @@
                 </label>
               </div>
 
+              <!-- Nom du client -->
+              <div class="form-group mt-3 mb-3">
+                <label for="customer-name-input" style="font-weight:600; font-size:0.95rem;">
+                  <i class="fas fa-user mr-1"></i> Votre nom <span style="color:#dc3545;">*</span>
+                </label>
+                <input type="text" class="form-control" id="customer-name-input"
+                       placeholder="Prénom ou nom" maxlength="100" required
+                       autocomplete="name">
+                <small class="text-muted">Pour que le restaurant identifie votre commande.</small>
+              </div>
+
               <!-- Totaux -->
               <div class="summary-row">
                 <span>Sous-total:</span>
@@ -337,6 +349,13 @@
               <div class="summary-row total">
                 <span>Total TTC:</span>
                 <span class="total-price" id="total">0,00 €</span>
+              </div>
+
+              <div id="auth-required-banner" style="display:none; margin-top:16px; padding:12px 14px; background:#fff3cd; border:1px solid #ffeeba; border-radius:6px; color:#856404; font-size:0.92rem;">
+                <i class="fas fa-exclamation-circle mr-1"></i>
+                <strong>Connexion requise.</strong>
+                <a href="connexion.html" id="auth-required-link" style="color:#856404; text-decoration:underline; font-weight:600;">Connectez-vous</a>
+                pour pouvoir valider votre commande.
               </div>
 
               <button class="btn btn-primary btn-block btn-lg mt-4" id="checkout-btn">
@@ -430,9 +449,57 @@
   <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/pizza-choice-modal.js"></script>
+  <script src="js/formule-suggestion-modal.js"></script>
   <script src="js/cart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/auth.js"></script>
+
+  <script>
+    // Charger les formules + boissons depuis Supabase pour la suggestion de formule
+    // au moment du checkout. Expose window._quarterTimeFormules et window._quarterTimeBoissons.
+    (function loadFormulesAndDrinks() {
+      var HWEB_SUPABASE_URL = 'https://iducxtphzvwnhamspkfc.supabase.co';
+      var HWEB_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlkdWN4dHBoenZ3bmhhbXNwa2ZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5MTAyMDgsImV4cCI6MjA4NjQ4NjIwOH0.n5foM-2wFZQe6_sERM05scz_ceVlrHAhJo3Rx24p680';
+      var RESTAURANT_ID = 'b4ec1d9d-593a-4a24-a78d-fd3881f19c88';
+
+      function tryLoad() {
+        if (!window.supabase) { setTimeout(tryLoad, 100); return; }
+        var client = window.supabase.createClient(HWEB_SUPABASE_URL, HWEB_SUPABASE_ANON_KEY);
+
+        Promise.all([
+          client.from('menu_categories').select('*').eq('restaurant_id', RESTAURANT_ID),
+          client.from('menu_items').select('*').eq('restaurant_id', RESTAURANT_ID)
+        ]).then(function (results) {
+          var cats = results[0].data || [];
+          var items = results[1].data || [];
+          var formuleCatIds = cats.filter(function (c) {
+            return (c.name || '').toLowerCase().indexOf('formule') !== -1;
+          }).map(function (c) { return c.id; });
+          var boissonCatIds = cats.filter(function (c) {
+            return (c.name || '').toLowerCase().indexOf('boisson') !== -1;
+          }).map(function (c) { return c.id; });
+
+          window._quarterTimeFormules = items.filter(function (it) {
+            return formuleCatIds.indexOf(it.category_id) !== -1
+              && it.available !== false
+              && it.orderable_online !== false;
+          });
+          window._quarterTimeBoissons = items.filter(function (it) {
+            return boissonCatIds.indexOf(it.category_id) !== -1
+              && it.available !== false
+              && it.orderable_online !== false;
+          });
+        }).catch(function (err) {
+          console.warn('Erreur chargement formules/boissons:', err);
+          window._quarterTimeFormules = [];
+          window._quarterTimeBoissons = [];
+        });
+      }
+
+      tryLoad();
+    })();
+  </script>
 
   <script>
     // V\u00e9rification commandes actives + horaires d'ouverture
@@ -502,6 +569,47 @@
   </script>
 
   <script>
+    // Pré-remplissage du nom + contrôle de connexion pour le checkout
+    document.addEventListener('DOMContentLoaded', async function() {
+      var nameInput = document.getElementById('customer-name-input');
+      var banner = document.getElementById('auth-required-banner');
+      var checkoutBtn = document.getElementById('checkout-btn');
+      var authLink = document.getElementById('auth-required-link');
+
+      var savedName = localStorage.getItem('quarterTimeCustomerName');
+      if (nameInput && savedName) nameInput.value = savedName;
+
+      if (!window.supabaseClient) return;
+
+      try {
+        var res = await window.supabaseClient.auth.getSession();
+        var s = res.data.session;
+
+        if (s) {
+          // Connecté → pré-remplir le nom si vide
+          if (nameInput && !nameInput.value && s.user && s.user.user_metadata && s.user.user_metadata.full_name) {
+            nameInput.value = s.user.user_metadata.full_name;
+          }
+        } else {
+          // Pas connecté → afficher la bannière, désactiver le bouton
+          if (banner) banner.style.display = 'block';
+          if (checkoutBtn) {
+            checkoutBtn.disabled = true;
+            checkoutBtn.style.opacity = '0.6';
+            checkoutBtn.style.cursor = 'not-allowed';
+            checkoutBtn.innerHTML = '<i class="fas fa-lock mr-2"></i>Connexion requise';
+          }
+          if (authLink) {
+            authLink.addEventListener('click', function () {
+              localStorage.setItem('quarterTimeRedirectAfterLogin', 'panier.html');
+            });
+          }
+        }
+      } catch (e) { /* ignore */ }
+    });
+  </script>
+
+  <script>
     // Gestion du retour Stripe
     document.addEventListener('DOMContentLoaded', async function() {
       const params = new URLSearchParams(window.location.search);
@@ -534,14 +642,34 @@
         var deliveryMessage = deliveryMode === 'delivery'
           ? 'Votre repas sera livré à l\'adresse indiquée.'
           : 'Votre repas sera prêt à être récupéré au restaurant.';
-        var timeMessage = deliveryMode === 'delivery'
-          ? '<i class="far fa-clock"></i> Votre commande sera livrée dans moins de 45 min.'
-          : '<i class="far fa-clock"></i> Vous pourrez récupérer votre commande au restaurant dans moins de 30 min.';
+
+        // Temps de préparation maximum des items commandés (en min)
+        var maxPrep = cartItems.reduce(function (m, it) {
+          var p = parseInt(it.prepTime, 10);
+          return isFinite(p) && p > m ? p : m;
+        }, 0);
+
+        var timeMessage;
+        if (maxPrep > 0) {
+          var deliveryExtra = deliveryMode === 'delivery' ? 15 : 0;
+          var totalMinutes = maxPrep + deliveryExtra;
+          var readyDate = new Date(Date.now() + totalMinutes * 60000);
+          var hh = String(readyDate.getHours()).padStart(2, '0');
+          var mm = String(readyDate.getMinutes()).padStart(2, '0');
+          var readyTime = hh + ':' + mm;
+          timeMessage = deliveryMode === 'delivery'
+            ? '<i class="far fa-clock"></i> Livraison estimée vers <strong>' + readyTime + '</strong> <span style="font-weight:normal;">(≈ ' + maxPrep + ' min de préparation + trajet)</span>'
+            : '<i class="far fa-clock"></i> Votre commande sera prête vers <strong>' + readyTime + '</strong> <span style="font-weight:normal;">(≈ ' + maxPrep + ' min de préparation)</span>';
+        } else {
+          timeMessage = deliveryMode === 'delivery'
+            ? '<i class="far fa-clock"></i> Votre commande sera livrée dans moins de 45 min.'
+            : '<i class="far fa-clock"></i> Vous pourrez récupérer votre commande au restaurant dans moins de 30 min.';
+        }
 
         // Afficher le message de succès immédiatement
         const container = document.querySelector('.cart-page .container');
         container.innerHTML = `
-          <div style="text-align:center; padding:80px 20px;">
+          <div style="text-align:center; padding:80px 20px; max-width:720px; margin:0 auto;">
             <div style="font-size:80px; color:#28a745; margin-bottom:20px;">
               <i class="fas fa-check-circle"></i>
             </div>
@@ -550,13 +678,27 @@
             <p style="color:#F96D00; font-size:1.1rem; font-weight:bold; margin-top:15px;">
               ${timeMessage}
             </p>
+
+            <div style="background:#fff8e1; border:2px solid #F96D00; border-radius:10px; padding:22px 24px; margin:30px auto 0 auto; text-align:left;">
+              <div style="display:flex; align-items:center; margin-bottom:10px;">
+                <i class="fas fa-receipt" style="font-size:28px; color:#F96D00; margin-right:14px;"></i>
+                <strong style="font-size:1.1rem; color:#333;">Votre justificatif d'achat</strong>
+              </div>
+              <p style="margin:0 0 14px 0; color:#555; font-size:0.98rem; line-height:1.5;">
+                En cas de doute au restaurant, présentez la page
+                <strong>« Mes commandes »</strong> de votre compte&nbsp;: elle fait office de
+                <strong>preuve de paiement</strong>. Toutes vos commandes y sont enregistrées
+                avec leur heure et leur statut.
+              </p>
+              <a href="historique-commandes.html" class="btn btn-primary btn-block" style="font-weight:600;">
+                <i class="fas fa-receipt mr-2"></i>Voir mon justificatif
+              </a>
+            </div>
+
             <div id="order-save-status" style="margin-top:15px; font-size:0.9rem; color:#666;"></div>
             <div style="margin-top:25px;">
-              <a href="menu.html" class="btn btn-primary btn-lg">
+              <a href="menu.html" class="btn btn-outline-primary btn-lg">
                 <i class="fas fa-utensils mr-2"></i>Retour au menu
-              </a>
-              <a href="historique-commandes.html" class="btn btn-outline-secondary btn-lg ml-2">
-                <i class="fas fa-receipt mr-2"></i>Mes commandes
               </a>
             </div>
           </div>
@@ -564,8 +706,9 @@
         document.querySelectorAll('#cart-count').forEach(el => el.textContent = '0');
         window.history.replaceState({}, '', 'panier.html');
 
-        // Récupérer les infos client si connecté
-        var customerName = null;
+        // Récupérer les infos client
+        // Priorité : nom saisi sur la page panier (localStorage), sinon full_name de la session
+        var customerName = localStorage.getItem('quarterTimeCustomerName') || null;
         var customerEmail = null;
 
         // Sauvegarder la commande dans Supabase (historique client)
@@ -575,7 +718,9 @@
             var session = result.data.session;
             if (session) {
               var user = session.user;
-              customerName = user.user_metadata?.full_name || null;
+              if (!customerName) {
+                customerName = user.user_metadata?.full_name || null;
+              }
               customerEmail = user.email || null;
 
               var insertResult = await window.supabaseClient
@@ -583,6 +728,7 @@
                 .insert({
                   user_id: user.id,
                   user_email: user.email,
+                  customer_name: customerName,
                   items: cartItems,
                   delivery_mode: deliveryMode,
                   subtotal: subtotal,
@@ -624,7 +770,10 @@
                 customer_name: customerName,
                 customer_email: customerEmail,
                 items: cartItems.map(function(item) {
-                  return { name: item.name, price: item.price, quantity: item.quantity };
+                  var out = { name: item.name, price: item.price, quantity: item.quantity };
+                  if (item.choices && item.choices.length > 0) out.choices = item.choices;
+                  if (item.prepTime) out.prep_time = item.prepTime;
+                  return out;
                 }),
                 delivery_mode: deliveryMode,
                 subtotal: subtotal,
@@ -652,9 +801,10 @@
           }
         }
 
-        // Vider le panier et le delivery mode APRÈS tous les appels API
+        // Vider le panier et les infos de livraison APRÈS tous les appels API
         localStorage.removeItem('quarterTimeCart');
         localStorage.removeItem('quarterTimeDeliveryMode');
+        localStorage.removeItem('quarterTimeCustomerName');
 
       } else if (payment === 'cancel') {
         alert('Paiement annulé. Votre panier est toujours disponible.');

@@ -32,17 +32,38 @@
     });
   }
 
+  function formatHHMM(date) {
+    var hh = String(date.getHours()).padStart(2, '0');
+    var mm = String(date.getMinutes()).padStart(2, '0');
+    return hh + ':' + mm;
+  }
+
+  function escapeHtml(s) {
+    return s ? String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '';
+  }
+
+  // Nom par défaut depuis la session (fallback pour les anciennes commandes sans customer_name)
+  var sessionFullName = null;
+
   function renderOrderCard(order) {
     var items = order.items || [];
     var orderDate = formatDate(order.created_at);
     var statusLabel = STATUS_LABELS[order.status] || order.status;
     var statusClass = STATUS_CLASSES[order.status] || 'status-paid';
     var shortId = order.id.substring(0, 8).toUpperCase();
+    var displayTitle = order.customer_name
+      ? escapeHtml(order.customer_name)
+      : (sessionFullName ? escapeHtml(sessionFullName) : '#' + shortId);
 
     var itemsHtml = items.map(function(item) {
       var lineTotal = (item.price * item.quantity).toFixed(2);
+      var choicesHtml = item.choices && item.choices.length
+        ? '<ul class="order-item-choices">' + item.choices.map(function(c, i) {
+            return '<li>Pizza ' + (i + 1) + ' : <strong>' + c + '</strong></li>';
+          }).join('') + '</ul>'
+        : '';
       return '<li>'
-        + '<span class="item-name">' + item.name
+        + '<span class="item-name">' + item.name + choicesHtml
         + ' <span class="item-qty">x' + item.quantity + '</span></span>'
         + '<span class="item-price">' + lineTotal + ' &euro;</span>'
         + '</li>';
@@ -52,14 +73,38 @@
       ? '<i class="fas fa-truck"></i> Livraison'
       : '<i class="fas fa-store"></i> À emporter';
 
+    // Heure de retrait/livraison estimée = created_at + max(prepTime) des items
+    var maxPrep = items.reduce(function (m, it) {
+      var p = parseInt(it.prepTime != null ? it.prepTime : it.prep_time, 10);
+      return isFinite(p) && p > m ? p : m;
+    }, 0);
+
+    var pickupHtml = '';
+    if (maxPrep > 0 && order.status !== 'cancelled') {
+      var deliveryExtra = order.delivery_mode === 'delivery' ? 15 : 0;
+      var readyDate = new Date(new Date(order.created_at).getTime() + (maxPrep + deliveryExtra) * 60000);
+      var readyTime = formatHHMM(readyDate);
+      var pickupLabel = order.delivery_mode === 'delivery'
+        ? 'Livraison estimée vers'
+        : 'Prête vers';
+      var extraLabel = order.delivery_mode === 'delivery'
+        ? '(≈ ' + maxPrep + ' min de préparation + trajet)'
+        : '(≈ ' + maxPrep + ' min de préparation)';
+      pickupHtml = '<div class="order-pickup-info">'
+        + '<i class="far fa-clock"></i> ' + pickupLabel + ' <strong>' + readyTime + '</strong> '
+        + '<span class="order-pickup-extra">' + extraLabel + '</span>'
+        + '</div>';
+    }
+
     return '<div class="order-card">'
       + '<div class="order-header">'
       + '  <div>'
-      + '    <span class="order-number">Commande #' + shortId + '</span><br>'
+      + '    <span class="order-number">' + displayTitle + '</span><br>'
       + '    <span class="order-date"><i class="far fa-calendar-alt"></i> ' + orderDate + '</span>'
       + '  </div>'
       + '  <span class="order-status ' + statusClass + '">' + statusLabel + '</span>'
       + '</div>'
+      + pickupHtml
       + '<ul class="order-items-list">' + itemsHtml + '</ul>'
       + '<div class="order-footer">'
       + '  <span class="order-delivery-mode">' + deliveryLabel + '</span>'
@@ -90,6 +135,9 @@
         authRequired.style.display = 'block';
         return;
       }
+
+      // Fallback pour les anciennes commandes sans customer_name stocké
+      sessionFullName = (session.user && session.user.user_metadata && session.user.user_metadata.full_name) || null;
 
       loadingEl.style.display = 'block';
 

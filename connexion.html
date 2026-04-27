@@ -197,6 +197,7 @@
         <li class="nav-item" id="nav-connexion"><a href="connexion.html" class="nav-link">Connexion</a></li>
         <li class="nav-item" id="nav-logout" style="display:none;"><a href="#" class="nav-link" id="logout-link"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
         <li class="nav-item" id="nav-orders" style="display:none;"><a href="historique-commandes.html" class="nav-link"><i class="fas fa-receipt"></i> Mes commandes</a></li>
+        <li class="nav-item" id="nav-reservations" style="display:none;"><a href="mes-reservations.html" class="nav-link"><i class="fas fa-calendar-check"></i> Mes réservations</a></li>
         <li class="nav-item cta"><a href="menu.html" class="nav-link">Commander</a></li>
 
         <!-- 🛒 Panier -->
@@ -412,8 +413,13 @@
         // Afficher immédiatement Se déconnecter dans la navbar
         document.getElementById('nav-logout').style.display = '';
         document.getElementById('nav-connexion').style.display = 'none';
+
+        // Si l'utilisateur a été redirigé depuis le panier, y retourner
+        var redirectAfter = localStorage.getItem('quarterTimeRedirectAfterLogin');
+        if (redirectAfter) localStorage.removeItem('quarterTimeRedirectAfterLogin');
+
         setTimeout(function() {
-          window.location.href = 'menu.html';
+          window.location.href = redirectAfter || 'menu.html';
         }, 2000);
 
       } catch (err) {
